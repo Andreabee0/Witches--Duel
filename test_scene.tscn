@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyjpdv3unsh7u"]
+
+[ext_resource type="PackedScene" uid="uid://dibtreictvuan" path="res://player.tscn" id="1_por06"]
+
+[node name="testScene" type="Node"]
+
+[node name="Background" type="Polygon2D" parent="."]
+position = Vector2(66, 20)
+polygon = PackedVector2Array(-193, -146, 1258, -151, 1278, 837, -198, 837)
+
+[node name="Player" parent="." instance=ExtResource("1_por06")]
