@@ -1,11 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://5ln4nstuuews"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_sg1xn"]
-[ext_resource type="Texture2D" uid="uid://bguimuapbq38t" path="res://icon.svg" id="2_te1ek"]
+[ext_resource type="Texture2D" uid="uid://f54gi0g53vi4" path="res://witches.png" id="2_2qayn"]
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(126, 26)
 script = ExtResource("1_sg1xn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_te1ek")
+position = Vector2(-9, -3)
+texture = ExtResource("2_2qayn")
+hframes = 4
