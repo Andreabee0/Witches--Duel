@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 800.0
 
+@warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
 	var direction = getMovementVector()
 	
