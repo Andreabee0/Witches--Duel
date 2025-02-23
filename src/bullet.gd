@@ -1,3 +1,4 @@
+class_name Bullet
 extends Node2D
 
 var source: int
@@ -7,16 +8,13 @@ var size: float
 var homing: float
 
 
-func _init(_source, _direction, _speed, _size):
+func start(_source: int, _direction: Vector2, _speed: float, _size: float) -> void:
 	source = _source
 	velocity = _direction.normalized()
-	speed = _speed
-	size = _size
+	speed = _speed * 1000
+	size = _size * 0.1
 
-	var size_vector = Vector2(_size, _size)
-	scale = size_vector
-	$CollisionShape2D.scale = size_vector
-	$sprite.size = size_vector
+	scale = Vector2(size, size)
 
 
 func _physics_process(delta: float) -> void:

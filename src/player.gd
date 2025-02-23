@@ -2,6 +2,13 @@ extends CharacterBody2D
 
 @export var speed := 800.0
 
+var spell: BaseSpell = IronSpell.new()
+
+
+func _process(_delta: float) -> void:
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		spell.spawn($Stats, Vector2(1, 0), position)
+
 
 func _physics_process(_delta: float) -> void:
 	var direction := get_movement_vector()
