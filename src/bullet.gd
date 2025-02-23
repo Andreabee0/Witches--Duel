@@ -1,19 +1,23 @@
 extends Node2D
 
-var direction: Vector2
+var source: int
+var velocity: Vector2
 var speed: float
 var size: float
+var homing: float
 
-func _init(_direction, _speed, _size):
-	var sizeVector = Vector2(size, size)
-	direction = _direction.normalized()
+
+func _init(_source, _direction, _speed, _size):
+	source = _source
+	velocity = _direction.normalized()
 	speed = _speed
 	size = _size
-	
-	$CollisionShape2D.scale = sizeVector
-	scale = sizeVector
-	$sprite.size = sizeVector
-	
-	
+
+	var size_vector = Vector2(_size, _size)
+	scale = size_vector
+	$CollisionShape2D.scale = size_vector
+	$sprite.size = size_vector
+
+
 func _physics_process(delta: float) -> void:
-	position += direction * delta * speed
+	position += velocity * delta * speed
