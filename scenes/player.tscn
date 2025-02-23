@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://5ln4nstuuews"]
+[gd_scene load_steps=4 format=3 uid="uid://5ln4nstuuews"]
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_sg1xn"]
 [ext_resource type="Texture2D" uid="uid://oxn0eosmt7ie" path="res://sprites/witches.png" id="2_1qinh"]
+[ext_resource type="PackedScene" uid="uid://df5fsen00st5o" path="res://scenes/cursor.tscn" id="3_kkbbf"]
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(126, 26)
@@ -11,3 +12,8 @@ script = ExtResource("1_sg1xn")
 position = Vector2(11, 85)
 texture = ExtResource("2_1qinh")
 hframes = 4
+
+[node name="Cursor" type="Sprite2D" parent="."]
+
+[node name="Cursor" parent="Cursor" instance=ExtResource("3_kkbbf")]
+position = Vector2(6, -46)
