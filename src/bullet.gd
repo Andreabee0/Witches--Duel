@@ -6,6 +6,7 @@ var velocity: Vector2
 var speed: float
 var size: float
 var homing: float
+var damage: float
 
 
 func start(_source: int, _direction: Vector2, _speed: float, _size: float) -> void:
