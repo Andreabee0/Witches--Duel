@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://5ln4nstuuews"]
+
+[ext_resource type="Script" path="res://src/player.gd" id="1_sg1xn"]
+[ext_resource type="Texture2D" uid="uid://oxn0eosmt7ie" path="res://sprites/witches.png" id="2_1qinh"]
+[ext_resource type="Texture2D" uid="uid://bwxlui6nblrll" path="res://icon.svg" id="3_2cf5y"]
+[ext_resource type="Script" path="res://src/rotating_cursor.gd" id="4_1dh1y"]
+[ext_resource type="Script" path="res://src/player_stats.gd" id="5_pmri7"]
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(126, 26)
+script = ExtResource("1_sg1xn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_1qinh")
+hframes = 4
+
+[node name="Cursor" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_2cf5y")
+script = ExtResource("4_1dh1y")
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("5_pmri7")

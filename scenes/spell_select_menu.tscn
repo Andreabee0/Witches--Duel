@@ -1,0 +1,120 @@
+[gd_scene load_steps=2 format=3 uid="uid://dopn31uwx12pg"]
+
+[ext_resource type="Script" path="res://scenes/spell_select_menu_manager.gd" id="1_btd4f"]
+
+[node name="SpellSelectMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_btd4f")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.14902, 0.156863, 0.156863, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 102.0
+offset_right = 1328.0
+offset_bottom = 220.0
+theme_override_font_sizes/normal_font_size = 80
+text = "Choose your spells"
+tab_size = 7
+
+[node name="IronButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 384.0
+offset_right = 300.0
+offset_bottom = 434.0
+theme_override_font_sizes/font_size = 30
+text = "Iron
+"
+
+[node name="AirElement" type="Button" parent="."]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 239.0
+offset_right = 304.0
+offset_bottom = 330.0
+theme_override_font_sizes/font_size = 30
+text = "🜁
+Air
+"
+
+[node name="FireElement" type="Button" parent="."]
+layout_mode = 0
+offset_left = 388.0
+offset_top = 243.0
+offset_right = 514.0
+offset_bottom = 334.0
+theme_override_font_sizes/font_size = 30
+text = "🜂
+Fire
+"
+
+[node name="EarthElement" type="Button" parent="."]
+layout_mode = 0
+offset_left = 583.0
+offset_top = 243.0
+offset_right = 709.0
+offset_bottom = 334.0
+theme_override_font_sizes/font_size = 30
+text = "🜃
+Earth
+"
+
+[node name="WaterElement" type="Button" parent="."]
+layout_mode = 0
+offset_left = 786.0
+offset_top = 246.0
+offset_right = 912.0
+offset_bottom = 337.0
+theme_override_font_sizes/font_size = 30
+text = "🜄
+Water"
+
+[node name="SulfurButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 383.0
+offset_top = 389.0
+offset_right = 509.0
+offset_bottom = 439.0
+theme_override_font_sizes/font_size = 30
+text = "Sulfur
+"
+
+[node name="LeadButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 582.0
+offset_top = 393.0
+offset_right = 707.0
+offset_bottom = 443.0
+theme_override_font_sizes/font_size = 30
+text = "Lead"
+
+[node name="OilButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 783.0
+offset_top = 395.0
+offset_right = 908.0
+offset_bottom = 445.0
+theme_override_font_sizes/font_size = 30
+text = "Oil
+"
+
+[node name="BackButton" type="Button" parent="."]
+offset_left = 26.0
+offset_top = 40.0
+offset_right = 149.0
+offset_bottom = 90.0
+theme_override_font_sizes/font_size = 30
+text = "Back"
+
+[connection signal="button_down" from="BackButton" to="." method="_on_back_button_down"]
