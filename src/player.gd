@@ -6,8 +6,8 @@ var spell: BaseSpell = IronSpell.new()
 
 
 func _process(_delta: float) -> void:
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		spell.spawn($Stats, Vector2(1, 0), position)
+	if Input.is_action_just_pressed("use_action_rt"):
+		spell.spawn($Stats, Vector2.from_angle($Cursor.rotation), position)
 
 
 func _physics_process(_delta: float) -> void:
