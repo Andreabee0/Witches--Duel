@@ -34,4 +34,6 @@ var perk: BasePerk
 
 
 func get_stat(stat):
+	if perk == null:
+		return BASE_STATS[stat]
 	return (BASE_STATS[stat] + perk.get_additive(stat)) * perk.get_multiplicative(stat)
