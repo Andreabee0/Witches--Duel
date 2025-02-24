@@ -3,7 +3,7 @@ extends BaseSpell
 
 
 func _on_press(_direction: Vector2, _pos: Vector2):
-	spawn(_player, _direction, _pos)
+	spawn(_direction, _pos)
 
 
 func spawn(direction: Vector2, pos: Vector2):
