@@ -10,7 +10,7 @@ position = Vector2(74, 21)
 polygon = PackedVector2Array(-193, -146, 1258, -151, 1278, 837, -198, 837)
 
 [node name="Player" parent="." instance=ExtResource("1_me1le")]
-position = Vector2(127, 26)
+position = Vector2(200, 199)
 
 [node name="Stats" type="Node" parent="Player"]
 script = ExtResource("2_uyvpb")
