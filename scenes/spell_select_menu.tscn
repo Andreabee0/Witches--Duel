@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dopn31uwx12pg"]
 
-[ext_resource type="Script" path="res://scenes/spell_select_menu_manager.gd" id="1_btd4f"]
+[ext_resource type="Script" path="res://src/spell_select_menu_manager.gd" id="1_btd4f"]
 
 [node name="SpellSelectMenu" type="Control"]
 layout_mode = 3
@@ -110,6 +110,7 @@ text = "Oil
 "
 
 [node name="BackButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 26.0
 offset_top = 40.0
 offset_right = 149.0
