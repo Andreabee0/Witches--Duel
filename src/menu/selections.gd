@@ -12,4 +12,5 @@ func create_player(parent: Node2D, id: int):
 	parent.add_child(instance)
 	var stats: PlayerStats = instance.get_node("Stats")
 	stats.player_id = id
+	stats.spells = spells
 	stats.perk = perk

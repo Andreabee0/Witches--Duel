@@ -4,7 +4,15 @@ extends RefCounted
 var bullet := preload("res://scenes/bullet.tscn")
 
 
-func spawn(_player: PlayerStats, _direction: Vector2, _pos: Vector2) -> void:
+func _get_additive(_stat) -> float:
+	return 0
+
+
+func _get_multiplicative(_stat) -> float:
+	return 1
+
+
+func _spawn(_player: PlayerStats, _direction: Vector2, _pos: Vector2) -> void:
 	pass
 
 

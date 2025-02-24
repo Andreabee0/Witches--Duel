@@ -30,10 +30,25 @@ const BASE_STATS = {
 }
 
 var player_id := 0
+var spells: Array[BaseSpell]
 var perk: BasePerk
 
 
+func get_additive(stat) -> float:
+	var ret = perk._get_additive(stat) if perk != null else 0.0
+	for spell in spells:
+		if spell != null:
+			ret += spell._get_additive(stat)
+	return ret
+
+
+func get_multiplicative(stat) -> float:
+	var ret = perk._get_multiplicative(stat) if perk != null else 1.0
+	for spell in spells:
+		if spell != null:
+			ret *= spell._get_multiplicative(stat)
+	return ret
+
+
 func get_stat(stat):
-	if perk == null:
-		return BASE_STATS[stat]
-	return (BASE_STATS[stat] + perk.get_additive(stat)) * perk.get_multiplicative(stat)
+	return (BASE_STATS[stat] + get_additive(stat)) * get_multiplicative(stat)
