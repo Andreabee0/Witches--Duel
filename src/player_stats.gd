@@ -25,17 +25,9 @@ const BASE_STATS = {
 	IFRAME_DURATION: 0.5,
 }
 
-
-@export var player_id := 0;
-
-
-func get_additive(_stat) -> float:
-	return 0
-
-
-func get_multiplicative(_stat) -> float:
-	return 1
+var player_id := 0
+var perk: BasePerk
 
 
 func get_stat(stat):
-	return (BASE_STATS[stat] + get_additive(stat)) * get_multiplicative(stat)
+	return (BASE_STATS[stat] + perk.get_additive(stat)) * perk.get_multiplicative(stat)

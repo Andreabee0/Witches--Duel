@@ -1,5 +1,5 @@
 class_name BaseSpell
-extends Object
+extends RefCounted
 
 var bullet := preload("res://scenes/bullet.tscn")
 
