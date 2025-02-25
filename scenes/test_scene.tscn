@@ -7,6 +7,7 @@
 
 [node name="Background" type="Polygon2D" parent="."]
 position = Vector2(74, 21)
+color = Color(0.194349, 0.194349, 0.194349, 1)
 polygon = PackedVector2Array(-193, -146, 1258, -151, 1278, 837, -198, 837)
 
 [node name="Player" parent="." instance=ExtResource("1_me1le")]
