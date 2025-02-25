@@ -29,6 +29,10 @@ Players="*res://src/players.gd"
 
 enabled=PackedStringArray()
 
+[gui]
+
+theme/custom="res://theme/theme.tres"
+
 [input]
 
 move_up={

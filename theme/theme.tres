@@ -1,0 +1,14 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bgocnempcaxe2"]
+
+[ext_resource type="FontFile" uid="uid://coaqp3d4v84qu" path="res://theme/PixelatedEleganceRegular.ttf" id="1_jvytf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_frakm"]
+
+[resource]
+default_font = ExtResource("1_jvytf")
+BoxContainer/constants/separation = 20
+Button/styles/focus = SubResource("StyleBoxEmpty_frakm")
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_right = 10
+MarginContainer/constants/margin_top = 10

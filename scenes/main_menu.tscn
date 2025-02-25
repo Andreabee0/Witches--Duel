@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://gduetrgv0mlu"]
 
-[ext_resource type="Script" path="res://src/main_menu_manager.gd" id="1_x73ka"]
+[ext_resource type="Script" path="res://src/menu/main.gd" id="1_x73ka"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,52 +11,56 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_x73ka")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 8.0
-offset_right = 1153.0
-offset_bottom = 735.0
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.14902, 0.156863, 0.156863, 1)
 
 [node name="Title" type="Label" parent="."]
-layout_mode = 0
-offset_left = 300.0
-offset_top = 76.0
-offset_right = 840.0
-offset_bottom = 219.0
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 134.0
+offset_bottom = 206.0
+grow_horizontal = 2
 theme_override_font_sizes/font_size = 80
 text = "Witches' Duel"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Quit" type="Button" parent="."]
-layout_mode = 0
-offset_left = 463.0
-offset_top = 552.0
-offset_right = 651.0
-offset_bottom = 622.0
-theme_override_font_sizes/font_size = 40
-text = "Quit"
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 20.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
 
-[node name="Options" type="Button" parent="."]
-layout_mode = 0
-offset_left = 450.0
-offset_top = 459.0
-offset_right = 668.0
-offset_bottom = 545.0
-theme_override_font_sizes/font_size = 40
-text = "Options
-"
-
-[node name="Play" type="Button" parent="."]
-layout_mode = 0
-offset_left = 427.0
-offset_top = 361.0
-offset_right = 690.0
-offset_bottom = 447.0
+[node name="Play" type="Button" parent="HBoxContainer"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Play
 "
 
-[connection signal="button_down" from="Quit" to="." method="_on_quit_button_down"]
-[connection signal="button_down" from="Options" to="." method="_on_options_button_down"]
-[connection signal="button_down" from="Play" to="." method="_on_play_button_down"]
+[node name="Options" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Options
+"
+
+[node name="Quit" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Quit"
+
+[connection signal="button_down" from="HBoxContainer/Play" to="." method="_on_play_button_down"]
+[connection signal="button_down" from="HBoxContainer/Options" to="." method="_on_options_button_down"]
+[connection signal="button_down" from="HBoxContainer/Quit" to="." method="_on_quit_button_down"]
