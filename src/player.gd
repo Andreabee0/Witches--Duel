@@ -1,18 +1,19 @@
 extends CharacterBody2D
 
-var spell: BaseSpell = LeadSpell.new()
+var spell: BaseSpell = SulfurSpell.new()
 
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("use_action_rt"):
-		spell.on_press($Stats, Vector2.from_angle($Cursor.rotation), position)
+	spell.player = $Stats
+	if Input.is_action_pressed("use_action_rt"):
+		spell._on_press(Vector2.from_angle($Cursor.rotation), position)
 
 
 func _physics_process(_delta: float) -> void:
 	var direction := get_movement_vector()
 
 	if !direction.is_zero_approx():
-		velocity = direction * $Stats.sp
+		velocity = direction * $Stats.get_stat(PlayerStats.MOVE_SPEED)
 	else:
 		velocity = Vector2(0, 0)
 

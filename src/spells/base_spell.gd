@@ -1,7 +1,6 @@
 class_name BaseSpell
 extends RefCounted
 
-const COOLDOWN_SECS := 1
 var bullet := preload("res://scenes/bullet.tscn")
 var last_fire = 0
 var player: PlayerStats
@@ -36,7 +35,11 @@ func spawn_bullet(instance: Bullet, direction: Vector2):
 
 
 func can_fire() -> bool:
-	if Time.get_ticks_msec() - last_fire > COOLDOWN_SECS * 1000:
+	if Time.get_ticks_msec() - last_fire > _get_cooldown() * 1000:
 		last_fire = Time.get_ticks_msec()
 		return true
 	return false
+
+func _get_cooldown() -> float:
+	return 1
+

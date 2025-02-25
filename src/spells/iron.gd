@@ -3,7 +3,8 @@ extends BaseSpell
 
 
 func _on_press(_direction: Vector2, _pos: Vector2):
-	spawn(_direction, _pos)
+	if can_fire():
+		spawn(_direction, _pos)
 
 
 func spawn(direction: Vector2, pos: Vector2):
@@ -14,3 +15,7 @@ func spawn(direction: Vector2, pos: Vector2):
 		player.get_stat(PlayerStats.SPELL_SPEED),
 		player.get_stat(PlayerStats.SPELL_SIZE)
 	)
+
+
+func _get_cooldown() -> float:
+	return 0.3
