@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkbo7uspu0erq"]
+
+[ext_resource type="Texture2D" uid="uid://dy0y56renj7eb" path="res://sprites/projectile.png" id="1_csei0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oqwxb"]
+radius = 115.039
+
+[node name="DefenseBullet" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_csei0")
+hframes = 2
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_oqwxb")
