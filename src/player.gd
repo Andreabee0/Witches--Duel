@@ -13,7 +13,7 @@ func _physics_process(_delta: float) -> void:
 	var direction := get_movement_vector()
 
 	if !direction.is_zero_approx():
-		velocity = direction * $Stats.get_stat(PlayerStats.MOVE_SPEED)
+		velocity = direction * $Stats.get_stat(PlayerStats.MOVE_SPEED) * 800
 	else:
 		velocity = Vector2(0, 0)
 
