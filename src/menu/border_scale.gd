@@ -3,9 +3,11 @@ extends ColorRect
 
 
 func _ready() -> void:
-	material = material.duplicate()
+	if not Engine.is_editor_hint():
+		material = material.duplicate()
 
 
 func _process(_delta: float) -> void:
-	var shader: ShaderMaterial = material
-	shader.set_shader_parameter("scale", size)
+	if Engine.is_editor_hint():
+		var shader: ShaderMaterial = material
+		shader.set_shader_parameter("scale", size)
