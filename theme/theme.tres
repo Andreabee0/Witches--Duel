@@ -1,13 +1,60 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bgocnempcaxe2"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://bgocnempcaxe2"]
 
 [ext_resource type="FontFile" uid="uid://coaqp3d4v84qu" path="res://theme/PixelatedEleganceRegular.ttf" id="1_jvytf"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_frakm"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bjtwq"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_omai3"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dkfd6"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.101961, 0.101961, 0.101961, 0.6)
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vxqq"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0, 0, 0, 0.6)
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y3fmr"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.223529, 0.223529, 0.223529, 0.6)
+corner_detail = 5
 
 [resource]
 default_font = ExtResource("1_jvytf")
 BoxContainer/constants/separation = 20
-Button/styles/focus = SubResource("StyleBoxEmpty_frakm")
+Button/styles/disabled = SubResource("StyleBoxFlat_bjtwq")
+Button/styles/focus = SubResource("StyleBoxFlat_omai3")
+Button/styles/hover = SubResource("StyleBoxFlat_dkfd6")
+Button/styles/normal = SubResource("StyleBoxFlat_7vxqq")
+Button/styles/pressed = SubResource("StyleBoxFlat_y3fmr")
 MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10

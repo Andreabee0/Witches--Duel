@@ -41,12 +41,11 @@ layout_mode = 2
 [node name="Volume" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
-text = "Volume
-"
+text = "Volume"
 
 [node name="VolumeSlider" type="HSlider" parent="VBoxContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[connection signal="button_down" from="VBoxContainer/BackButton" to="." method="_on_back_button_down"]
+[connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_pressed"]
