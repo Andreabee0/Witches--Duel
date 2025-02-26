@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8g30drm1cfyr"]
+
+[ext_resource type="Script" path="res://src/menu/background.gd" id="1_mlrci"]
+
+[sub_resource type="Gradient" id="Gradient_0df4v"]
+interpolation_mode = 2
+colors = PackedColorArray(0.14902, 0.156863, 0.156863, 1, 0.14902, 0.156863, 0.156863, 0.576471)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0ocxk"]
+gradient = SubResource("Gradient_0df4v")
+fill_to = Vector2(0, 1)
+
+[node name="MenuBg" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14902, 0.156863, 0.156863, 1)
+
+[node name="BackgroundAnimation" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mlrci")
+pos_variance = 1.0
+rot_variance = 0.5
+rot_speed_variance = 0.5
+
+[node name="TemplateSprite" type="Sprite2D" parent="BackgroundAnimation"]
+texture_filter = 1
+scale = Vector2(4, 4)
+
+[node name="FadeGradient" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_0ocxk")

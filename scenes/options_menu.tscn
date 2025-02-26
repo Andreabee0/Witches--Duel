@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://by2lgvcyl3kiy"]
+[gd_scene load_steps=3 format=3 uid="uid://by2lgvcyl3kiy"]
 
 [ext_resource type="Script" path="res://src/menu/options.gd" id="1_u4k8k"]
+[ext_resource type="PackedScene" uid="uid://b8g30drm1cfyr" path="res://scenes/menu_bg.tscn" id="2_dmv01"]
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -11,14 +12,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u4k8k")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="MenuBg" parent="." instance=ExtResource("2_dmv01")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.14902, 0.156863, 0.156863, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
