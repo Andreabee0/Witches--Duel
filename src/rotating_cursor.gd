@@ -11,3 +11,4 @@ func _physics_process(_delta: float) -> void:
 func get_look_vector() -> Vector2:
 	var look := Input.get_vector("look_left", "look_right", "look_up", "look_down")
 	return look.clamp(Vector2(-1, -1), Vector2(1, 1))
+

@@ -11,7 +11,7 @@ color = Color(0.194349, 0.194349, 0.194349, 1)
 polygon = PackedVector2Array(-193, -146, 1258, -151, 1278, 837, -198, 837)
 
 [node name="Player" parent="." instance=ExtResource("1_me1le")]
-position = Vector2(200, 199)
+position = Vector2(236, 193)
 
 [node name="Stats2" type="Node" parent="Player"]
 script = ExtResource("2_uyvpb")
