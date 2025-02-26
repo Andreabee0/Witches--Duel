@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://gduetrgv0mlu"]
+[gd_scene load_steps=3 format=3 uid="uid://gduetrgv0mlu"]
 
 [ext_resource type="Script" path="res://src/menu/main.gd" id="1_x73ka"]
+[ext_resource type="Script" path="res://src/menu/background.gd" id="2_1kuuh"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -19,6 +20,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.14902, 0.156863, 0.156863, 1)
+
+[node name="BackgroundAnimation" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_1kuuh")
+pos_variance = 1.0
+rot_variance = 0.5
+rot_speed_variance = 0.5
+
+[node name="TemplateSprite" type="Sprite2D" parent="BackgroundAnimation"]
+texture_filter = 1
+scale = Vector2(4, 4)
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
