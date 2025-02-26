@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://lho7uo5n8t0c"]
+
+[ext_resource type="Script" path="res://src/menu/player_selectable.gd" id="1_wxuo8"]
+[ext_resource type="Texture2D" uid="uid://dgbg8odi6e3q6" path="res://sprites/symbols/air.png" id="2_jcucx"]
+[ext_resource type="Shader" path="res://shaders/player_selectable.gdshader" id="3_vadbg"]
+[ext_resource type="Script" path="res://src/menu/border_scale.gd" id="4_t3rda"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7040g"]
+shader = ExtResource("3_vadbg")
+shader_parameter/border_size = 8.0
+shader_parameter/scale = Vector2(1152, 648)
+shader_parameter/rot_speed = 0.2
+shader_parameter/color_count = 0
+shader_parameter/colors = PackedColorArray(0, 0, 0, 1, 0.317279, 0.317279, 0.317279, 1, 0.717964, 0.717964, 0.717964, 1)
+
+[node name="PlayerSelectable" type="Control"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wxuo8")
+selections = null
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.185318, 0.194488, 0.194488, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Texture" type="TextureRect" parent="MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_jcucx")
+stretch_mode = 5
+
+[node name="Border" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_7040g")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_t3rda")

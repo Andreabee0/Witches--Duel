@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8g30drm1cfyr"]
+[gd_scene load_steps=4 format=3 uid="uid://74sp8fsbrxer"]
 
 [ext_resource type="Script" path="res://src/menu/background.gd" id="1_mlrci"]
 
