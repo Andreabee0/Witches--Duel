@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpy8nuohf43e4"]
+
+[ext_resource type="Script" path="res://src/menu/menu_manager.gd" id="1_q1eiy"]
+[ext_resource type="PackedScene" uid="uid://74sp8fsbrxer" path="res://scenes/components/menu_bg.tscn" id="2_co41o"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q1eiy")
+
+[node name="MenuBg" parent="." instance=ExtResource("2_co41o")]
+layout_mode = 1
+
+[node name="Wrapper" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -40,7 +40,7 @@ func create_sprite(pos: Vector2, rot: float) -> Sprite2D:
 	return copy
 
 
-func remove_sprite(sprite: Sprite2D):
+func remove_sprite(sprite: Sprite2D) -> void:
 	sprite.queue_free()
 
 
@@ -86,7 +86,9 @@ func calc_line_length(rect_size: Vector2, offset: float) -> float:
 	return min(right_hit_length, bottom_hit_length)
 
 
-func add_line_sprite(line: Array, line_start: Vector2, line_speed: float, pos: float, start: bool):
+func add_line_sprite(
+	line: Array, line_start: Vector2, line_speed: float, pos: float, start: bool
+) -> void:
 	var start_time := time - pos / line_speed
 	var rot := randf_sym(rot_variance * PI * 2)
 	var sprite := create_sprite(line_start + forward * pos - MARGIN_SUBTRACT, rot)
@@ -146,14 +148,14 @@ func update_line(rect_size: Vector2, offset: float, lines: Array, index: int) ->
 		add_line_sprite(line, line_start, line_speed, last_pos, false)
 
 
-func remove_line(lines: Array, index: int):
+func remove_line(lines: Array, index: int) -> void:
 	var line: Array = lines[index][0]
 	for i in line.size():
 		remove_sprite(line[i][0])
 	lines.remove_at(index)
 
 
-func update_lines(rect_size: Vector2, lines: Array, start: int, end: int, inc: int):
+func update_lines(rect_size: Vector2, lines: Array, start: int, end: int, inc: int) -> void:
 	var idx := 0
 	for offset_mult in range(start, end, inc):
 		var offset := corner_offset + offset_mult * spacing

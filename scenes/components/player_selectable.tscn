@@ -13,7 +13,7 @@ shader_parameter/color_count = 0
 shader_parameter/colors = PackedColorArray(0, 0, 0, 1, 0.317279, 0.317279, 0.317279, 1, 0.717964, 0.717964, 0.717964, 1)
 
 [node name="PlayerSelectable" type="Control"]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

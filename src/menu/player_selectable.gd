@@ -2,18 +2,23 @@
 extends Control
 
 @export var texture: Texture2D:
-	set(new_texture):
-		texture = new_texture
-		$MarginContainer/Texture.texture = texture
+	set = set_texture
 
 @export var selections := 0:
-	set(new_selections):
-		selections = new_selections
-		var shader: ShaderMaterial = $Border.material
-		shader.set_shader_parameter("color_count", selections)
+	set = set_selections
+
+
+func set_texture(value: Texture2D):
+	texture = value
+	$MarginContainer/Texture.texture = texture
+
+
+func set_selections(value: int):
+	selections = value
+	var shader: ShaderMaterial = $Border.material
+	shader.set_shader_parameter("color_count", selections)
 
 
 func _ready() -> void:
-	$MarginContainer/Texture.texture = texture
-	var shader: ShaderMaterial = $Border.material
-	shader.set_shader_parameter("color_count", selections)
+	set_texture(texture)
+	set_selections(selections)

@@ -1,4 +1,8 @@
+class_name MainMenu
 extends Control
+
+signal play_pressed
+signal options_pressed
 
 
 func _on_quit_pressed():
@@ -6,8 +10,8 @@ func _on_quit_pressed():
 
 
 func _on_play_pressed():
-	get_tree().change_scene_to_file("res://scenes/spell_select_menu.tscn")
+	play_pressed.emit()
 
 
 func _on_options_pressed():
-	get_tree().change_scene_to_file("res://scenes/options_menu.tscn")
+	options_pressed.emit()

@@ -1,5 +1,5 @@
 @tool
-class_name SpellSelectMenu
+class_name PerkSelectMenu
 extends Control
 
 signal back_pressed
@@ -18,14 +18,24 @@ func set_player_count(value: int):
 
 
 func make_player() -> Node:
-	var ret := BASE_PLAYER.instantiate()
+	var ret: PlayerSelections = BASE_PLAYER.instantiate()
 	$VerticalContainer/PlayersContainer.add_child(ret)
+	ret.color = Color.GRAY
+	ret.spell_slots = 0
+	ret.perk_slots = 1
 	return ret
+
+
+func update_player_count():
+	set_player_count(Players.get_device_count())
 
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		set_player_count(player_count)
+	else:
+		update_player_count()
+		Players.devices_changed.connect(update_player_count)
 
 
 func _on_back_pressed():

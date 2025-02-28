@@ -7,7 +7,7 @@ var spells: Array[BaseSpell]
 var perk: BasePerk
 
 
-func create_player(parent: Node2D, id: int):
+func create_player(parent: Node2D, id: int) -> void:
 	var instance = player.instantiate()
 	parent.add_child(instance)
 	var stats: PlayerStats = instance.get_node("Stats")

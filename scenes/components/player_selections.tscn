@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvx0u8sirsk0w"]
+
+[ext_resource type="Texture2D" uid="uid://d028nsmhh4io4" path="res://sprites/witch spritesheet.png" id="1_ax315"]
+[ext_resource type="Script" path="res://src/menu/player_selections.gd" id="1_i3j15"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdse3"]
+atlas = ExtResource("1_ax315")
+region = Rect2(0, 0, 16, 16)
+
+[node name="PlayerSelections" type="PanelContainer"]
+offset_right = 100.0
+offset_bottom = 100.0
+script = ExtResource("1_i3j15")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(1, 1, 1, 0.133333)
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="MainContainer" type="HBoxContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PlayerSprite" type="TextureRect" parent="Margin/MainContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = SubResource("AtlasTexture_sdse3")
+stretch_mode = 5
+
+[node name="PerkContainer" type="HBoxContainer" parent="Margin/MainContainer"]
+layout_mode = 2
+
+[node name="SpellsContainer" type="VFlowContainer" parent="Margin/MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+alignment = 2
