@@ -14,7 +14,6 @@ func start(_source: int, _direction: Vector2, _speed: float, _size: float) -> vo
 	velocity = _direction.normalized()
 	speed = _speed * 1000
 	size = _size * 0.1
-
 	scale = Vector2(size, size)
 
 
