@@ -4,7 +4,7 @@ extends Control
 
 signal back_pressed
 
-const BASE_PLAYER := preload("res://scenes/components/player_selections.tscn")
+const BASE_PLAYER := preload("res://scenes/components/player_display.tscn")
 
 @export var player_count := 0:
 	set = set_player_count
@@ -14,7 +14,7 @@ var players: Array[Node] = []
 
 func set_player_count(value: int):
 	player_count = value
-	VariableObjects.update_object_count(players, player_count, make_player)
+	Util.update_object_count(players, player_count, make_player)
 
 
 func make_player() -> Node:

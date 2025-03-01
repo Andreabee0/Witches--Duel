@@ -14,13 +14,14 @@ const BASE_SPELL_SLOT := preload("res://scenes/components/spell_icon.tscn")
 @export var perk_slots := 0:
 	set = set_perk_slots
 
-var slots: Array[Node] = []
-var perk: Array[Node] = []
+var selections: Selections
+var spells: Array[SpellIcon] = []
+var perk: Array[PerkIcon] = []
 
 
 func set_color(value: Color) -> void:
 	color = value
-	for slot in slots:
+	for slot in spells:
 		slot.color = color
 	for p in perk:
 		p.color = color
@@ -28,12 +29,12 @@ func set_color(value: Color) -> void:
 
 func set_spell_slots(value) -> void:
 	spell_slots = clamp(value, 0, 4)
-	VariableObjects.update_object_count(slots, spell_slots, make_spell_slot)
+	Util.update_object_count(spells, spell_slots, make_spell_slot)
 
 
 func set_perk_slots(value) -> void:
 	perk_slots = clamp(value, 0, 1)
-	VariableObjects.update_object_count(perk, perk_slots, make_perk_slot)
+	Util.update_object_count(perk, perk_slots, make_perk_slot)
 
 
 func make_spell_slot() -> Node:
@@ -48,6 +49,25 @@ func make_perk_slot() -> Node:
 	$Margin/MainContainer/PerkContainer.add_child(ret)
 	ret.color = color
 	return ret
+
+
+func set_selections(value: Selections) -> void:
+	if selections:
+		Util.checked_disconnect(selections.changed, selections_changed)
+	selections = value
+	if selections:
+		Util.checked_connect(selections.changed, selections_changed)
+
+
+func selections_changed() -> void:
+	var i := 0
+	for button in selections.spells:
+		spells[i].selection = button
+		i += 1
+	for j in range(i, spells.size()):
+		spells[i].selection = -1
+	if not perk.is_empty():
+		perk[0].selection = 0 if selections.perk else -1
 
 
 func _ready() -> void:

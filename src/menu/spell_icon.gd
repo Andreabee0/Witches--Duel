@@ -1,4 +1,5 @@
 @tool
+class_name SpellIcon
 extends Control
 
 const BUTTONS: Array[Texture2D] = [

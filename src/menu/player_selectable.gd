@@ -1,6 +1,8 @@
 @tool
 extends Control
 
+signal on_selected(device: int)
+
 @export var texture: Texture2D:
 	set = set_texture
 
@@ -22,3 +24,9 @@ func set_selections(value: int):
 func _ready() -> void:
 	set_texture(texture)
 	set_selections(selections)
+
+
+func _on_button_gui_input(event: InputEvent) -> void:
+	# todo: does this even work lol
+	if event.is_action_released("ui_accept"):
+		on_selected.emit(event.device)

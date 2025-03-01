@@ -1,4 +1,5 @@
 @tool
+class_name PerkIcon
 extends Control
 
 @export var selection := -1:

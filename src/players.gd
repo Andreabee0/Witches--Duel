@@ -1,10 +1,11 @@
 extends Node
 
 signal devices_changed
+signal joined_devices_changed
 
-# dictionary of joined player ids to their selections
-var selections := {}
 var devices: Array[DeviceInput]
+# dictionary of devices to their selections
+var selections := {}
 
 
 func _init() -> void:
@@ -27,9 +28,44 @@ func _on_joy_connection_changed(device: int, connected: bool) -> void:
 	devices_changed.emit()
 
 
-func get_device_count():
+func get_device_count() -> int:
 	return devices.size() if Settings.include_keyboard else devices.size() - 1
 
 
-func get_joined_count():
+func get_device_at(index: int) -> DeviceInput:
+	return devices[index] if Settings.include_keyboard else devices[index + 1]
+
+
+func listen_for_joins() -> void:
+	var changed := false
+	for device in devices:
+		if device.is_keyboard() and not Settings.include_keyboard:
+			continue
+		if device in selections:
+			if device.is_action_just_released("ui_cancel"):
+				selections.erase(device)
+				changed = true
+		else:
+			if device.is_action_just_pressed("ui_accept"):
+				selections[device.device] = Selections.new(device)
+				changed = true
+	if changed:
+		joined_devices_changed.emit()
+
+
+func unjoin_all(emit := true) -> void:
+	selections = {}
+	if emit:
+		joined_devices_changed.emit()
+
+
+func get_joined_count() -> int:
 	return selections.size()
+
+
+func is_device_joined(device: DeviceInput) -> bool:
+	return selections.has(device.device)
+
+
+func get_selections_for_joined(device: DeviceInput) -> Selections:
+	return selections[device.device]

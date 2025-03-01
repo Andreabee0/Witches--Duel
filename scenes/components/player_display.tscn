@@ -1,16 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://dvx0u8sirsk0w"]
 
-[ext_resource type="Texture2D" uid="uid://d028nsmhh4io4" path="res://sprites/witch spritesheet.png" id="1_ax315"]
-[ext_resource type="Script" path="res://src/menu/player_selections.gd" id="1_i3j15"]
+[ext_resource type="Script" path="res://src/menu/player_display.gd" id="1_q1o6m"]
+[ext_resource type="Texture2D" uid="uid://d028nsmhh4io4" path="res://sprites/witch spritesheet.png" id="2_yovnh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sdse3"]
-atlas = ExtResource("1_ax315")
+atlas = ExtResource("2_yovnh")
 region = Rect2(0, 0, 16, 16)
 
 [node name="PlayerSelections" type="PanelContainer"]
 offset_right = 100.0
 offset_bottom = 100.0
-script = ExtResource("1_i3j15")
+script = ExtResource("1_q1o6m")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
