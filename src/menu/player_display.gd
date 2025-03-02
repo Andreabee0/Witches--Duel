@@ -65,7 +65,6 @@ func set_selections(value: Selections) -> void:
 			cursor = BASE_CURSOR.instantiate()
 			add_child(cursor)
 			var starting_anchor: Control = $Margin/MainContainer/PlayerSprites
-			print("cursor is ", cursor)
 			cursor.global_position = (
 				starting_anchor.global_position + starting_anchor.size * Vector2(0.4, -0.1)
 			)
