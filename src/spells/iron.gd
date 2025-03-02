@@ -2,12 +2,12 @@ class_name IronSpell
 extends BaseSpell
 
 
-func _on_press(_direction: Vector2, _pos: Vector2):
+func _on_press(_direction: Vector2, _pos: Vector2) -> void:
 	if can_fire():
 		spawn(_direction, _pos)
 
 
-func spawn(direction: Vector2, pos: Vector2):
+func spawn(direction: Vector2, pos: Vector2) -> void:
 	var instance := make_bullet(pos)
 	instance.start(
 		player.player_id,

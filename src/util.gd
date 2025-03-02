@@ -2,7 +2,7 @@ class_name Util
 extends Object
 
 
-static func update_object_count(objects: Array, count: int, make_new: Callable):
+static func update_object_count(objects: Array, count: int, make_new: Callable) -> void:
 	if objects.size() > count:
 		for i in objects.size() - count:
 			objects[count + i].queue_free()

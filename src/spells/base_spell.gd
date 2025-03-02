@@ -2,7 +2,7 @@ class_name BaseSpell
 extends RefCounted
 
 var bullet := preload("res://scenes/bullet.tscn")
-var last_fire = 0
+var last_fire := 0
 var player: PlayerStats
 
 
@@ -14,7 +14,7 @@ func _get_multiplicative(_stat) -> float:
 	return 1
 
 
-func _on_press(_direction: Vector2, _pos: Vector2):
+func _on_press(_direction: Vector2, _pos: Vector2) -> void:
 	pass
 
 
@@ -25,7 +25,7 @@ func make_bullet(_pos: Vector2) -> Bullet:
 	return instance
 
 
-func spawn_bullet(instance: Bullet, direction: Vector2):
+func spawn_bullet(instance: Bullet, direction: Vector2) -> void:
 	instance.start(
 		player.player_id,
 		direction,
@@ -40,6 +40,6 @@ func can_fire() -> bool:
 		return true
 	return false
 
+
 func _get_cooldown() -> float:
 	return 1
-

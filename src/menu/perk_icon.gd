@@ -9,13 +9,13 @@ extends Control
 	set = set_color
 
 
-func set_selection(value: int):
+func set_selection(value: int) -> void:
 	selection = clamp(value, -1, 3)
 	var enabled := selection >= 0
 	$Filling.visible = enabled
 
 
-func set_color(value: Color):
+func set_color(value: Color) -> void:
 	color = value
 	$Filling.modulate = color
 

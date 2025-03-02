@@ -57,7 +57,6 @@ alignment = 1
 [node name="PlayerSelectable" parent="VerticalContainer/MainContainer/PerksContainer" instance=ExtResource("3_6egso")]
 layout_mode = 2
 texture = ExtResource("4_yb6wg")
-colors = Array[Color]([])
 
 [node name="PlayersContainer" type="HBoxContainer" parent="VerticalContainer"]
 layout_mode = 2

@@ -2,16 +2,12 @@ class_name SulfurSpell
 extends BaseSpell
 
 
-func _get_multiplicative(_stat):
-	return 1
-
-
-func _on_press(_direction: Vector2, _pos: Vector2):
+func _on_press(_direction: Vector2, _pos: Vector2) -> void:
 	if can_fire():
 		spawn(_direction, _pos)
 
 
-func spawn(direction: Vector2, pos: Vector2):
+func spawn(direction: Vector2, pos: Vector2) -> void:
 	var high := make_bullet(pos)
 	var mid := make_bullet(pos)
 	var low := make_bullet(pos)

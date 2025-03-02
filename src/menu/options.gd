@@ -15,13 +15,13 @@ func _ready() -> void:
 	$MainContainer/BackButton.call_deferred("grab_focus")
 
 
-func _on_back_pressed():
+func _on_back_pressed() -> void:
 	back_pressed.emit()
 
 
-func _on_volume_changed(value: float):
+func _on_volume_changed(value: float) -> void:
 	Settings.volume = value
 
 
-func _on_keyboard_toggled(value: bool):
+func _on_keyboard_toggled(value: bool) -> void:
 	Settings.include_keyboard = value

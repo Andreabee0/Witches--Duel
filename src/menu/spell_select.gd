@@ -12,7 +12,7 @@ const BASE_PLAYER := preload("res://scenes/components/player_display.tscn")
 var players: Array[Node] = []
 
 
-func set_player_count(value: int):
+func set_player_count(value: int) -> void:
 	player_count = value
 	Util.update_object_count(players, player_count, make_player)
 
@@ -28,5 +28,5 @@ func _ready() -> void:
 		set_player_count(player_count)
 
 
-func _on_back_pressed():
+func _on_back_pressed() -> void:
 	back_pressed.emit()

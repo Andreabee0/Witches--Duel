@@ -53,5 +53,5 @@ func get_multiplicative(stat) -> float:
 	return ret
 
 
-func get_stat(stat):
+func get_stat(stat) -> float:
 	return (BASE_STATS[stat] + get_additive(stat)) * get_multiplicative(stat)
