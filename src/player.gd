@@ -4,6 +4,7 @@ var spell: BaseSpell = LeadSpell.new()
 var is_casting := false
 var is_moving := false
 var direction
+var id
 
 
 func _process(_delta: float) -> void:
@@ -44,3 +45,10 @@ func flip_right() -> void:
 	$base.flip_h = true
 	$robe.flip_h = true
 	$belt.flip_h = true
+
+
+
+func _on_collider_area_entered(area:Area2D) -> void:
+	if area.is_in_group("bullet"):
+		if(area.get_parent().source != id):
+			print("hit")
