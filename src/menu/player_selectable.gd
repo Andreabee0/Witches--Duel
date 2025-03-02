@@ -4,6 +4,8 @@ extends Control
 
 signal on_pressed(device: int)
 
+@export var select_sound: AudioStream
+
 @export var texture: Texture2D:
 	set = set_texture
 
@@ -62,4 +64,5 @@ func _process(_delta: float) -> void:
 				and selections.device.is_action_just_released("multi_ui_accept")
 			):
 				set_player_selected(device_id, not players.has(device_id))
+				SoundPlayer.play_sound(select_sound)
 				on_pressed.emit(device_id)

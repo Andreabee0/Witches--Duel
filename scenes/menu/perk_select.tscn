@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://baxca3ttmqgaj"]
+[gd_scene load_steps=6 format=3 uid="uid://baxca3ttmqgaj"]
 
 [ext_resource type="Script" path="res://src/menu/perk_select.gd" id="1_khifm"]
 [ext_resource type="Texture2D" uid="uid://qlyr03gtote8" path="res://sprites/menu/back.png" id="2_utxuj"]
 [ext_resource type="PackedScene" uid="uid://lho7uo5n8t0c" path="res://scenes/components/player_selectable.tscn" id="3_6egso"]
+[ext_resource type="AudioStream" uid="uid://nomwn1gytfrq" path="res://sounds/select.wav" id="4_hrrtj"]
 [ext_resource type="Texture2D" uid="uid://dgbg8odi6e3q6" path="res://sprites/symbols/air.png" id="4_yb6wg"]
 
 [node name="PerkSelectMenu" type="Control"]
@@ -56,6 +57,7 @@ alignment = 1
 
 [node name="PlayerSelectable" parent="VerticalContainer/MainContainer/PerksContainer" instance=ExtResource("3_6egso")]
 layout_mode = 2
+select_sound = ExtResource("4_hrrtj")
 texture = ExtResource("4_yb6wg")
 
 [node name="PlayersContainer" type="HBoxContainer" parent="VerticalContainer"]
