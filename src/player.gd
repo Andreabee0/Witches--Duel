@@ -3,6 +3,7 @@ extends CharacterBody2D
 var spell: BaseSpell = LeadSpell.new()
 var is_casting := false
 var is_moving := false
+var direction
 
 
 func _process(_delta: float) -> void:

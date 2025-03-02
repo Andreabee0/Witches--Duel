@@ -3,15 +3,17 @@
 [ext_resource type="Script" path="res://src/bullet.gd" id="1_2dnf6"]
 [ext_resource type="Texture2D" uid="uid://dy0y56renj7eb" path="res://sprites/projectile.png" id="2_5lsdv"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ckq7k"]
-radius = 115.039
+[sub_resource type="CircleShape2D" id="CircleShape2D_msyv2"]
+radius = 106.794
 
-[node name="Bullet" type="Area2D"]
+[node name="Bullet" type="Node2D"]
 script = ExtResource("1_2dnf6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_5lsdv")
 hframes = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_ckq7k")
+[node name="Collider" type="Area2D" parent="." groups=["bullet"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+shape = SubResource("CircleShape2D_msyv2")
