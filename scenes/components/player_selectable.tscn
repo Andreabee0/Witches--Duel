@@ -7,7 +7,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_51elr"]
 shader = ExtResource("3_vadbg")
 shader_parameter/border_size = 8.0
-shader_parameter/scale = Vector2(100, 100)
+shader_parameter/scale = Vector2(1152, 648)
 shader_parameter/rot_speed = 0.2
 shader_parameter/color_count = 0
 shader_parameter/colors = Array[Color]([])
