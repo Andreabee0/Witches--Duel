@@ -11,4 +11,5 @@ func _ready() -> void:
 
 func play_sound(sound: AudioStream):
 	player.stream = sound
+	player.volume_db = lerp(-10, 10, Settings.volume)
 	player.play()
