@@ -23,8 +23,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Settings="*res://src/settings.gd"
 Players="*res://src/players.gd"
+Settings="*res://src/settings.gd"
 MultiplayerInput="*res://addons/multiplayer_input/multiplayer_input.gd"
 
 [editor_plugins]
