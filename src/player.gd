@@ -3,8 +3,7 @@ extends CharacterBody2D
 var spell: BaseSpell = LeadSpell.new()
 var is_casting := false
 var is_moving := false
-var direction
-var id
+var id := -1
 
 
 func _process(_delta: float) -> void:
@@ -47,8 +46,7 @@ func flip_right() -> void:
 	$belt.flip_h = true
 
 
-
-func _on_collider_area_entered(area:Area2D) -> void:
+func _on_collider_area_entered(area: Area2D) -> void:
 	if area.is_in_group("bullet"):
-		if(area.get_parent().source != id):
+		if area.get_parent().source != id:
 			print("hit")
