@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://dopn31uwx12pg"]
+
+[ext_resource type="Script" path="res://src/menu/spell_select.gd" id="1_btd4f"]
+[ext_resource type="Texture2D" uid="uid://qlyr03gtote8" path="res://sprites/back.png" id="2_y3bsc"]
+
+[node name="SpellSelectMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_btd4f")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14902, 0.156863, 0.156863, 1)
+
+[node name="VerticalContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = -30.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainContainer" type="HBoxContainer" parent="VerticalContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BackButton" type="Button" parent="VerticalContainer/MainContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 30
+icon = ExtResource("2_y3bsc")
+icon_alignment = 1
+expand_icon = true
+
+[node name="SpellsContainer" type="FlowContainer" parent="VerticalContainer/MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="PlayersContainer" type="HBoxContainer" parent="VerticalContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="VerticalContainer/MainContainer/BackButton" to="." method="_on_back_pressed"]

@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3q7l8bxvs04q"]
+
+[ext_resource type="Script" path="res://src/menu/perk_icon.gd" id="1_5n0bu"]
+[ext_resource type="Texture2D" uid="uid://dge17rv6b0r31" path="res://sprites/perk_empty.png" id="2_mn78k"]
+[ext_resource type="Texture2D" uid="uid://bd7y6bng0yfwc" path="res://sprites/perk_full_bg.png" id="3_ouru1"]
+
+[node name="PerkIcon" type="Control"]
+custom_minimum_size = Vector2(62.5, 100)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5n0bu")
+
+[node name="Outline" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mn78k")
+stretch_mode = 5
+
+[node name="Filling" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ouru1")
+stretch_mode = 5

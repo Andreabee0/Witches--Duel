@@ -32,7 +32,8 @@ const BASE_STATS = {
 }
 
 var player_id := 0
-var spells: Array[BaseSpell]
+# button to spell
+var spells := {}
 var perk: BasePerk
 
 

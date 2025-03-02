@@ -16,18 +16,24 @@ fast_but_unsafe=175
 [application]
 
 config/name="Witches' Duel"
-run/main_scene="res://scenes/test_scene.tscn"
+run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]
 
+Settings="*res://src/settings.gd"
 Players="*res://src/players.gd"
+MultiplayerInput="*res://addons/multiplayer_input/multiplayer_input.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/multiplayer_input/plugin.cfg")
+
+[gui]
+
+theme/custom="res://theme/theme.tres"
 
 [input]
 
