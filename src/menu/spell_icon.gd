@@ -3,10 +3,10 @@ class_name SpellIcon
 extends Control
 
 const BUTTONS: Array[Texture2D] = [
-	preload("res://sprites/left_trigger.png"),
-	preload("res://sprites/left_button.png"),
-	preload("res://sprites/right_trigger.png"),
-	preload("res://sprites/right_button.png"),
+	preload("res://sprites/menu/left_trigger.png"),
+	preload("res://sprites/menu/left_button.png"),
+	preload("res://sprites/menu/right_trigger.png"),
+	preload("res://sprites/menu/right_button.png"),
 ]
 
 @export var selection := -1:

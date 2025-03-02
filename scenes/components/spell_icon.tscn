@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cahms0fiffobu"]
 
 [ext_resource type="Script" path="res://src/menu/spell_icon.gd" id="1_afpe8"]
-[ext_resource type="Texture2D" uid="uid://mwbleunogvri" path="res://sprites/selection_empty.png" id="2_0d3f3"]
-[ext_resource type="Texture2D" uid="uid://buaf41qfo802n" path="res://sprites/selection_full_bg.png" id="3_n0xer"]
-[ext_resource type="Texture2D" uid="uid://b24vsb5g1yl24" path="res://sprites/left_trigger.png" id="4_opppo"]
+[ext_resource type="Texture2D" uid="uid://mwbleunogvri" path="res://sprites/menu/selection_empty.png" id="2_0d3f3"]
+[ext_resource type="Texture2D" uid="uid://buaf41qfo802n" path="res://sprites/menu/selection_full_bg.png" id="3_n0xer"]
+[ext_resource type="Texture2D" uid="uid://b24vsb5g1yl24" path="res://sprites/menu/left_trigger.png" id="4_opppo"]
 
 [node name="SelectionIcon" type="Control"]
 custom_minimum_size = Vector2(50, 50)

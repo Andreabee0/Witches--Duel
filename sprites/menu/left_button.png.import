@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b24vsb5g1yl24"
-path="res://.godot/imported/left_trigger.png-62885f1da2cb0ae2a0b67f295ac3b07b.ctex"
+uid="uid://cnl8i0wi88rvh"
+path="res://.godot/imported/left_button.png-3d39136e2a135f322f28e29750a6e17b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/left_trigger.png"
-dest_files=["res://.godot/imported/left_trigger.png-62885f1da2cb0ae2a0b67f295ac3b07b.ctex"]
+source_file="res://sprites/menu/left_button.png"
+dest_files=["res://.godot/imported/left_button.png-3d39136e2a135f322f28e29750a6e17b.ctex"]
 
 [params]
 

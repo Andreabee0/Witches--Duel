@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dge17rv6b0r31"
-path="res://.godot/imported/perk_empty.png-520a519a9cc051d896d9099ffc5e036b.ctex"
+path="res://.godot/imported/perk_empty.png-25dd451faa07b81c3f8515e9f77d0935.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/perk_empty.png"
-dest_files=["res://.godot/imported/perk_empty.png-520a519a9cc051d896d9099ffc5e036b.ctex"]
+source_file="res://sprites/menu/perk_empty.png"
+dest_files=["res://.godot/imported/perk_empty.png-25dd451faa07b81c3f8515e9f77d0935.ctex"]
 
 [params]
 

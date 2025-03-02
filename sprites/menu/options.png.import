@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bd7y6bng0yfwc"
-path="res://.godot/imported/perk_full_bg.png-e857ea1490bb6c1097782c2a74bb0270.ctex"
+uid="uid://cqhmu0o358i1o"
+path="res://.godot/imported/options.png-4347684eb09da546b076503d2caf34ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/perk_full_bg.png"
-dest_files=["res://.godot/imported/perk_full_bg.png-e857ea1490bb6c1097782c2a74bb0270.ctex"]
+source_file="res://sprites/menu/options.png"
+dest_files=["res://.godot/imported/options.png-4347684eb09da546b076503d2caf34ad.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://l0uqdkdwysrj"
-path="res://.godot/imported/right_trigger.png-649c0258977d8716a4f1f43453fe7c42.ctex"
+uid="uid://qlyr03gtote8"
+path="res://.godot/imported/back.png-7d3c4972371eb301b7ee26bf2e4efd95.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/right_trigger.png"
-dest_files=["res://.godot/imported/right_trigger.png-649c0258977d8716a4f1f43453fe7c42.ctex"]
+source_file="res://sprites/menu/back.png"
+dest_files=["res://.godot/imported/back.png-7d3c4972371eb301b7ee26bf2e4efd95.ctex"]
 
 [params]
 

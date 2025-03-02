@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://baxca3ttmqgaj"]
 
 [ext_resource type="Script" path="res://src/menu/perk_select.gd" id="1_khifm"]
-[ext_resource type="Texture2D" uid="uid://qlyr03gtote8" path="res://sprites/back.png" id="2_utxuj"]
+[ext_resource type="Texture2D" uid="uid://qlyr03gtote8" path="res://sprites/menu/back.png" id="2_utxuj"]
 [ext_resource type="PackedScene" uid="uid://lho7uo5n8t0c" path="res://scenes/components/player_selectable.tscn" id="3_6egso"]
 [ext_resource type="Texture2D" uid="uid://dgbg8odi6e3q6" path="res://sprites/symbols/air.png" id="4_yb6wg"]
 
