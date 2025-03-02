@@ -5,11 +5,11 @@
 [ext_resource type="Script" path="res://src/menu/animated_atlas.gd" id="3_grsgi"]
 [ext_resource type="Texture2D" uid="uid://dkcffovetoym1" path="res://sprites/lace_witch spritesheet.png" id="4_5o2t6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gq2o3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_akemp"]
 atlas = ExtResource("2_ts85l")
 region = Rect2(0, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i7mhs"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmp6a"]
 atlas = ExtResource("4_5o2t6")
 region = Rect2(0, 16, 16, 16)
 
@@ -41,7 +41,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("AtlasTexture_gq2o3")
+texture = SubResource("AtlasTexture_akemp")
 script = ExtResource("3_grsgi")
 start_offset = Vector2(0, 16)
 region_size = Vector2(16, 16)
@@ -54,7 +54,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("AtlasTexture_i7mhs")
+texture = SubResource("AtlasTexture_cmp6a")
 script = ExtResource("3_grsgi")
 start_offset = Vector2(0, 16)
 region_size = Vector2(16, 16)

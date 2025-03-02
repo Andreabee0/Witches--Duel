@@ -6,29 +6,29 @@ const BASE_CURSOR := preload("res://scenes/components/cursor.tscn")
 const BASE_SPELL_SLOT := preload("res://scenes/components/spell_icon.tscn")
 const BASE_PERK_SLOT := preload("res://scenes/components/perk_icon.tscn")
 
-@export var color := Color.WHITE:
-	set = set_color
-
 @export var spell_slots := 0:
 	set = set_spell_slots
 
 @export var perk_slots := 0:
 	set = set_perk_slots
 
+var color := PlayerColor.new()
 var selections: Selections
 var cursor: Node2D
 var spells: Array[SpellIcon] = []
 var perk: Array[PerkIcon] = []
 
 
-func set_color(value: Color) -> void:
+func set_color(value: PlayerColor) -> void:
 	color = value
 	if cursor:
-		cursor.color = color
+		cursor.color = color.secondary
 	for slot in spells:
-		slot.color = color
+		slot.color = color.secondary
 	for p in perk:
-		p.color = color
+		p.color = color.secondary
+	$Margin/MainContainer/PlayerSprites/Belt.modulate = color.secondary
+	$Margin/MainContainer/PlayerSprites/Robe.modulate = color.primary
 
 
 func set_spell_slots(value) -> void:
@@ -44,14 +44,14 @@ func set_perk_slots(value) -> void:
 func make_spell_slot() -> Node:
 	var ret := BASE_SPELL_SLOT.instantiate()
 	$Margin/MainContainer/SpellsContainer.add_child(ret)
-	ret.color = color
+	ret.color = color.secondary
 	return ret
 
 
 func make_perk_slot() -> Node:
 	var ret := BASE_PERK_SLOT.instantiate()
 	$Margin/MainContainer/PerkContainer.add_child(ret)
-	ret.color = color
+	ret.color = color.secondary
 	return ret
 
 
@@ -68,7 +68,7 @@ func set_selections(value: Selections) -> void:
 			cursor.global_position = (
 				starting_anchor.global_position + starting_anchor.size * Vector2(0.4, -0.1)
 			)
-			cursor.color = color
+			cursor.color = color.secondary
 		cursor.selections = selections
 	elif cursor:
 		cursor.queue_free()
@@ -87,6 +87,5 @@ func selections_changed() -> void:
 
 
 func _ready() -> void:
-	set_color(color)
 	set_perk_slots(perk_slots)
 	set_spell_slots(spell_slots)

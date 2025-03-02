@@ -3,13 +3,6 @@ extends Node
 signal devices_changed
 signal joined_devices_changed
 
-const COLORS: Array[Color] = [
-	Color(1, 0.3, 0, 1),
-	Color(0.6, 0.85, 0.9, 1),
-	Color(1, 0.95, 0.6, 1),
-	Color(0.4, 0.9, 0.1, 1),
-]
-
 var devices: Array[DeviceInput]
 # dictionary of devices to their selections
 var selections := {}
@@ -37,16 +30,16 @@ func _on_joy_connection_changed(device: int, connected: bool) -> void:
 	devices_changed.emit()
 
 
-func next_color() -> Color:
-	for color in COLORS:
+func next_color() -> PlayerColor:
+	for color in PlayerColor.colors:
 		var present := false
 		for key in colors:
-			if colors[key] == color:
+			if colors[key].equals(color):
 				present = true
 				break
 		if not present:
 			return color
-	return COLORS[0]
+	return PlayerColor.colors[0]
 
 
 func get_device_count() -> int:
@@ -97,5 +90,5 @@ func get_selections_for_joined(device: DeviceInput) -> Selections:
 	return selections[device.device]
 
 
-func get_color_for_joined(device: DeviceInput) -> Color:
+func get_color_for_joined(device: DeviceInput) -> PlayerColor:
 	return colors[device.device]

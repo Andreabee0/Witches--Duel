@@ -36,7 +36,7 @@ func set_colors(value: Array[Color]) -> void:
 func set_player_selected(player: int, select: bool) -> void:
 	if select and not players.has(player):
 		players[player] = color_count
-		colors.append(Players.colors[player])
+		colors.append(Players.colors[player].secondary)
 		set_colors(colors)
 		set_color_count(players.size())
 	elif not select and players.has(player):
