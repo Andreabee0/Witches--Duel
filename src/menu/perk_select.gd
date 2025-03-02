@@ -20,9 +20,9 @@ func set_player_count(value: int) -> void:
 func make_player() -> Node:
 	var ret: PlayerSelections = BASE_PLAYER.instantiate()
 	$VerticalContainer/PlayersContainer.add_child(ret)
-	ret.color = Color.GRAY
 	ret.spell_slots = 0
 	ret.perk_slots = 1 if Engine.is_editor_hint() else 0
+	ret.set_color(PlayerColor.make())
 	return ret
 
 
@@ -40,7 +40,7 @@ func updated_joined_players() -> void:
 			display.perk_slots = 1
 			display.set_selections(Players.get_selections_for_joined(device))
 		else:
-			display.set_color(Color.GRAY)
+			display.set_color(PlayerColor.make())
 			display.perk_slots = 0
 			display.set_selections(null)
 
