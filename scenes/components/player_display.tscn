@@ -1,11 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvx0u8sirsk0w"]
+[gd_scene load_steps=7 format=3 uid="uid://dvx0u8sirsk0w"]
 
 [ext_resource type="Script" path="res://src/menu/player_display.gd" id="1_q1o6m"]
-[ext_resource type="Texture2D" uid="uid://d028nsmhh4io4" path="res://sprites/witch spritesheet.png" id="2_yovnh"]
+[ext_resource type="Texture2D" uid="uid://drroix02qo83w" path="res://sprites/robe_witch spritesheet.png" id="2_ts85l"]
+[ext_resource type="Script" path="res://src/menu/animated_atlas.gd" id="3_grsgi"]
+[ext_resource type="Texture2D" uid="uid://dkcffovetoym1" path="res://sprites/lace_witch spritesheet.png" id="4_5o2t6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sdse3"]
-atlas = ExtResource("2_yovnh")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_gq2o3"]
+atlas = ExtResource("2_ts85l")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7mhs"]
+atlas = ExtResource("4_5o2t6")
+region = Rect2(0, 16, 16, 16)
 
 [node name="PlayerSelections" type="PanelContainer"]
 offset_right = 100.0
@@ -23,12 +29,36 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="PlayerSprite" type="TextureRect" parent="Margin/MainContainer"]
+[node name="PlayerSprites" type="Control" parent="Margin/MainContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-texture = SubResource("AtlasTexture_sdse3")
-stretch_mode = 5
+
+[node name="Robe" type="TextureRect" parent="Margin/MainContainer/PlayerSprites"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_gq2o3")
+script = ExtResource("3_grsgi")
+start_offset = Vector2(0, 16)
+region_size = Vector2(16, 16)
+frame_count = 2
+
+[node name="Belt" type="TextureRect" parent="Margin/MainContainer/PlayerSprites"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_i7mhs")
+script = ExtResource("3_grsgi")
+start_offset = Vector2(0, 16)
+region_size = Vector2(16, 16)
+frame_count = 2
 
 [node name="PerkContainer" type="HBoxContainer" parent="Margin/MainContainer"]
 layout_mode = 2
