@@ -26,7 +26,7 @@ text = "Witches' Duel"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Buttons" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.5
@@ -38,7 +38,7 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Play" type="Button" parent="HBoxContainer"]
+[node name="Play" type="Button" parent="Buttons"]
 texture_filter = 1
 custom_minimum_size = Vector2(65, 0)
 layout_mode = 2
@@ -47,7 +47,7 @@ icon = ExtResource("3_f6rw1")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Options" type="Button" parent="HBoxContainer"]
+[node name="Options" type="Button" parent="Buttons"]
 texture_filter = 1
 custom_minimum_size = Vector2(65, 0)
 layout_mode = 2
@@ -56,7 +56,7 @@ icon = ExtResource("4_60ald")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Quit" type="Button" parent="HBoxContainer"]
+[node name="Quit" type="Button" parent="Buttons"]
 texture_filter = 1
 custom_minimum_size = Vector2(65, 0)
 layout_mode = 2
@@ -65,6 +65,6 @@ icon = ExtResource("5_he2m7")
 icon_alignment = 1
 expand_icon = true
 
-[connection signal="pressed" from="HBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="HBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="HBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Buttons/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Buttons/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Buttons/Quit" to="." method="_on_quit_pressed"]

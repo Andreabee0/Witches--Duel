@@ -12,7 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u4k8k")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MainContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -23,45 +23,46 @@ offset_right = -30.0
 offset_bottom = -30.0
 grow_vertical = 2
 
-[node name="BackButton" type="Button" parent="VBoxContainer"]
+[node name="BackButton" type="Button" parent="MainContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(65, 65)
 layout_mode = 2
 size_flags_horizontal = 0
+focus_neighbor_bottom = NodePath("../MarginContainer/VBoxContainer/VolumeSlider/Layout/Slider")
 theme_override_font_sizes/font_size = 30
 icon = ExtResource("3_eso6p")
 icon_alignment = 1
 expand_icon = true
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MainContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="VolumeSlider" type="MarginContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="VolumeSlider" type="MarginContainer" parent="MainContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Layout" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/VolumeSlider"]
+[node name="Layout" type="HBoxContainer" parent="MainContainer/MarginContainer/VBoxContainer/VolumeSlider"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/VolumeSlider/Layout"]
+[node name="Label" type="Label" parent="MainContainer/MarginContainer/VBoxContainer/VolumeSlider/Layout"]
 layout_mode = 2
 text = "Volume"
 
-[node name="Slider" type="HSlider" parent="VBoxContainer/MarginContainer/VBoxContainer/VolumeSlider/Layout"]
+[node name="Slider" type="HSlider" parent="MainContainer/MarginContainer/VBoxContainer/VolumeSlider/Layout"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 max_value = 2.0
-step = 0.01
+step = 0.1
 
-[node name="KeyboardToggle" type="CheckButton" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="KeyboardToggle" type="CheckButton" parent="MainContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Keyboard Player"
 
-[connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_pressed"]
-[connection signal="value_changed" from="VBoxContainer/MarginContainer/VBoxContainer/VolumeSlider/Layout/Slider" to="." method="_on_volume_changed"]
-[connection signal="toggled" from="VBoxContainer/MarginContainer/VBoxContainer/KeyboardToggle" to="." method="_on_keyboard_toggled"]
+[connection signal="pressed" from="MainContainer/BackButton" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="MainContainer/MarginContainer/VBoxContainer/VolumeSlider/Layout/Slider" to="." method="_on_volume_changed"]
+[connection signal="toggled" from="MainContainer/MarginContainer/VBoxContainer/KeyboardToggle" to="." method="_on_keyboard_toggled"]

@@ -5,6 +5,10 @@ signal play_pressed
 signal options_pressed
 
 
+func _ready() -> void:
+	$Buttons/Play.call_deferred("grab_focus")
+
+
 func _on_quit_pressed():
 	get_tree().quit()
 

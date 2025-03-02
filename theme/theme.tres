@@ -15,13 +15,12 @@ content_margin_left = 12.0
 content_margin_top = 12.0
 content_margin_right = 12.0
 content_margin_bottom = 12.0
-bg_color = Color(1, 1, 1, 0.75)
 draw_center = false
-corner_detail = 5
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0.8, 0.8, 0.223529)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dkfd6"]
 content_margin_left = 12.0
