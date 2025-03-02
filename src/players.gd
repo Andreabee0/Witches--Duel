@@ -3,6 +3,9 @@ extends Node
 signal devices_changed
 signal joined_devices_changed
 
+var join_sound := preload("res://sounds/connect.wav")
+var leave_sound := preload("res://sounds/disconnect.wav")
+
 var devices: Array[DeviceInput]
 # dictionary of devices to their selections
 var selections := {}
@@ -58,12 +61,14 @@ func listen_for_joins() -> void:
 		if device.device in selections:
 			if device.is_action_just_released("multi_ui_cancel"):
 				print("device ", device.device, " left")
+				SoundPlayer.play_sound(leave_sound)
 				selections.erase(device.device)
 				colors.erase(device.device)
 				changed = true
 		else:
 			if device.is_action_just_pressed("multi_ui_accept"):
 				print("device ", device.device, " joined")
+				SoundPlayer.play_sound(join_sound)
 				selections[device.device] = Selections.new(device)
 				colors[device.device] = next_color()
 				changed = true
