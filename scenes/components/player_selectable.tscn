@@ -7,10 +7,10 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_51elr"]
 shader = ExtResource("3_vadbg")
 shader_parameter/border_size = 8.0
-shader_parameter/scale = Vector2(1152, 648)
+shader_parameter/scale = Vector2(100, 100)
 shader_parameter/rot_speed = 0.2
 shader_parameter/color_count = 0
-shader_parameter/colors = PackedColorArray(0, 0, 0, 1, 0.317279, 0.317279, 0.317279, 1, 0.717964, 0.717964, 0.717964, 1)
+shader_parameter/colors = Array[Color]([])
 
 [node name="PlayerSelectable" type="Control"]
 custom_minimum_size = Vector2(100, 100)
@@ -29,7 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.404899, 0.420703, 0.420699, 1)
+color = Color(0.368102, 0.368102, 0.368102, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -53,13 +53,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_t3rda")
-
-[node name="Button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[connection signal="gui_input" from="Button" to="." method="_on_button_gui_input"]

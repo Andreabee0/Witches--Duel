@@ -3,9 +3,18 @@ extends Node
 signal devices_changed
 signal joined_devices_changed
 
+const COLORS: Array[Color] = [
+	Color(1, 0.3, 0, 1),
+	Color(0.6, 0.85, 0.9, 1),
+	Color(1, 0.95, 0.6, 1),
+	Color(0.4, 0.9, 0.1, 1),
+]
+
 var devices: Array[DeviceInput]
 # dictionary of devices to their selections
 var selections := {}
+# dictionary of devices to their colors
+var colors := {}
 
 
 func _init() -> void:
@@ -28,6 +37,18 @@ func _on_joy_connection_changed(device: int, connected: bool) -> void:
 	devices_changed.emit()
 
 
+func next_color() -> Color:
+	for color in COLORS:
+		var present := false
+		for key in colors:
+			if colors[key] == color:
+				present = true
+				break
+		if not present:
+			return color
+	return COLORS[0]
+
+
 func get_device_count() -> int:
 	return devices.size() if Settings.include_keyboard else devices.size() - 1
 
@@ -41,13 +62,15 @@ func listen_for_joins() -> void:
 	for device in devices:
 		if device.is_keyboard() and not Settings.include_keyboard:
 			continue
-		if device in selections:
+		if device.device in selections:
 			if device.is_action_just_released("ui_cancel"):
 				selections.erase(device)
+				colors.erase(device)
 				changed = true
 		else:
 			if device.is_action_just_pressed("ui_accept"):
 				selections[device.device] = Selections.new(device)
+				colors[device.device] = next_color()
 				changed = true
 	if changed:
 		joined_devices_changed.emit()
@@ -55,6 +78,7 @@ func listen_for_joins() -> void:
 
 func unjoin_all(emit := true) -> void:
 	selections = {}
+	colors = {}
 	if emit:
 		joined_devices_changed.emit()
 
@@ -69,3 +93,7 @@ func is_device_joined(device: DeviceInput) -> bool:
 
 func get_selections_for_joined(device: DeviceInput) -> Selections:
 	return selections[device.device]
+
+
+func get_color_for_joined(device: DeviceInput) -> Color:
+	return colors[device.device]

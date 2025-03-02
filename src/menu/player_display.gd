@@ -2,8 +2,9 @@
 class_name PlayerSelections
 extends Container
 
-const BASE_PERK_SLOT := preload("res://scenes/components/perk_icon.tscn")
+const BASE_CURSOR := preload("res://scenes/components/cursor.tscn")
 const BASE_SPELL_SLOT := preload("res://scenes/components/spell_icon.tscn")
+const BASE_PERK_SLOT := preload("res://scenes/components/perk_icon.tscn")
 
 @export var color := Color.WHITE:
 	set = set_color
@@ -15,12 +16,15 @@ const BASE_SPELL_SLOT := preload("res://scenes/components/spell_icon.tscn")
 	set = set_perk_slots
 
 var selections: Selections
+var cursor: Node2D
 var spells: Array[SpellIcon] = []
 var perk: Array[PerkIcon] = []
 
 
 func set_color(value: Color) -> void:
 	color = value
+	if cursor:
+		cursor.color = color
 	for slot in spells:
 		slot.color = color
 	for p in perk:
@@ -57,6 +61,16 @@ func set_selections(value: Selections) -> void:
 	selections = value
 	if selections:
 		Util.checked_connect(selections.changed, selections_changed)
+		if not cursor:
+			cursor = BASE_CURSOR.instantiate()
+			add_child(cursor)
+			var starting_anchor: TextureRect = $Margin/MainContainer/PlayerSprite
+			cursor.global_position = (
+				starting_anchor.global_position + starting_anchor.size * Vector2(0.4, -0.1)
+			)
+		cursor.selections = selections
+	elif cursor:
+		cursor.queue_free()
 
 
 func selections_changed() -> void:

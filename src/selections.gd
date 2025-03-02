@@ -6,6 +6,7 @@ signal changed
 const BASE_PLAYER := preload("res://scenes/player.tscn")
 
 var device: DeviceInput
+var cursor_position := Vector2.INF
 # button to spell
 var spells := {}
 var perk: BasePerk
