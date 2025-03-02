@@ -86,6 +86,10 @@ func selections_changed() -> void:
 		perk[0].selection = 0 if selections.perk else -1
 
 
+func get_device() -> int:
+	return selections.device.device if selections else -2
+
+
 func _ready() -> void:
 	set_perk_slots(perk_slots)
 	set_spell_slots(spell_slots)

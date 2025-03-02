@@ -11,6 +11,8 @@ const BASE_PLAYER := preload("res://scenes/components/player_display.tscn")
 
 var player_displays: Array[PlayerSelections] = []
 
+@onready var perks_container = $VerticalContainer/MainContainer/PerksContainer
+
 
 func set_player_count(value: int) -> void:
 	player_count = value
@@ -40,6 +42,8 @@ func updated_joined_players() -> void:
 			display.perk_slots = 1
 			display.set_selections(Players.get_selections_for_joined(device))
 		else:
+			for perk: PlayerSelectable in perks_container.get_children():
+				perk.set_player_selected(display.get_device(), false)
 			display.set_color(PlayerColor.make())
 			display.perk_slots = 0
 			display.set_selections(null)

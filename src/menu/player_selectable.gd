@@ -1,4 +1,5 @@
 @tool
+class_name PlayerSelectable
 extends Control
 
 signal on_pressed(device: int)
