@@ -36,7 +36,7 @@ func updated_joined_players() -> void:
 		var device := Players.get_device_at(i)
 		var display := player_displays[i]
 		if Players.is_device_joined(device):
-			display.set_color(Color.RED)
+			display.set_color(Players.get_color_for_joined(device))
 			display.perk_slots = 1
 			display.set_selections(Players.get_selections_for_joined(device))
 		else:

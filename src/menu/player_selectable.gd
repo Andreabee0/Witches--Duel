@@ -58,7 +58,7 @@ func _process(_delta: float) -> void:
 			var selections: Selections = Players.selections[device_id]
 			if (
 				get_global_rect().has_point(selections.cursor_position)
-				and selections.device.is_action_just_released("ui_accept")
+				and selections.device.is_action_just_released("multi_ui_accept")
 			):
 				set_player_selected(device_id, not players.has(device_id))
 				on_pressed.emit(device_id)

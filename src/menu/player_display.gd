@@ -63,14 +63,16 @@ func set_selections(value: Selections) -> void:
 		Util.checked_connect(selections.changed, selections_changed)
 		if not cursor:
 			cursor = BASE_CURSOR.instantiate()
-			add_child(cursor)
+			get_tree().root.add_child(cursor)
 			var starting_anchor: Control = $Margin/MainContainer/PlayerSprites
 			cursor.global_position = (
 				starting_anchor.global_position + starting_anchor.size * Vector2(0.4, -0.1)
 			)
+			cursor.color = color
 		cursor.selections = selections
 	elif cursor:
 		cursor.queue_free()
+		cursor = null
 
 
 func selections_changed() -> void:

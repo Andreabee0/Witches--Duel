@@ -32,7 +32,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func get_movement_vector() -> Vector2:
-	return Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
+	return Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 
 
 func flip_left() -> void:
