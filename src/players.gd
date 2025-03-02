@@ -63,12 +63,14 @@ func listen_for_joins() -> void:
 		if device.is_keyboard() and not Settings.include_keyboard:
 			continue
 		if device.device in selections:
-			if device.is_action_just_released("ui_cancel"):
-				selections.erase(device)
-				colors.erase(device)
+			if device.is_action_just_released("multi_ui_cancel"):
+				print("device ", device.device, " left")
+				selections.erase(device.device)
+				colors.erase(device.device)
 				changed = true
 		else:
-			if device.is_action_just_pressed("ui_accept"):
+			if device.is_action_just_pressed("multi_ui_accept"):
+				print("device ", device.device, " joined")
 				selections[device.device] = Selections.new(device)
 				colors[device.device] = next_color()
 				changed = true

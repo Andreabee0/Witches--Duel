@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ddxtnk4hjhypd"]
 
-[ext_resource type="Texture2D" uid="uid://c873bkcyaenva" path="res://sprites/cursor.png" id="1_bxxcc"]
 [ext_resource type="Script" path="res://src/menu/cursor.gd" id="1_kb15d"]
+[ext_resource type="Texture2D" uid="uid://cmbxttr7bifim" path="res://sprites/menu/cursor.png" id="2_7bua6"]
 
 [node name="Cursor" type="Node2D"]
 script = ExtResource("1_kb15d")
@@ -9,4 +9,4 @@ script = ExtResource("1_kb15d")
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(3, 3)
-texture = ExtResource("1_bxxcc")
+texture = ExtResource("2_7bua6")

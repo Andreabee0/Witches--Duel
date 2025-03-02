@@ -30,4 +30,4 @@ func _process(delta: float) -> void:
 func get_move_vector() -> Vector2:
 	if not selections:
 		return Vector2.ZERO
-	return selections.device.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	return selections.device.get_vector("move_left", "move_right", "move_up", "move_down")
