@@ -1,8 +1,8 @@
 @tool
-class_name PlayerSelectable
+class_name CursorSelectable
 extends Control
 
-signal on_pressed(selectable: PlayerSelectable, device: int)
+signal on_pressed(selectable: CursorSelectable, device: int)
 
 @export var select_sound: AudioStream
 
@@ -59,9 +59,6 @@ func _process(_delta: float) -> void:
 	if not Engine.is_editor_hint():
 		for device_id in Players.selections:
 			var selections: Selections = Players.selections[device_id]
-			if (
-				get_global_rect().has_point(selections.cursor_position)
-				and selections.device.is_action_just_released("multi_ui_accept")
-			):
+			if selections.cursor_in(get_global_rect()) and selections.has_pressed():
 				SoundPlayer.play_sound(select_sound)
 				on_pressed.emit(self, device_id)

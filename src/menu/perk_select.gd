@@ -3,9 +3,10 @@ class_name PerkSelectMenu
 extends Control
 
 signal back_pressed
+signal forward_pressed
 
 const BASE_PLAYER := preload("res://scenes/components/player_display.tscn")
-const BASE_SELECTABLE := preload("res://scenes/components/player_selectable.tscn")
+const BASE_SELECTABLE := preload("res://scenes/components/cursor_selectable.tscn")
 
 @export var player_count := 0:
 	set = set_player_count
@@ -14,7 +15,8 @@ var player_displays: Array[PlayerSelections] = []
 # player selectable to perk name
 var perk_selectables := {}
 
-@onready var perks_container = $VerticalContainer/MainContainer/PerksContainer
+@onready var perks_container: FlowContainer = $VerticalContainer/MainContainer/PerksContainer
+@onready var forward_button: Button = $VerticalContainer/MainContainer/Navigation/ForwardButton
 
 
 func set_player_count(value: int) -> void:
@@ -45,18 +47,25 @@ func updated_joined_players() -> void:
 			display.perk_slots = 1
 			display.set_selections(Players.get_selections_for_joined(device))
 		else:
-			for perk: PlayerSelectable in perks_container.get_children():
+			for perk: CursorSelectable in perks_container.get_children():
 				perk.set_player_selected(display.get_device(), false)
 			display.set_color(PlayerColor.make())
 			display.perk_slots = 0
 			display.set_selections(null)
+	update_can_go_forward()
+
+
+func update_can_go_forward() -> void:
+	forward_button.disabled = (
+		Players.get_joined_count() < 1 or not Players.all_joined_selected_perk()
+	)
 
 
 func _ready() -> void:
 	for child in perks_container.get_children():
 		child.queue_free()
 	for perk in PerkRegistry.all_perks:
-		var child: PlayerSelectable = BASE_SELECTABLE.instantiate()
+		var child: CursorSelectable = BASE_SELECTABLE.instantiate()
 		child.texture = PerkRegistry.get_perk_texture(perk)
 		Util.checked_connect(child.on_pressed, _on_perk_selected)
 		perks_container.add_child(child)
@@ -66,6 +75,7 @@ func _ready() -> void:
 		set_player_count(player_count)
 	else:
 		update_player_count()
+		update_can_go_forward()
 		Util.checked_connect(Players.devices_changed, update_player_count)
 		Util.checked_connect(Players.joined_devices_changed, updated_joined_players)
 
@@ -81,15 +91,20 @@ func _exit_tree() -> void:
 
 
 func _on_back_pressed() -> void:
-	Players.unjoin_all(false)
+	Players.unjoin_all()
 	back_pressed.emit()
 
 
-func _on_perk_selected(selectable: PlayerSelectable, device: int) -> void:
-	for other: PlayerSelectable in perk_selectables:
+func _on_forward_pressed() -> void:
+	forward_pressed.emit()
+
+
+func _on_perk_selected(selectable: CursorSelectable, device: int) -> void:
+	for other: CursorSelectable in perk_selectables:
 		if other == selectable:
 			continue
 		other.set_player_selected(device, false)
 	selectable.set_player_selected(device, true)
 	var selections: Selections = Players.selections[device]
 	selections.set_perk(PerkRegistry.new_perk_instance(perk_selectables[selectable]))
+	update_can_go_forward()

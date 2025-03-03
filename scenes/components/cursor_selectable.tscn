@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://lho7uo5n8t0c"]
 
-[ext_resource type="Script" path="res://src/menu/player_selectable.gd" id="1_wxuo8"]
-[ext_resource type="Shader" path="res://shaders/player_selectable.gdshader" id="3_vadbg"]
+[ext_resource type="Script" path="res://src/menu/cursor_selectable.gd" id="1_wxuo8"]
+[ext_resource type="Shader" path="res://shaders/cursor_selectable.gdshader" id="3_vadbg"]
 [ext_resource type="Script" path="res://src/menu/border_scale.gd" id="4_t3rda"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_51elr"]
@@ -12,7 +12,7 @@ shader_parameter/rot_speed = 0.2
 shader_parameter/color_count = 0
 shader_parameter/colors = Array[Color]([])
 
-[node name="PlayerSelectable" type="Control"]
+[node name="CursorSelectable" type="Control"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 3
 anchors_preset = 15

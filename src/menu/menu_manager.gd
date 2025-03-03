@@ -31,6 +31,7 @@ func set_menu_main() -> void:
 func set_menu_perk_select() -> void:
 	var menu: PerkSelectMenu = set_menu(perk_select_menu)
 	Util.checked_connect(menu.back_pressed, set_menu_main)
+	Util.checked_connect(menu.forward_pressed, set_menu_spell_select)
 
 
 func set_menu_spell_select() -> void:

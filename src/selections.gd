@@ -33,3 +33,23 @@ func create_player(parent: Node2D) -> void:
 	stats.player_id = device.device
 	stats.spells = spells
 	stats.perk = perk
+
+
+func has_perk() -> bool:
+	return perk != null
+
+
+func has_spells() -> bool:
+	return false
+
+
+func cursor_in(area: Rect2) -> bool:
+	return area.has_point(cursor_position)
+
+
+func is_pressing() -> bool:
+	return device.is_action_pressed("multi_ui_accept")
+
+
+func has_pressed() -> bool:
+	return device.is_action_just_released("multi_ui_accept")

@@ -97,3 +97,10 @@ func get_selections_for_joined(device: DeviceInput) -> Selections:
 
 func get_color_for_joined(device: DeviceInput) -> PlayerColor:
 	return colors[device.device]
+
+
+func all_joined_selected_perk() -> bool:
+	for key in selections:
+		if not selections[key].has_perk():
+			return false
+	return true

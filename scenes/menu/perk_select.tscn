@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://baxca3ttmqgaj"]
+[gd_scene load_steps=7 format=3 uid="uid://baxca3ttmqgaj"]
 
 [ext_resource type="Script" path="res://src/menu/perk_select.gd" id="1_khifm"]
 [ext_resource type="Texture2D" uid="uid://qlyr03gtote8" path="res://sprites/menu/back.png" id="2_utxuj"]
-[ext_resource type="PackedScene" uid="uid://lho7uo5n8t0c" path="res://scenes/components/player_selectable.tscn" id="3_6egso"]
+[ext_resource type="Texture2D" uid="uid://cs5fehiwkpmex" path="res://sprites/menu/forward.png" id="3_tucl3"]
+[ext_resource type="Script" path="res://src/menu/cursor_button.gd" id="3_xphk0"]
+[ext_resource type="AudioStream" uid="uid://duqdbbnutm320" path="res://sounds/exit.wav" id="4_d21f7"]
 [ext_resource type="AudioStream" uid="uid://nomwn1gytfrq" path="res://sounds/select.wav" id="4_hrrtj"]
-[ext_resource type="Texture2D" uid="uid://dgbg8odi6e3q6" path="res://sprites/symbols/air.png" id="4_yb6wg"]
 
 [node name="PerkSelectMenu" type="Control"]
 layout_mode = 3
@@ -40,27 +41,42 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="BackButton" type="Button" parent="VerticalContainer/MainContainer"]
+[node name="Navigation" type="VBoxContainer" parent="VerticalContainer/MainContainer"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="VerticalContainer/MainContainer/Navigation"]
 texture_filter = 1
 custom_minimum_size = Vector2(65, 65)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 30
+toggle_mode = true
 icon = ExtResource("2_utxuj")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("3_xphk0")
+sound = ExtResource("4_d21f7")
+
+[node name="ForwardButton" type="Button" parent="VerticalContainer/MainContainer/Navigation"]
+texture_filter = 1
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 30
+disabled = true
+icon = ExtResource("3_tucl3")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("3_xphk0")
+sound = ExtResource("4_hrrtj")
 
 [node name="PerksContainer" type="FlowContainer" parent="VerticalContainer/MainContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="PlayerSelectable" parent="VerticalContainer/MainContainer/PerksContainer" instance=ExtResource("3_6egso")]
-layout_mode = 2
-select_sound = ExtResource("4_hrrtj")
-texture = ExtResource("4_yb6wg")
-
 [node name="PlayersContainer" type="HBoxContainer" parent="VerticalContainer"]
 layout_mode = 2
 
-[connection signal="pressed" from="VerticalContainer/MainContainer/BackButton" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="VerticalContainer/MainContainer/Navigation/BackButton" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="VerticalContainer/MainContainer/Navigation/ForwardButton" to="." method="_on_forward_pressed"]
