@@ -61,15 +61,19 @@ func update_can_go_forward() -> void:
 	)
 
 
+func make_perk(perk: String) -> void:
+	var child: CursorSelectable = BASE_SELECTABLE.instantiate()
+	child.texture = PerkRegistry.get_perk_texture(perk)
+	Util.checked_connect(child.on_pressed, _on_perk_selected)
+	perks_container.add_child(child)
+	perk_selectables[child] = perk
+
+
 func _ready() -> void:
 	for child in perks_container.get_children():
 		child.queue_free()
 	for perk in PerkRegistry.all_perks:
-		var child: CursorSelectable = BASE_SELECTABLE.instantiate()
-		child.texture = PerkRegistry.get_perk_texture(perk)
-		Util.checked_connect(child.on_pressed, _on_perk_selected)
-		perks_container.add_child(child)
-		perk_selectables[child] = perk
+		make_perk(perk)
 
 	if Engine.is_editor_hint():
 		set_player_count(player_count)

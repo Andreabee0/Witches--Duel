@@ -5,6 +5,7 @@ var focused := false
 
 
 func _ready() -> void:
+	super()
 	mouse_filter = MOUSE_FILTER_IGNORE
 	toggle_mode = true
 	focused_style = get_theme_stylebox("focus", theme_type_variation)
@@ -27,6 +28,7 @@ func _process(_delta: float) -> void:
 		cursor_inside = true
 		cursor_pressing = selections.is_pressing()
 		if selections.has_pressed():
+			print("emit?")
 			pressed.emit()
 	if cursor_inside != focused:
 		queue_redraw()

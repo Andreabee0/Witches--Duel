@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dopn31uwx12pg"]
+[gd_scene load_steps=5 format=3 uid="uid://dopn31uwx12pg"]
 
 [ext_resource type="Script" path="res://src/menu/spell_select.gd" id="1_btd4f"]
 [ext_resource type="Texture2D" uid="uid://qlyr03gtote8" path="res://sprites/menu/back.png" id="2_y3bsc"]
+[ext_resource type="Script" path="res://src/menu/cursor_button.gd" id="3_76syn"]
+[ext_resource type="AudioStream" uid="uid://nomwn1gytfrq" path="res://sounds/select.wav" id="4_x2sis"]
 
 [node name="SpellSelectMenu" type="Control"]
 layout_mode = 3
@@ -46,6 +48,8 @@ theme_override_font_sizes/font_size = 30
 icon = ExtResource("2_y3bsc")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("3_76syn")
+sound = ExtResource("4_x2sis")
 
 [node name="SpellsContainer" type="FlowContainer" parent="VerticalContainer/MainContainer"]
 layout_mode = 2
