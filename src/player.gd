@@ -3,15 +3,14 @@ extends CharacterBody2D
 var spell: BaseSpell = LeadSpell.new()
 var is_casting := false
 var is_moving := false
-var id := -1
+var device: DeviceInput
 
 
 func _process(_delta: float) -> void:
-	spell.player = $Stats
-	if Input.is_action_pressed("use_action_rt"):
+	if device.is_action_pressed("use_action_rt"):
 		is_casting = true
 		spell._on_press(Vector2.from_angle($Cursor.rotation), position)
-	if Input.is_action_just_released("use_action_rt"):
+	if device.is_action_just_released("use_action_rt"):
 		is_casting = false
 
 
@@ -31,7 +30,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func get_movement_vector() -> Vector2:
-	return Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
+	return device.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 
 
 func flip_left() -> void:
@@ -48,5 +47,5 @@ func flip_right() -> void:
 
 func _on_collider_area_entered(area: Area2D) -> void:
 	if area.is_in_group("bullet"):
-		if area.get_parent().source != id:
+		if area.get_parent().source != device.device:
 			print("hit")

@@ -3,7 +3,7 @@ extends RefCounted
 
 var bullet := preload("res://scenes/bullet.tscn")
 var last_fire := 0
-var player: PlayerStats
+var player: int
 
 
 func _get_additive(_stat) -> float:
@@ -20,17 +20,17 @@ func _on_press(_direction: Vector2, _pos: Vector2) -> void:
 
 func make_bullet(_pos: Vector2) -> Bullet:
 	var instance: Bullet = bullet.instantiate()
-	player.add_child(instance)
+	Players.add_child(instance)
 	instance.position = _pos
 	return instance
 
 
 func spawn_bullet(instance: Bullet, direction: Vector2) -> void:
 	instance.start(
-		player.player_id,
+		player,
 		direction,
-		player.get_stat(PlayerStats.SPELL_SPEED),
-		player.get_stat(PlayerStats.SPELL_SIZE)
+		Players.get_stat(player, PlayerStats.SPELL_SPEED),
+		Players.get_stat(player, PlayerStats.SPELL_SIZE)
 	)
 
 

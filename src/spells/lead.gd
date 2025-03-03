@@ -24,7 +24,7 @@ func _on_press(_direction: Vector2, _pos: Vector2) -> void:
 func spawn(direction: Vector2, pos: Vector2) -> void:
 	var instance := make_bullet(pos)
 	spawn_bullet(instance, direction)
-	await player.get_tree().create_timer(0.3).timeout
+	await Players.get_tree().create_timer(0.3).timeout
 	instance = make_bullet(pos)
 	spawn_bullet(instance, direction)
 

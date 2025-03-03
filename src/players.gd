@@ -108,3 +108,14 @@ func all_joined_selected_perk() -> bool:
 		if not selections[key].has_perk():
 			return false
 	return true
+
+
+func all_joined_selected_spells() -> bool:
+	for key in selections:
+		if not selections[key].has_spells():
+			return false
+	return true
+
+
+func get_stat(player: int, stat: int):
+	return selections[player].get_stat(stat)

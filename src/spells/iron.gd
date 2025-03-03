@@ -9,12 +9,7 @@ func _on_press(_direction: Vector2, _pos: Vector2) -> void:
 
 func spawn(direction: Vector2, pos: Vector2) -> void:
 	var instance := make_bullet(pos)
-	instance.start(
-		player.player_id,
-		direction,
-		player.get_stat(PlayerStats.SPELL_SPEED),
-		player.get_stat(PlayerStats.SPELL_SIZE)
-	)
+	spawn_bullet(instance, direction)
 
 
 func _get_cooldown() -> float:

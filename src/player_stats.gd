@@ -1,5 +1,5 @@
 class_name PlayerStats
-extends Node
+extends Object
 
 enum {
 	HEALTH,
@@ -16,7 +16,7 @@ enum {
 	MOVE_SPEED,
 }
 
-const BASE_STATS = {
+static var base = {
 	HEALTH: 4,
 	DASH_COOLDOWN: 1.0,
 	SPELL_SLOTS: 4,
@@ -30,28 +30,3 @@ const BASE_STATS = {
 	IFRAME_DURATION: 1.0,
 	MOVE_SPEED: 1.0,
 }
-
-var player_id := 0
-# button to spell
-var spells := {}
-var perk: BasePerk
-
-
-func get_additive(stat) -> float:
-	var ret = perk._get_additive(stat) if perk != null else 0.0
-	for spell in spells:
-		if spell != null:
-			ret += spell._get_additive(stat)
-	return ret
-
-
-func get_multiplicative(stat) -> float:
-	var ret = perk._get_multiplicative(stat) if perk != null else 1.0
-	for spell in spells:
-		if spell != null:
-			ret *= spell._get_multiplicative(stat)
-	return ret
-
-
-func get_stat(stat) -> float:
-	return (BASE_STATS[stat] + get_additive(stat)) * get_multiplicative(stat)

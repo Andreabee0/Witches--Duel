@@ -12,6 +12,7 @@ const BASE_PLAYER := preload("res://scenes/components/player_display.tscn")
 var players: Array[Node] = []
 
 @onready var spells_container: FlowContainer = $VerticalContainer/MainContainer/SpellsContainer
+@onready var play_button: Button = $VerticalContainer/MainContainer/Navigation/PlayButton
 
 
 func set_player_count(value: int) -> void:
@@ -23,12 +24,13 @@ func make_player() -> Node:
 	var ret := BASE_PLAYER.instantiate()
 	$VerticalContainer/PlayersContainer.add_child(ret)
 	var idx := players.size()
-	ret.spell_slots = 4
 	ret.perk_slots = 1
 	if Engine.is_editor_hint():
+		ret.spell_slots = 4
 		ret.set_color(PlayerColor.colors[idx])
 	else:
 		var player := Players.joined_order[idx]
+		ret.spell_slots = Players.get_stat(player, PlayerStats.SPELL_SLOTS)
 		ret.set_color(Players.colors[player])
 		ret.set_selections(Players.selections[player])
 	return ret
@@ -43,3 +45,7 @@ func _ready() -> void:
 
 func _on_back_pressed() -> void:
 	back_pressed.emit()
+
+
+func _on_play_pressed() -> void:
+	print("play!")

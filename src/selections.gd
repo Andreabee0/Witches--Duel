@@ -28,11 +28,28 @@ func _init(device_value: DeviceInput) -> void:
 
 func create_player(parent: Node2D) -> void:
 	var instance = BASE_PLAYER.instantiate()
+	instance.device = device
 	parent.add_child(instance)
-	var stats: PlayerStats = instance.get_node("Stats")
-	stats.player_id = device.device
-	stats.spells = spells
-	stats.perk = perk
+
+
+func get_additive(stat: int) -> float:
+	var ret = perk._get_additive(stat) if perk else 0.0
+	for spell in spells:
+		if spell != null:
+			ret += spell._get_additive(stat)
+	return ret
+
+
+func get_multiplicative(stat: int) -> float:
+	var ret = perk._get_multiplicative(stat) if perk else 1.0
+	for spell in spells:
+		if spell != null:
+			ret *= spell._get_multiplicative(stat)
+	return ret
+
+
+func get_stat(stat: int) -> float:
+	return (PlayerStats.base[stat] + get_additive(stat)) * get_multiplicative(stat)
 
 
 func has_perk() -> bool:
@@ -40,7 +57,7 @@ func has_perk() -> bool:
 
 
 func has_spells() -> bool:
-	return false
+	return spells.size() == get_stat(PlayerStats.SPELL_SLOTS)
 
 
 func cursor_in(area: Rect2) -> bool:
