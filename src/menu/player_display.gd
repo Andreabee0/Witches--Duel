@@ -75,6 +75,7 @@ func set_selections(value: Selections) -> void:
 			# the layout of the player sprite doesn't seem to be done immediately
 			call_deferred("set_cursor_to_start")
 		cursor.selections = selections
+		selections_changed()
 	elif cursor:
 		cursor.queue_free()
 		cursor = null
@@ -98,3 +99,7 @@ func get_device() -> int:
 func _ready() -> void:
 	set_perk_slots(perk_slots)
 	set_spell_slots(spell_slots)
+
+
+func _exit_tree() -> void:
+	cursor.queue_free()

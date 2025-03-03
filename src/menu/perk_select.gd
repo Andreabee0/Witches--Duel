@@ -89,8 +89,6 @@ func _process(_delta: float) -> void:
 
 
 func _exit_tree() -> void:
-	for display in player_displays:
-		display.set_selections(null)
 	Util.checked_disconnect(Players.devices_changed, update_player_count)
 	Util.checked_disconnect(Players.joined_devices_changed, updated_joined_players)
 

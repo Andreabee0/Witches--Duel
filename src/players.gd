@@ -7,6 +7,8 @@ var join_sound := preload("res://sounds/connect.wav")
 var leave_sound := preload("res://sounds/disconnect.wav")
 
 var devices: Array[DeviceInput]
+# device ids of joined players
+var joined_order: Array[int] = []
 # dictionary of devices to their selections
 var selections := {}
 # dictionary of devices to their colors
@@ -62,6 +64,7 @@ func listen_for_joins() -> void:
 			if device.is_action_just_released("multi_ui_cancel"):
 				print("device ", device.device, " left")
 				SoundPlayer.play_sound(leave_sound)
+				joined_order.erase(device.device)
 				selections.erase(device.device)
 				colors.erase(device.device)
 				changed = true
@@ -69,6 +72,7 @@ func listen_for_joins() -> void:
 			if device.is_action_just_pressed("multi_ui_accept"):
 				print("device ", device.device, " joined")
 				SoundPlayer.play_sound(join_sound)
+				joined_order.append(device.device)
 				selections[device.device] = Selections.new(device)
 				colors[device.device] = next_color()
 				changed = true
