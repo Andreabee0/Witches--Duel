@@ -10,5 +10,4 @@ func _ready() -> void:
 
 
 func _on_pressed():
-	print("on press!")
 	SoundPlayer.play_sound(sound)
