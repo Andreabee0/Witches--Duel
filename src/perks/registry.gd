@@ -4,15 +4,15 @@ extends Node
 static var perk_sheet := preload("res://sprites/perks.png")
 
 var all_perks := {
-	"chariot": [ChariotPerk, get_sheet_perk(7)],
-	"devil": [DevilPerk, get_sheet_perk(3)], # 15
-	"fool": [FoolPerk, get_sheet_perk(0)],
-	"lovers": [LoversPerk, get_sheet_perk(6)],
-	"magician": [MagicianPerk, get_sheet_perk(1)],
-	"moon": [MoonPerk, get_sheet_perk(4)], # 18
-	"sun": [SunPerk, get_sheet_perk(5)], # 19
-	"temperance": [TemperancePerk, get_sheet_perk(8)], # 14
-	"wheel_of_fortune": [WheelOfFortunePerk, get_sheet_perk(10)],
+	ChariotPerk.name: [ChariotPerk, get_sheet_perk(7)],
+	DevilPerk.name: [DevilPerk, get_sheet_perk(3)], # 15
+	FoolPerk.name: [FoolPerk, get_sheet_perk(0)],
+	LoversPerk.name: [LoversPerk, get_sheet_perk(6)],
+	MagicianPerk.name: [MagicianPerk, get_sheet_perk(1)],
+	MoonPerk.name: [MoonPerk, get_sheet_perk(4)], # 18
+	SunPerk.name: [SunPerk, get_sheet_perk(5)], # 19
+	TemperancePerk.name: [TemperancePerk, get_sheet_perk(8)], # 14
+	WheelOfFortunePerk.name: [WheelOfFortunePerk, get_sheet_perk(10)],
 }
 
 
