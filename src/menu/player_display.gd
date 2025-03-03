@@ -55,6 +55,12 @@ func make_perk_slot() -> Node:
 	return ret
 
 
+func set_cursor_to_start():
+	var starting_anchor: Control = $Margin/MainContainer/PlayerSprites
+	var pos := starting_anchor.global_position + starting_anchor.size * Vector2(0.4, -0.1)
+	cursor.global_position = pos
+
+
 func set_selections(value: Selections) -> void:
 	if selections:
 		Util.checked_disconnect(selections.changed, selections_changed)
@@ -64,11 +70,10 @@ func set_selections(value: Selections) -> void:
 		if not cursor:
 			cursor = BASE_CURSOR.instantiate()
 			get_tree().root.add_child(cursor)
-			var starting_anchor: Control = $Margin/MainContainer/PlayerSprites
-			cursor.global_position = (
-				starting_anchor.global_position + starting_anchor.size * Vector2(0.4, -0.1)
-			)
 			cursor.color = color.secondary
+			# when loading a menu with already joined players,
+			# the layout of the player sprite doesn't seem to be done immediately
+			call_deferred("set_cursor_to_start")
 		cursor.selections = selections
 	elif cursor:
 		cursor.queue_free()

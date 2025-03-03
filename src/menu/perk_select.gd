@@ -75,7 +75,6 @@ func _ready() -> void:
 		set_player_count(player_count)
 	else:
 		update_player_count()
-		update_can_go_forward()
 		Util.checked_connect(Players.devices_changed, update_player_count)
 		Util.checked_connect(Players.joined_devices_changed, updated_joined_players)
 
@@ -86,6 +85,8 @@ func _process(_delta: float) -> void:
 
 
 func _exit_tree() -> void:
+	for display in player_displays:
+		display.set_selections(null)
 	Util.checked_disconnect(Players.devices_changed, update_player_count)
 	Util.checked_disconnect(Players.joined_devices_changed, updated_joined_players)
 
