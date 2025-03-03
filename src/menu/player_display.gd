@@ -84,10 +84,10 @@ func set_selections(value: Selections) -> void:
 func selections_changed() -> void:
 	var i := 0
 	for button in selections.spells:
-		spells[i].selection = button
+		spells[i].button = button
 		i += 1
 	for j in range(i, spells.size()):
-		spells[i].selection = -1
+		spells[i].button = -1
 	if not perk.is_empty():
 		perk[0].selection = selections.perk.name if selections.perk else ""
 

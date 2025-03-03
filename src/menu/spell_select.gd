@@ -6,11 +6,14 @@ signal back_pressed
 signal play_pressed
 
 const BASE_PLAYER := preload("res://scenes/components/player_display.tscn")
+const BASE_SELECTABLE := preload("res://scenes/components/cursor_selectable.tscn")
 
 @export var player_count := 0:
 	set = set_player_count
 
-var players: Array[Node] = []
+var player_displays: Array[PlayerSelections] = []
+# player selectable to spell name
+var spell_selectables := {}
 
 @onready var spells_container: FlowContainer = $VerticalContainer/MainContainer/SpellsContainer
 @onready var play_button: Button = $VerticalContainer/MainContainer/Navigation/PlayButton
@@ -18,13 +21,13 @@ var players: Array[Node] = []
 
 func set_player_count(value: int) -> void:
 	player_count = value
-	Util.update_object_count(players, player_count, make_player)
+	Util.update_object_count(player_displays, player_count, make_player)
 
 
 func make_player() -> Node:
 	var ret := BASE_PLAYER.instantiate()
 	$VerticalContainer/PlayersContainer.add_child(ret)
-	var idx := players.size()
+	var idx := player_displays.size()
 	ret.perk_slots = 1
 	if Engine.is_editor_hint():
 		ret.spell_slots = 4
@@ -37,11 +40,24 @@ func make_player() -> Node:
 	return ret
 
 
+func make_spell(spell: String) -> void:
+	var child: CursorSelectable = BASE_SELECTABLE.instantiate()
+	child.texture = SpellRegistry.get_spell_texture(spell)
+	Util.checked_connect(child.on_button, _on_spell_button_pressed)
+	spells_container.add_child(child)
+	spell_selectables[child] = spell
+
+
 func update_can_play() -> void:
 	play_button.disabled = not Players.all_joined_selected_spells()
 
 
 func _ready() -> void:
+	for child in spells_container.get_children():
+		child.queue_free()
+	for spell in SpellRegistry.all_spells:
+		make_spell(spell)
+
 	if Engine.is_editor_hint():
 		set_player_count(player_count)
 	else:
@@ -55,3 +71,15 @@ func _on_back_pressed() -> void:
 
 func _on_play_pressed() -> void:
 	play_pressed.emit()
+
+
+func _on_spell_button_pressed(selectable: CursorSelectable, device: int, button: int) -> void:
+	var selections: Selections = Players.selections[device]
+	var current_spell: BaseSpell = selections.spells.get(button)
+	if current_spell:
+		for other: CursorSelectable in spell_selectables:
+			if spell_selectables[other] == current_spell.name:
+				other.set_player_selected(device, false)
+	selectable.set_player_selected(device, true)
+	selections.set_spell(button, SpellRegistry.new_spell_instance(spell_selectables[selectable]))
+	update_can_play()

@@ -1,6 +1,8 @@
 class_name IronSpell
 extends BaseSpell
 
+static var name := "iron"
+
 
 func _on_press(_direction: Vector2, _pos: Vector2) -> void:
 	if can_fire():

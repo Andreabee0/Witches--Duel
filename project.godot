@@ -28,6 +28,7 @@ Players="*res://src/players.gd"
 SoundPlayer="*res://src/sound_player.gd"
 MultiplayerInput="*res://addons/multiplayer_input/multiplayer_input.gd"
 PerkRegistry="*res://src/perks/registry.gd"
+SpellRegistry="*res://src/spells/registry.gd"
 
 [editor_plugins]
 

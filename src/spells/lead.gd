@@ -1,6 +1,8 @@
 class_name LeadSpell
 extends BaseSpell
 
+static var name := "lead"
+
 var aiming := false
 var speed_factor := 1.5
 

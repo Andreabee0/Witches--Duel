@@ -3,6 +3,7 @@ class_name CursorSelectable
 extends Control
 
 signal on_pressed(selectable: CursorSelectable, device: int)
+signal on_button(selectable: CursorSelectable, device: int, button: int)
 
 @export var select_sound: AudioStream = preload("res://sounds/select.wav")
 
@@ -59,7 +60,15 @@ func _process(_delta: float) -> void:
 	if not Engine.is_editor_hint():
 		for device_id in Players.selections:
 			var selections: Selections = Players.selections[device_id]
-			if selections.cursor_in(get_global_rect()) and selections.has_pressed():
-				if not device_id in players:
+			if selections.cursor_in(get_global_rect()):
+				var any_select := false
+				if selections.has_pressed():
+					if not device_id in players:
+						any_select = true
+					on_pressed.emit(self, device_id)
+				for button in selections.buttons_has_pressed():
+					if not device_id in players:
+						any_select = true
+					on_button.emit(self, device_id, button)
+				if any_select:
 					SoundPlayer.play_sound(select_sound)
-				on_pressed.emit(self, device_id)

@@ -2,27 +2,20 @@
 class_name SpellIcon
 extends Control
 
-const BUTTONS: Array[Texture2D] = [
-	preload("res://sprites/menu/left_trigger.png"),
-	preload("res://sprites/menu/left_button.png"),
-	preload("res://sprites/menu/right_trigger.png"),
-	preload("res://sprites/menu/right_button.png"),
-]
-
-@export var selection := -1:
-	set = set_selection
+@export var button := -1:
+	set = set_button
 
 @export var color := Color.WHITE:
 	set = set_color
 
 
-func set_selection(value: int) -> void:
-	selection = clamp(value, -1, 3)
-	var enabled := selection >= 0
+func set_button(value: int) -> void:
+	button = clamp(value, -1, 3)
+	var enabled := button >= 0
 	$Filling.visible = enabled
 	$Button.visible = enabled
 	if enabled:
-		$Button.texture = BUTTONS[selection]
+		$Button.texture = Selections.button_textures[button]
 
 
 func set_color(value: Color) -> void:
@@ -32,4 +25,4 @@ func set_color(value: Color) -> void:
 
 func _ready() -> void:
 	set_color(color)
-	set_selection(selection)
+	set_button(button)
