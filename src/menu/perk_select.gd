@@ -5,11 +5,14 @@ extends Control
 signal back_pressed
 
 const BASE_PLAYER := preload("res://scenes/components/player_display.tscn")
+const BASE_SELECTABLE := preload("res://scenes/components/player_selectable.tscn")
 
 @export var player_count := 0:
 	set = set_player_count
 
 var player_displays: Array[PlayerSelections] = []
+# player selectable to perk name
+var perk_selectables := {}
 
 @onready var perks_container = $VerticalContainer/MainContainer/PerksContainer
 
@@ -50,6 +53,15 @@ func updated_joined_players() -> void:
 
 
 func _ready() -> void:
+	for child in perks_container.get_children():
+		child.queue_free()
+	for perk in PerkRegistry.all_perks:
+		var child: PlayerSelectable = BASE_SELECTABLE.instantiate()
+		child.texture = PerkRegistry.get_perk_texture(perk)
+		Util.checked_connect(child.on_pressed, _on_perk_selected)
+		perks_container.add_child(child)
+		perk_selectables[child] = perk
+
 	if Engine.is_editor_hint():
 		set_player_count(player_count)
 	else:
@@ -71,3 +83,13 @@ func _exit_tree() -> void:
 func _on_back_pressed() -> void:
 	Players.unjoin_all(false)
 	back_pressed.emit()
+
+
+func _on_perk_selected(selectable: PlayerSelectable, device: int) -> void:
+	for other: PlayerSelectable in perk_selectables:
+		if other == selectable:
+			continue
+		other.set_player_selected(device, false)
+	selectable.set_player_selected(device, true)
+	var selections: Selections = Players.selections[device]
+	selections.set_perk(PerkRegistry.new_perk_instance(perk_selectables[selectable]))

@@ -83,7 +83,7 @@ func selections_changed() -> void:
 	for j in range(i, spells.size()):
 		spells[i].selection = -1
 	if not perk.is_empty():
-		perk[0].selection = 0 if selections.perk else -1
+		perk[0].selection = selections.perk.name if selections.perk else ""
 
 
 func get_device() -> int:

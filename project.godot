@@ -27,6 +27,7 @@ Settings="*res://src/settings.gd"
 Players="*res://src/players.gd"
 SoundPlayer="*res://src/sound_player.gd"
 MultiplayerInput="*res://addons/multiplayer_input/multiplayer_input.gd"
+PerkRegistry="*res://src/perks/registry.gd"
 
 [editor_plugins]
 
