@@ -102,4 +102,5 @@ func _ready() -> void:
 
 
 func _exit_tree() -> void:
-	cursor.queue_free()
+	if cursor:
+		cursor.queue_free()

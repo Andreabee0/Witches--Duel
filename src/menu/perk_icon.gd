@@ -11,7 +11,7 @@ var selection := "":
 
 func set_color(value: Color) -> void:
 	color = value
-	if not $Filling:
+	if not has_node("Filling"):
 		return
 	$Filling.modulate = color
 
@@ -20,7 +20,7 @@ func set_selection(value: String) -> void:
 	if not value in PerkRegistry.all_perks:
 		value = ""
 	selection = value
-	if not $Texture:
+	if not has_node("Texture"):
 		return
 	$Texture.visible = not selection.is_empty()
 	if not selection.is_empty():

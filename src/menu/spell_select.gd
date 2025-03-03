@@ -3,6 +3,7 @@ class_name SpellSelectMenu
 extends Control
 
 signal back_pressed
+signal play_pressed
 
 const BASE_PLAYER := preload("res://scenes/components/player_display.tscn")
 
@@ -27,7 +28,7 @@ func make_player() -> Node:
 	ret.perk_slots = 1
 	if Engine.is_editor_hint():
 		ret.spell_slots = 4
-		ret.set_color(PlayerColor.colors[idx])
+		ret.set_color(PlayerColor.make())
 	else:
 		var player := Players.joined_order[idx]
 		ret.spell_slots = Players.get_stat(player, PlayerStats.SPELL_SLOTS)
@@ -36,11 +37,16 @@ func make_player() -> Node:
 	return ret
 
 
+func update_can_play() -> void:
+	play_button.disabled = not Players.all_joined_selected_spells()
+
+
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		set_player_count(player_count)
 	else:
 		set_player_count(Players.get_joined_count())
+		update_can_play()
 
 
 func _on_back_pressed() -> void:
@@ -48,4 +54,4 @@ func _on_back_pressed() -> void:
 
 
 func _on_play_pressed() -> void:
-	print("play!")
+	play_pressed.emit()
