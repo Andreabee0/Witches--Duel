@@ -1,7 +1,9 @@
 @tool
 extends Node2D
 
-@export var speed := 250.0
+@export var speed := 400.0
+
+@export var screen_margin := 10
 
 @export var color := Color.WHITE:
 	set = set_color
@@ -23,8 +25,15 @@ func _process(delta: float) -> void:
 	if direction.length() > 0.1:
 		rotation = Vector2(0, -1).angle_to(direction)
 	position += direction * delta * speed
+	clamp_in_viewport()
 	if selections:
 		selections.cursor_position = global_position
+
+
+func clamp_in_viewport() -> void:
+	var rect := get_viewport_rect()
+	rect = rect.grow(-screen_margin)
+	position = position.clamp(rect.position, rect.end)
 
 
 func get_move_vector() -> Vector2:
