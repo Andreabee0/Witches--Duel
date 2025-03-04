@@ -21,19 +21,23 @@ static var button_actions := [
 
 static var button_textures: Array[Texture2D] = [
 	preload("res://sprites/menu/left_trigger.png"),
-	preload("res://sprites/menu/left_button.png"),
 	preload("res://sprites/menu/right_trigger.png"),
+	preload("res://sprites/menu/left_button.png"),
 	preload("res://sprites/menu/right_button.png"),
 ]
 
 var device: DeviceInput
 var cursor_position := Vector2.INF
-# button to spell
+# button to spell instance
 var spells := {}
 var perk: BasePerk
 
 
 func set_spell(button: int, value: BaseSpell) -> void:
+	if button not in spells and spells.size() >= get_stat(PlayerStats.SPELL_SLOTS):
+		var key: int = spells.keys()[0]
+		print("new button makes too many spells; erasing button ", Buttons.keys()[key])
+		spells.erase(key)
 	spells[button] = value
 	changed.emit()
 
@@ -97,3 +101,10 @@ func buttons_has_pressed() -> Array[int]:
 		if device.is_action_just_released(button_actions[button]):
 			ret.append(button)
 	return ret
+
+
+func has_spell(spell: String):
+	for instance in spells.values():
+		if instance.name == spell:
+			return true
+	return false

@@ -81,13 +81,22 @@ func set_selections(value: Selections) -> void:
 		cursor = null
 
 
+func get_spell_better_sorting(index: int) -> SpellIcon:
+	if spells.size() % 2 == 1 and index == spells.size() - 1:
+		return spells[index]
+	if index % 2 == 0:
+		return spells[index + 1]
+	return spells[index - 1]
+
+
 func selections_changed() -> void:
-	var i := 0
-	for button in selections.spells:
-		spells[i].button = button
-		i += 1
-	for j in range(i, spells.size()):
-		spells[i].button = -1
+	if spells.size() >= selections.spells.size():
+		var i := 0
+		for button in selections.spells:
+			get_spell_better_sorting(i).button = button
+			i += 1
+		for j in range(i, spells.size()):
+			get_spell_better_sorting(i).button = -1
 	if not perk.is_empty():
 		perk[0].selection = selections.perk.name if selections.perk else ""
 

@@ -52,6 +52,13 @@ func update_can_play() -> void:
 	play_button.disabled = not Players.all_joined_selected_spells()
 
 
+func update_spell_selectables(selections: Selections) -> void:
+	for selectable: CursorSelectable in spell_selectables:
+		selectable.set_player_selected(
+			selections.device.device, selections.has_spell(spell_selectables[selectable])
+		)
+
+
 func _ready() -> void:
 	for child in spells_container.get_children():
 		child.queue_free()
@@ -66,6 +73,8 @@ func _ready() -> void:
 
 
 func _on_back_pressed() -> void:
+	for selections: Selections in Players.selections.values():
+		selections.spells.clear()
 	back_pressed.emit()
 
 
@@ -75,11 +84,6 @@ func _on_play_pressed() -> void:
 
 func _on_spell_button_pressed(selectable: CursorSelectable, device: int, button: int) -> void:
 	var selections: Selections = Players.selections[device]
-	var current_spell: BaseSpell = selections.spells.get(button)
-	if current_spell:
-		for other: CursorSelectable in spell_selectables:
-			if spell_selectables[other] == current_spell.name:
-				other.set_player_selected(device, false)
-	selectable.set_player_selected(device, true)
 	selections.set_spell(button, SpellRegistry.new_spell_instance(spell_selectables[selectable]))
+	update_spell_selectables(selections)
 	update_can_play()
