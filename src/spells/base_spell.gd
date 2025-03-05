@@ -6,11 +6,11 @@ var last_fire := 0
 var player: int
 
 
-func _get_additive(_stat) -> float:
+func _get_additive(_stat: int) -> float:
 	return 0
 
 
-func _get_multiplicative(_stat) -> float:
+func _get_multiplicative(_stat: int) -> float:
 	return 1
 
 

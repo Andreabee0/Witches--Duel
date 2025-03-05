@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://lho7uo5n8t0c"]
+[gd_scene load_steps=6 format=3 uid="uid://lho7uo5n8t0c"]
 
 [ext_resource type="Script" path="res://src/menu/cursor_selectable.gd" id="1_wxuo8"]
 [ext_resource type="Shader" path="res://shaders/cursor_selectable.gdshader" id="3_vadbg"]
+[ext_resource type="PackedScene" uid="uid://0mds3y3ij4tv" path="res://scenes/components/info_panel.tscn" id="4_f3oqy"]
 [ext_resource type="Script" path="res://src/menu/border_scale.gd" id="4_t3rda"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_51elr"]
@@ -53,3 +54,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_t3rda")
+
+[node name="Info" parent="." instance=ExtResource("4_f3oqy")]
+visible = false
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 88.0

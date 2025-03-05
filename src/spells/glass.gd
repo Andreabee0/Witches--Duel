@@ -4,6 +4,9 @@ extends BaseSpell
 
 static var name := "glass"
 
+static var title := "Glass"
+static var description := "Quickly shoots small projectiles in a zig-zag pattern"
+
 
 func _on_press(_direction: Vector2, _pos: Vector2) -> void:
 	if can_fire():

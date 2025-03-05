@@ -4,6 +4,9 @@ extends ConstantPerk
 
 static var name := "magician"
 
+static var title := "The Magician"
+static var description := "Reduces spell cooldown"
+
 
 func _get_constant_mults() -> Dictionary:
 	return {

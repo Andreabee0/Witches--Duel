@@ -34,3 +34,11 @@ func new_perk_instance(perk: String) -> BasePerk:
 
 func get_perk_texture(perk: String) -> Texture2D:
 	return all_perks[perk][1]
+
+
+func get_perk_title(perk: String) -> String:
+	return all_perks[perk][0].title
+
+
+func get_perk_description(perk: String) -> String:
+	return all_perks[perk][0].description

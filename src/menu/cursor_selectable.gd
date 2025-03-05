@@ -16,8 +16,16 @@ signal on_button(selectable: CursorSelectable, device: int, button: int)
 @export var colors: Array[Color] = []:
 	set = set_colors
 
+@export var title := "":
+	set = set_title
+
+@export var description := "":
+	set = set_description
+
 # device id to color index
 var players := {}
+
+@onready var info: InfoPanel = $Info
 
 
 func set_texture(value: Texture2D) -> void:
@@ -37,6 +45,18 @@ func set_colors(value: Array[Color]) -> void:
 	shader.set_shader_parameter("colors", colors)
 
 
+func set_title(value: String):
+	title = value
+	if info:
+		info.title = title
+
+
+func set_description(value: String):
+	description = value
+	if info:
+		info.description = description
+
+
 func set_player_selected(player: int, select: bool) -> void:
 	if select and not players.has(player):
 		players[player] = color_count
@@ -54,21 +74,32 @@ func _ready() -> void:
 	set_texture(texture)
 	set_color_count(color_count)
 	set_colors(colors)
+	set_title(title)
+	set_description(description)
 
 
 func _process(_delta: float) -> void:
-	if not Engine.is_editor_hint():
-		for device_id in Players.selections:
-			var selections: Selections = Players.selections[device_id]
-			if selections.cursor_in(get_global_rect()):
-				var any_select := false
-				if selections.has_pressed():
-					if not device_id in players:
-						any_select = true
-					on_pressed.emit(self, device_id)
-				for button in selections.buttons_has_pressed():
-					if not device_id in players:
-						any_select = true
-					on_button.emit(self, device_id, button)
-				if any_select:
-					SoundPlayer.play_sound(select_sound)
+	if Engine.is_editor_hint():
+		return
+	var first_cursor_pos := Vector2.INF
+	for device_id in Players.selections:
+		var selections: Selections = Players.selections[device_id]
+		if selections.cursor_in(get_global_rect()):
+			if not first_cursor_pos.is_finite():
+				first_cursor_pos = selections.cursor_position
+			var any_select := false
+			if selections.has_pressed():
+				if not device_id in players:
+					any_select = true
+				on_pressed.emit(self, device_id)
+			for button in selections.buttons_has_pressed():
+				if not device_id in players:
+					any_select = true
+				on_button.emit(self, device_id, button)
+			if any_select:
+				SoundPlayer.play_sound(select_sound)
+	if first_cursor_pos.is_finite():
+		info.visible = true
+		info.global_position = first_cursor_pos
+	else:
+		info.visible = false

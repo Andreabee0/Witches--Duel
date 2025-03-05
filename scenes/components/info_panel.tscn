@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://0mds3y3ij4tv"]
+
+[ext_resource type="Script" path="res://src/menu/info_panel.gd" id="1_a0bh1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wbsld"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+bg_color = Color(0, 0, 0, 0.662745)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 0.270588)
+
+[node name="InfoPanel" type="PanelContainer"]
+z_index = 1
+z_as_relative = false
+offset_right = 298.0
+offset_bottom = 43.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wbsld")
+script = ExtResource("1_a0bh1")
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MainContainer"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="MainContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+autowrap_mode = 3

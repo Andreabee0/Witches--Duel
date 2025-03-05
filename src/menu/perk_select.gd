@@ -64,6 +64,8 @@ func update_can_go_forward() -> void:
 func make_perk(perk: String) -> void:
 	var child: CursorSelectable = BASE_SELECTABLE.instantiate()
 	child.texture = PerkRegistry.get_perk_texture(perk)
+	child.title = PerkRegistry.get_perk_title(perk)
+	child.description = PerkRegistry.get_perk_description(perk)
 	Util.checked_connect(child.on_pressed, _on_perk_selected)
 	perks_container.add_child(child)
 	perk_selectables[child] = perk

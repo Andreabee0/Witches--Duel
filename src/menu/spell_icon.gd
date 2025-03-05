@@ -10,7 +10,7 @@ extends Control
 
 
 func set_button(value: int) -> void:
-	button = clamp(value, -1, 3)
+	button = clamp(value, -1, Selections.button_textures.size())
 	var enabled := button >= 0
 	$Filling.visible = enabled
 	$Button.visible = enabled

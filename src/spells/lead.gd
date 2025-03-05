@@ -4,14 +4,17 @@ extends BaseSpell
 
 static var name := "lead"
 
+static var title := "Lead"
+static var description := "Aims, locking you in place, then shoots multiple fast medium projectiles"
+
 var aiming := false
 var speed_factor := 1.5
 
 
-func _get_multiplicative(stat) -> float:
+func _get_multiplicative(stat: int) -> float:
 	if stat == PlayerStats.MOVE_SPEED and aiming:
 		return 0
-	return 1
+	return super(stat)
 
 
 func _on_press(_direction: Vector2, _pos: Vector2) -> void:

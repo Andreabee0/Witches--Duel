@@ -15,3 +15,11 @@ func new_spell_instance(spell: String) -> BaseSpell:
 
 func get_spell_texture(spell: String) -> Texture2D:
 	return all_spells[spell][1]
+
+
+func get_spell_title(spell: String) -> String:
+	return all_spells[spell][0].title
+
+
+func get_spell_description(spell: String) -> String:
+	return all_spells[spell][0].description
