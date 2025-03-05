@@ -101,6 +101,17 @@ func selections_changed() -> void:
 		perk[0].selection = selections.perk.name if selections.perk else ""
 
 
+func set_spell_icons(symbols: bool) -> void:
+	var i := 0
+	for button in selections.spells:
+		var icon: SpellIcon = get_spell_better_sorting(i)
+		if symbols:
+			icon.set_symbol(selections.spells[button].name)
+		else:
+			icon.set_button(button)
+		i += 1
+
+
 func get_device() -> int:
 	return selections.device.device if selections else -2
 
@@ -108,6 +119,14 @@ func get_device() -> int:
 func _ready() -> void:
 	set_perk_slots(perk_slots)
 	set_spell_slots(spell_slots)
+
+
+func _process(_delta: float) -> void:
+	if selections:
+		if selections.device.is_action_just_pressed("multi_ui_shift"):
+			set_spell_icons(true)
+		elif selections.device.is_action_just_released("multi_ui_shift"):
+			set_spell_icons(false)
 
 
 func _exit_tree() -> void:

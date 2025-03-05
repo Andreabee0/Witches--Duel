@@ -14,8 +14,15 @@ func set_button(value: int) -> void:
 	var enabled := button >= 0
 	$Filling.visible = enabled
 	$Button.visible = enabled
+	$Symbol.visible = false
 	if enabled:
 		$Button.texture = Selections.button_textures[button]
+
+
+func set_symbol(spell: String):
+	$Button.visible = false
+	$Symbol.visible = true
+	$Symbol.texture = SpellRegistry.get_spell_texture(spell)
 
 
 func set_color(value: Color) -> void:

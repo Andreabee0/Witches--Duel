@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/defense_bullet.gd" id="1_tpdkv"]
 [ext_resource type="Texture2D" uid="uid://deip4uvxlk38" path="res://sprites/defense_small.png" id="2_of55a"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bd82j"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3uuwh"]
 size = Vector2(49, 49)
 
 [node name="DefenseBullet" type="Node2D"]
@@ -17,4 +17,4 @@ texture = ExtResource("2_of55a")
 [node name="Collider" type="Area2D" parent="." groups=["bullet"]]
 
 [node name="Shape" type="CollisionShape2D" parent="Collider"]
-shape = SubResource("RectangleShape2D_bd82j")
+shape = SubResource("RectangleShape2D_3uuwh")

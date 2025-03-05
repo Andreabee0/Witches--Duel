@@ -1,18 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://cahms0fiffobu"]
+[gd_scene load_steps=6 format=3 uid="uid://cahms0fiffobu"]
 
 [ext_resource type="Script" path="res://src/menu/spell_icon.gd" id="1_afpe8"]
 [ext_resource type="Texture2D" uid="uid://mwbleunogvri" path="res://sprites/menu/selection_empty.png" id="2_0d3f3"]
 [ext_resource type="Texture2D" uid="uid://buaf41qfo802n" path="res://sprites/menu/selection_full_bg.png" id="3_n0xer"]
 [ext_resource type="Texture2D" uid="uid://b24vsb5g1yl24" path="res://sprites/menu/left_trigger.png" id="4_opppo"]
+[ext_resource type="Texture2D" uid="uid://dgbg8odi6e3q6" path="res://sprites/symbols/air.png" id="5_qcksw"]
 
 [node name="SelectionIcon" type="Control"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 50.0
+offset_bottom = 50.0
 script = ExtResource("1_afpe8")
 
 [node name="Outline" type="TextureRect" parent="."]
@@ -48,4 +47,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_opppo")
+stretch_mode = 5
+
+[node name="Symbol" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_qcksw")
 stretch_mode = 5
