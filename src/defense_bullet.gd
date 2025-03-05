@@ -1,20 +1,19 @@
+@tool
 class_name DefenseBullet
-extends Area2D
+extends Bullet
 
-var source: int
-var velocity: Vector2
-var speed: float
-var size: float
-var homing: float
+const DEFENSE_SIZE_TEXTURES := [
+	preload("res://sprites/defense_small.png"),
+	preload("res://sprites/defense_med.png"),
+	preload("res://sprites/defense_large.png"),
+	preload("res://sprites/defense_huge.png"),
+]
 
-
-func start(_source: int, _direction: Vector2, _speed: float, _size: float) -> void:
-	source = _source
-	velocity = _direction.normalized()
-	speed = _speed * 1000
-	size = _size * 0.1
-	scale = Vector2(size, size)
+const DEFENSE_SIZE_RADII = [49, 77, 105, 133]
 
 
-func _physics_process(delta: float) -> void:
-	position += velocity * delta * speed
+func set_size(value: int):
+	size = clamp(value, 0, DEFENSE_SIZE_TEXTURES.size() - 1)
+	$Collider/Shape.shape.size.x = DEFENSE_SIZE_RADII[size]
+	$Collider/Shape.shape.size.y = DEFENSE_SIZE_RADII[size]
+	$Sprite.texture = DEFENSE_SIZE_TEXTURES[size]

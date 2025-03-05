@@ -1,18 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkbo7uspu0erq"]
+[gd_scene load_steps=4 format=3 uid="uid://vmxbyovvdhsk"]
 
-[ext_resource type="Script" path="res://src/defense_bullet.gd" id="1_5p1u1"]
-[ext_resource type="Texture2D" uid="uid://dy0y56renj7eb" path="res://sprites/projectile.png" id="1_csei0"]
+[ext_resource type="Script" path="res://src/defense_bullet.gd" id="1_tpdkv"]
+[ext_resource type="Texture2D" uid="uid://deip4uvxlk38" path="res://sprites/defense_small.png" id="2_of55a"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_oqwxb"]
-radius = 115.039
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bd82j"]
+size = Vector2(49, 49)
 
-[node name="DefenseBullet" type="Area2D"]
-script = ExtResource("1_5p1u1")
+[node name="DefenseBullet" type="Node2D"]
+script = ExtResource("1_tpdkv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_csei0")
-hframes = 2
-frame = 1
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(7, 7)
+texture = ExtResource("2_of55a")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_oqwxb")
+[node name="Collider" type="Area2D" parent="." groups=["bullet"]]
+
+[node name="Shape" type="CollisionShape2D" parent="Collider"]
+shape = SubResource("RectangleShape2D_bd82j")

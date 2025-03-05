@@ -26,10 +26,10 @@ func _on_press(_direction: Vector2, _pos: Vector2) -> void:
 
 func spawn(direction: Vector2, pos: Vector2) -> void:
 	var instance := make_bullet(pos)
-	spawn_bullet(instance, direction)
+	spawn_bullet(instance, direction, 1)
 	await Players.get_tree().create_timer(0.3).timeout
 	instance = make_bullet(pos)
-	spawn_bullet(instance, direction)
+	spawn_bullet(instance, direction, 1)
 
 
 func _get_cooldown() -> float:

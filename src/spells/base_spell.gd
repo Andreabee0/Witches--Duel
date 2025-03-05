@@ -25,13 +25,8 @@ func make_bullet(_pos: Vector2) -> Bullet:
 	return instance
 
 
-func spawn_bullet(instance: Bullet, direction: Vector2) -> void:
-	instance.start(
-		player,
-		direction,
-		Players.get_stat(player, PlayerStats.SPELL_SPEED),
-		Players.get_stat(player, PlayerStats.SPELL_SIZE)
-	)
+func spawn_bullet(instance: Bullet, direction: Vector2, size: int) -> void:
+	instance.start(player, direction, size)
 
 
 func can_fire() -> bool:

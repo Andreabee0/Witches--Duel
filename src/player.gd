@@ -9,6 +9,12 @@ var is_moving := false
 var selections: Selections
 
 
+func update_color() -> void:
+	var color: PlayerColor = Players.get_color_for_joined(selections.device)
+	$Robe.modulate = color.primary
+	$Belt.modulate = color.secondary
+
+
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
@@ -18,6 +24,8 @@ func _ready() -> void:
 		for i in testing_spells.size():
 			selections.set_spell(i, SpellRegistry.new_spell_instance(testing_spells[i]))
 		Players.selections[-1] = selections
+		Players.colors[-1] = PlayerColor.colors[0]
+	update_color()
 
 
 func _process(_delta: float) -> void:

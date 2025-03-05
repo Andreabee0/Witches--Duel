@@ -5,6 +5,7 @@ var all_spells := {
 	IronSpell.name: [IronSpell, preload("res://sprites/symbols/iron.png")],
 	LeadSpell.name: [LeadSpell, preload("res://sprites/symbols/lead.png")],
 	SulfurSpell.name: [SulfurSpell, preload("res://sprites/symbols/sulfur.png")],
+	GlassSpell.name: [GlassSpell, preload("res://sprites/symbols/glass.png")],
 }
 
 

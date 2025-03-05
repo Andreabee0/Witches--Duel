@@ -11,4 +11,3 @@ polygon = PackedVector2Array(-193, -146, 1258, -151, 1278, 837, -198, 837)
 
 [node name="Player" parent="." instance=ExtResource("1_me1le")]
 position = Vector2(236, 193)
-testing_spells = []
