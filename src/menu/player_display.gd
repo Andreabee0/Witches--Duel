@@ -17,6 +17,7 @@ var selections: Selections
 var cursor: Node2D
 var spells: Array[SpellIcon] = []
 var perk: Array[PerkIcon] = []
+var showing_symbols := false
 
 
 func set_color(value: PlayerColor) -> void:
@@ -90,18 +91,15 @@ func get_spell_better_sorting(index: int) -> SpellIcon:
 
 
 func selections_changed() -> void:
-	if spells.size() >= selections.spells.size():
-		var i := 0
-		for button in selections.spells:
-			get_spell_better_sorting(i).button = button
-			i += 1
-		for j in range(i, spells.size()):
-			get_spell_better_sorting(i).button = -1
+	set_spell_icons(showing_symbols)
 	if not perk.is_empty():
 		perk[0].selection = selections.perk.name if selections.perk else ""
 
 
 func set_spell_icons(symbols: bool) -> void:
+	showing_symbols = symbols
+	if not spells.size() >= selections.spells.size():
+		return
 	var i := 0
 	for button in selections.spells:
 		var icon: SpellIcon = get_spell_better_sorting(i)
@@ -110,6 +108,8 @@ func set_spell_icons(symbols: bool) -> void:
 		else:
 			icon.set_button(button)
 		i += 1
+	for j in range(i, spells.size()):
+		get_spell_better_sorting(j).button = -1
 
 
 func get_device() -> int:

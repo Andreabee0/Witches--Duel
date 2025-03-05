@@ -20,6 +20,7 @@ func set_button(value: int) -> void:
 
 
 func set_symbol(spell: String):
+	$Filling.visible = true
 	$Button.visible = false
 	$Symbol.visible = true
 	$Symbol.texture = SpellRegistry.get_spell_texture(spell)
