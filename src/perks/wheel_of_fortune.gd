@@ -1,6 +1,6 @@
+@tool
 class_name WheelOfFortunePerk
 extends BasePerk
-
 
 static var name := "wheel_of_fortune"
 

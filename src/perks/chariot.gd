@@ -1,6 +1,6 @@
+@tool
 class_name ChariotPerk
 extends ConstantPerk
-
 
 static var name := "chariot"
 

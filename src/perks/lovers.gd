@@ -1,6 +1,6 @@
+@tool
 class_name LoversPerk
 extends ConstantPerk
-
 
 static var name := "lovers"
 

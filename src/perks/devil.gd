@@ -1,6 +1,6 @@
+@tool
 class_name DevilPerk
 extends ConstantPerk
-
 
 static var name := "devil"
 

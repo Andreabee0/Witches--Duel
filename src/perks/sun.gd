@@ -1,6 +1,6 @@
+@tool
 class_name SunPerk
 extends ConstantPerk
-
 
 static var name := "sun"
 

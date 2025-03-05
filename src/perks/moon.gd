@@ -1,6 +1,6 @@
+@tool
 class_name MoonPerk
 extends ConstantPerk
-
 
 static var name := "moon"
 
