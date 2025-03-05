@@ -315,7 +315,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("belt:animation")
+tracks/0/path = NodePath("Belt:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -327,7 +327,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("belt:frame")
+tracks/1/path = NodePath("Belt:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -339,7 +339,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("robe:animation")
+tracks/2/path = NodePath("Robe:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -351,7 +351,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("robe:frame")
+tracks/3/path = NodePath("Robe:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -363,7 +363,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("base:animation")
+tracks/4/path = NodePath("Base:animation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -375,7 +375,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("base:frame")
+tracks/5/path = NodePath("Base:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -391,7 +391,7 @@ length = 0.5925
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("belt:animation")
+tracks/0/path = NodePath("Belt:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -403,7 +403,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("belt:frame")
+tracks/1/path = NodePath("Belt:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -415,7 +415,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("robe:animation")
+tracks/2/path = NodePath("Robe:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -427,7 +427,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("robe:frame")
+tracks/3/path = NodePath("Robe:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -439,7 +439,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("base:animation")
+tracks/4/path = NodePath("Base:animation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -451,7 +451,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("base:frame")
+tracks/5/path = NodePath("Base:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -468,7 +468,7 @@ loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("belt:animation")
+tracks/0/path = NodePath("Belt:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -480,7 +480,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("belt:frame")
+tracks/1/path = NodePath("Belt:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -492,7 +492,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("robe:animation")
+tracks/2/path = NodePath("Robe:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -504,7 +504,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("robe:frame")
+tracks/3/path = NodePath("Robe:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -516,7 +516,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("base:animation")
+tracks/4/path = NodePath("Base:animation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -528,7 +528,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("base:frame")
+tracks/5/path = NodePath("Base:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -545,7 +545,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("belt:animation")
+tracks/0/path = NodePath("Belt:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -557,7 +557,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("belt:frame")
+tracks/1/path = NodePath("Belt:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -569,7 +569,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("robe:animation")
+tracks/2/path = NodePath("Robe:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -581,7 +581,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("robe:frame")
+tracks/3/path = NodePath("Robe:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -593,7 +593,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("base:animation")
+tracks/4/path = NodePath("Base:animation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -605,7 +605,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("base:frame")
+tracks/5/path = NodePath("Base:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -639,19 +639,19 @@ animation = &"walk"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wsdvs"]
 priority = 0
 advance_mode = 2
-advance_expression = "isMoving"
+advance_expression = "is_moving"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_akmrd"]
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_trxc5"]
 advance_mode = 2
-advance_expression = "!isMoving"
+advance_expression = "!is_moving"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t18g2"]
 switch_mode = 1
 advance_mode = 2
-advance_expression = "!isCasting"
+advance_expression = "!is_casting"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g4s4a"]
 switch_mode = 2
@@ -659,52 +659,56 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_84axb"]
 advance_mode = 2
-advance_expression = "isCasting"
+advance_expression = "is_casting"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xe7cv"]
+switch_mode = 1
 advance_mode = 2
-advance_expression = "isCasting"
+advance_expression = "is_casting"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c3mo0"]
 advance_mode = 2
-advance_expression = "isCasting"
+advance_expression = "is_casting"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ixj7w"]
-states/Start/position = Vector2(292, 146)
+states/End/position = Vector2(292.32, 186.936)
+states/Start/position = Vector2(292, 100.688)
 states/cast/node = SubResource("AnimationNodeAnimation_2rlpj")
-states/cast/position = Vector2(387, 259)
+states/cast/position = Vector2(573.912, 186.782)
 states/idle/node = SubResource("AnimationNodeAnimation_os75x")
-states/idle/position = Vector2(436, 51)
+states/idle/position = Vector2(409.6, 99.96)
 states/reverse_cast/node = SubResource("AnimationNodeAnimation_5bbwy")
-states/reverse_cast/position = Vector2(473, 190)
+states/reverse_cast/position = Vector2(573.858, 100.47)
 states/walk/node = SubResource("AnimationNodeAnimation_p8a0s")
-states/walk/position = Vector2(260, 56)
+states/walk/position = Vector2(409.472, 186.688)
 transitions = ["idle", "walk", SubResource("AnimationNodeStateMachineTransition_wsdvs"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_akmrd"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_trxc5"), "cast", "reverse_cast", SubResource("AnimationNodeStateMachineTransition_t18g2"), "reverse_cast", "idle", SubResource("AnimationNodeStateMachineTransition_g4s4a"), "idle", "cast", SubResource("AnimationNodeStateMachineTransition_84axb"), "reverse_cast", "cast", SubResource("AnimationNodeStateMachineTransition_xe7cv"), "walk", "cast", SubResource("AnimationNodeStateMachineTransition_c3mo0")]
+graph_offset = Vector2(0, 22.9591)
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(126, 26)
 script = ExtResource("1_oyb43")
+testing_spells = ["iron", "sulfur"]
 
 [node name="Cursor" type="Sprite2D" parent="."]
+visible = false
 rotation = -6.28319
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_bcp7y")
 script = ExtResource("4_1dh1y")
 
-[node name="base" type="AnimatedSprite2D" parent="."]
+[node name="Base" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(-1.19209e-07, 5.96046e-08)
 scale = Vector2(7, 7)
 sprite_frames = SubResource("SpriteFrames_lta3p")
 animation = &"walk"
 
-[node name="robe" type="AnimatedSprite2D" parent="."]
+[node name="Robe" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(7, 7)
 sprite_frames = SubResource("SpriteFrames_er265")
 animation = &"walk"
 
-[node name="belt" type="AnimatedSprite2D" parent="."]
+[node name="Belt" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(7, 7)
 sprite_frames = SubResource("SpriteFrames_pwmgx")
@@ -719,7 +723,3 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_ixj7w")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
-
-[connection signal="animation_finished" from="base" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="animation_finished" from="robe" to="." method="_on_robe_animation_finished"]
-[connection signal="animation_finished" from="belt" to="." method="_on_belt_animation_finished"]

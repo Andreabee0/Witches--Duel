@@ -1,23 +1,41 @@
+@tool
 extends CharacterBody2D
 
-var spell: BaseSpell = LeadSpell.new()
+# spells to use in testing
+var testing_spells := []
+
 var is_casting := false
 var is_moving := false
-var device: DeviceInput
+var selections: Selections
+
+
+func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
+	if not selections:
+		# create keyboard device with testing spells
+		selections = Selections.new(DeviceInput.new(-1))
+		for i in testing_spells.size():
+			selections.set_spell(i, SpellRegistry.new_spell_instance(testing_spells[i]))
+		Players.selections[-1] = selections
 
 
 func _process(_delta: float) -> void:
-	if device.is_action_pressed("use_action_rt"):
-		is_casting = true
+	if Engine.is_editor_hint():
+		return
+	var buttons := selections.buttons_pressed()
+	is_casting = not buttons.is_empty()
+	for button in buttons:
+		var spell: BaseSpell = selections.spells[button]
 		spell._on_press(Vector2.from_angle($Cursor.rotation), position)
-	if device.is_action_just_released("use_action_rt"):
-		is_casting = false
 
 
 func _physics_process(_delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
 	var direction := get_movement_vector()
 	if !direction.is_zero_approx():
-		velocity = direction * $Stats.get_stat(PlayerStats.MOVE_SPEED) * 800
+		velocity = direction * selections.get_stat(PlayerStats.MOVE_SPEED) * 800
 		is_moving = true
 		if direction.x > 0:
 			flip_right()
@@ -26,26 +44,54 @@ func _physics_process(_delta: float) -> void:
 	else:
 		velocity = Vector2(0, 0)
 		is_moving = false
+	$Cursor.update_look(selections.device)
 	move_and_slide()
 
 
 func get_movement_vector() -> Vector2:
-	return device.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
+	return selections.device.get_vector("move_left", "move_right", "move_up", "move_down")
 
 
 func flip_left() -> void:
-	$base.flip_h = false
-	$robe.flip_h = false
-	$belt.flip_h = false
+	$Base.flip_h = false
+	$Robe.flip_h = false
+	$Belt.flip_h = false
 
 
 func flip_right() -> void:
-	$base.flip_h = true
-	$robe.flip_h = true
-	$belt.flip_h = true
+	$Base.flip_h = true
+	$Robe.flip_h = true
+	$Belt.flip_h = true
 
 
 func _on_collider_area_entered(area: Area2D) -> void:
 	if area.is_in_group("bullet"):
-		if area.get_parent().source != device.device:
+		if area.get_parent().source != selections.device.device:
 			print("hit")
+
+
+func _get_property_list() -> Array[Dictionary]:
+	var hint_string := (
+		"%d/%d:%s" % [TYPE_STRING, PROPERTY_HINT_ENUM, ",".join(SpellRegistry.all_spells.keys())]
+	)
+
+	return [
+		{
+			"name": "testing_spells",
+			"type": TYPE_ARRAY,
+			"hint": PROPERTY_HINT_TYPE_STRING,
+			"hint_string": hint_string
+		}
+	]
+
+
+func _property_can_revert(property: StringName) -> bool:
+	if property == "testing_spells":
+		return true
+	return false
+
+
+func _property_get_revert(property: StringName) -> Variant:
+	if property == "testing_spells":
+		return []
+	return null

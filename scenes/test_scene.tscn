@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8uotqgqud5kk"]
+[gd_scene load_steps=2 format=3 uid="uid://c8uotqgqud5kk"]
 
 [ext_resource type="PackedScene" uid="uid://5ln4nstuuews" path="res://scenes/player.tscn" id="1_me1le"]
-[ext_resource type="Script" path="res://src/player_stats.gd" id="2_uyvpb"]
 
 [node name="testScene" type="Node"]
 
@@ -12,6 +11,4 @@ polygon = PackedVector2Array(-193, -146, 1258, -151, 1278, 837, -198, 837)
 
 [node name="Player" parent="." instance=ExtResource("1_me1le")]
 position = Vector2(236, 193)
-
-[node name="Stats2" type="Node" parent="Player"]
-script = ExtResource("2_uyvpb")
+testing_spells = []

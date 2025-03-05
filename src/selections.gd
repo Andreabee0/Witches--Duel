@@ -38,6 +38,7 @@ func set_spell(button: int, value: BaseSpell) -> void:
 		var key: int = spells.keys()[0]
 		print("new button makes too many spells; erasing button ", Buttons.keys()[key])
 		spells.erase(key)
+	value.player = device.device
 	spells[button] = value
 	changed.emit()
 
@@ -51,9 +52,9 @@ func _init(device_value: DeviceInput) -> void:
 	device = device_value
 
 
-func create_player(parent: Node2D) -> void:
+func create_player(parent: Node) -> void:
 	var instance = BASE_PLAYER.instantiate()
-	instance.device = device
+	instance.selections = self
 	parent.add_child(instance)
 
 
@@ -99,6 +100,14 @@ func buttons_has_pressed() -> Array[int]:
 	var ret: Array[int] = []
 	for button: int in Buttons.values():
 		if device.is_action_just_released(button_actions[button]):
+			ret.append(button)
+	return ret
+
+
+func buttons_pressed() -> Array[int]:
+	var ret: Array[int] = []
+	for button: int in Buttons.values():
+		if button in spells and device.is_action_pressed(button_actions[button]):
 			ret.append(button)
 	return ret
 
