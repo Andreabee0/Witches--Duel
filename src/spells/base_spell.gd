@@ -20,7 +20,7 @@ func _on_press(_direction: Vector2, _pos: Vector2) -> void:
 
 func make_bullet(_pos: Vector2) -> Bullet:
 	var instance: Bullet = bullet.instantiate()
-	Players.add_child(instance)
+	Players.get_tree().get_root().add_child(instance)
 	instance.position = _pos
 	return instance
 

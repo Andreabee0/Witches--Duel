@@ -19,6 +19,7 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	if not selections:
+		print("adding keyboard player with spells: ", testing_spells)
 		# create keyboard device with testing spells
 		selections = Selections.new(DeviceInput.new(-1))
 		for i in testing_spells.size():
