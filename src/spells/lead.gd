@@ -17,22 +17,24 @@ func _get_multiplicative(stat: int) -> float:
 	return super(stat)
 
 
-func _on_press(_direction: Vector2, _pos: Vector2) -> void:
+func _on_release(source: Node2D, direction: Vector2) -> void:
 	if aiming:
 		if not can_fire():
 			return
 		aiming = false
-		spawn(_direction, _pos)
+		spawn(source, direction)
 	else:
 		aiming = true
 
 
-func spawn(direction: Vector2, pos: Vector2) -> void:
-	var instance := make_bullet(pos)
-	spawn_bullet(instance, direction, 1)
+func spawn(source: Node2D, direction: Vector2) -> void:
+	var instance := make_bullet(source)
+	spawn_bullet(instance, direction, 0)
+	instance.set_speed(speed_factor)
 	await Players.get_tree().create_timer(0.3).timeout
-	instance = make_bullet(pos)
-	spawn_bullet(instance, direction, 1)
+	instance = make_bullet(source)
+	spawn_bullet(instance, direction, 0)
+	instance.set_speed(speed_factor)
 
 
 func _get_cooldown() -> float:

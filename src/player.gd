@@ -32,11 +32,15 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
-	var buttons := selections.buttons_pressed()
-	is_casting = not buttons.is_empty()
-	for button in buttons:
+	var pressed := selections.buttons_pressed(true)
+	is_casting = not pressed.is_empty()
+	for button in pressed:
 		var spell: BaseSpell = selections.spells[button]
-		spell._on_press(Vector2.from_angle($Cursor.rotation), position)
+		spell._on_press(self, Vector2.from_angle($Cursor.rotation))
+	var released := selections.buttons_has_pressed(true)
+	for button in released:
+		var spell: BaseSpell = selections.spells[button]
+		spell._on_release(self, Vector2.from_angle($Cursor.rotation))
 
 
 func _physics_process(_delta: float) -> void:

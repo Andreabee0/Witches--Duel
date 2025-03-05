@@ -117,5 +117,5 @@ func all_joined_selected_spells() -> bool:
 	return true
 
 
-func get_stat(player: int, stat: int):
+func get_stat(player: int, stat: int) -> float:
 	return selections[player].get_stat(stat)

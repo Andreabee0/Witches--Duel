@@ -39,7 +39,7 @@ func start(player: int, _direction: Vector2, _size: int) -> void:
 		_direction.normalized() * Players.get_stat(player, PlayerStats.SPELL_SPEED) * BASE_SPEED
 	)
 	base_position = position
-	set_size(_size + Players.get_stat(player, PlayerStats.SPELL_SIZE))
+	set_size(_size + int(Players.get_stat(player, PlayerStats.SPELL_SIZE)))
 	set_color(Players.colors[player].secondary)
 
 

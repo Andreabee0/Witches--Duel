@@ -96,23 +96,27 @@ func has_pressed() -> bool:
 	return device.is_action_just_released("multi_ui_accept")
 
 
-func buttons_has_pressed() -> Array[int]:
+func buttons_has_pressed(filter := false) -> Array[int]:
 	var ret: Array[int] = []
 	for button: int in Buttons.values():
+		if filter and not button in spells:
+			continue
 		if device.is_action_just_released(button_actions[button]):
 			ret.append(button)
 	return ret
 
 
-func buttons_pressed() -> Array[int]:
+func buttons_pressed(filter := false) -> Array[int]:
 	var ret: Array[int] = []
 	for button: int in Buttons.values():
-		if button in spells and device.is_action_pressed(button_actions[button]):
+		if filter and not button in spells:
+			continue
+		if device.is_action_pressed(button_actions[button]):
 			ret.append(button)
 	return ret
 
 
-func has_spell(spell: String):
+func has_spell(spell: String) -> bool:
 	for instance in spells.values():
 		if instance.name == spell:
 			return true
