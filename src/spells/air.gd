@@ -8,8 +8,9 @@ static var title := "Air"
 static var description := "Shoots fast, swirly projectiles in both directions"
 
 
-func _on_press(source: Node2D, direction: Vector2) -> void:
+func _on_press(source: Player, direction: Vector2) -> void:
 	if can_fire():
+		await source.cast_animation(name)
 		for i in 3:
 			spawn(source, direction)
 			spawn(source, -direction)

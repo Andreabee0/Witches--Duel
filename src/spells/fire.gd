@@ -8,7 +8,7 @@ static var title := "Fire"
 static var description := "Charges and expels a number of homing projectiles"
 
 
-func _on_charge_release(source: Node2D, _direction: Vector2) -> void:
+func _on_charge_release(source: Player, _direction: Vector2) -> void:
 	for i in int(charge_time * 8):
 		spawn(source, Util.rand_vec())
 

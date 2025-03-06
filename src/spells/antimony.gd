@@ -10,8 +10,9 @@ static var title := "Antimony"
 static var description := "Shoots an unpredictable defense projectile"
 
 
-func _on_press(source: Node2D, _direction: Vector2) -> void:
+func _on_press(source: Player, _direction: Vector2) -> void:
 	if can_fire():
+		await source.cast_animation(name)
 		spawn(source, Util.rand_vec())
 
 

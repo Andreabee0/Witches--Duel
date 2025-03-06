@@ -18,10 +18,10 @@ func _get_additive(stat: int) -> float:
 	return 0
 
 
-func _on_press(source: Node2D, _direction: Vector2) -> void:
+func _on_press(source: Player, _direction: Vector2) -> void:
 	if can_fire():
 		in_delay = true
-		await source.get_tree().create_timer(2).timeout
+		await source.cast_animation(name, 2)
 		in_delay = false
 		var viewport := source.get_viewport_rect()
 		var sides_pos := SPACING * -0.25

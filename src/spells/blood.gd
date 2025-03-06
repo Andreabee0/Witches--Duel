@@ -8,8 +8,9 @@ static var title := "Blood"
 static var description := "Shoots projectiles in a helix"
 
 
-func _on_press(source: Node2D, direction: Vector2) -> void:
+func _on_press(source: Player, direction: Vector2) -> void:
 	if can_fire():
+		await source.cast_animation(name)
 		for i in 2:
 			spawn(source, direction).set_movement_modifier(helix_move.bind(i % 2 == 0))
 

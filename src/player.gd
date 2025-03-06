@@ -1,9 +1,11 @@
 @tool
+class_name Player
 extends CharacterBody2D
 
 # spells to use in testing
 var testing_spells := []
 
+var cast_count := 0
 var is_casting := false
 var is_moving := false
 var selections: Selections
@@ -13,6 +15,14 @@ func update_color() -> void:
 	var color: PlayerColor = Players.get_color_for_joined(selections.device)
 	$Robe.modulate = color.primary
 	$Belt.modulate = color.secondary
+	$Cursor.modulate = color.primary
+
+
+func cast_animation(spell: String, length := 0.25) -> void:
+	cast_count += 1
+	$Spell.texture = SpellRegistry.get_spell_texture(spell)
+	await get_tree().create_timer(length).timeout
+	cast_count -= 1
 
 
 func _ready() -> void:

@@ -43,23 +43,24 @@ func _get_modifiers(bullet_stats: Dictionary) -> Dictionary:
 	return bullet_stats
 
 
-func _on_press(source: Node2D, direction: Vector2) -> void:
+func _on_press(source: Player, direction: Vector2) -> void:
 	if can_fire():
+		await source.cast_animation(self.name)
 		spawn(source, direction)
 
 
-func _on_release(_source: Node2D, _direction: Vector2) -> void:
+func _on_release(_source: Player, _direction: Vector2) -> void:
 	pass
 
 
-func make_bullet(source: Node2D, defense := false) -> Bullet:
+func make_bullet(source: Player, defense := false) -> Bullet:
 	var instance: Bullet = defense_bullet.instantiate() if defense else bullet.instantiate()
 	source.get_tree().get_root().add_child(instance)
 	instance.global_position = source.global_position
 	return instance
 
 
-func spawn(source: Node2D, direction: Vector2) -> Bullet:
+func spawn(source: Player, direction: Vector2) -> Bullet:
 	var constants := _get_modifiers(base.duplicate())
 	var instance := make_bullet(source, constants[DEFENSE])
 	instance.start(player, direction, constants[SIZE])

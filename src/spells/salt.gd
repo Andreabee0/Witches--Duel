@@ -16,12 +16,12 @@ func _get_multiplicative(stat: int) -> float:
 	return 1
 
 
-func _on_press(source: Node2D, direction: Vector2) -> void:
+func _on_press(source: Player, direction: Vector2) -> void:
 	if can_fire():
 		in_delay = true
 		for deg in range(0, 360, 45):
 			spawn(source, direction.rotated(deg_to_rad(deg)))
-		await source.get_tree().create_timer(1).timeout
+		await source.cast_animation(name, 1)
 		in_delay = false
 
 

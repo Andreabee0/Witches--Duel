@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bv0jat2tbyj4p"
-path="res://.godot/imported/aim ui.png-9456e46e5cf5f66fd0c9ad5fdd3110c0.ctex"
+uid="uid://bij5swues0r0"
+path="res://.godot/imported/spell_circle.png-50f7fe8699c1d22ed3bb4e4f492d3524.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/aim ui.png"
-dest_files=["res://.godot/imported/aim ui.png-9456e46e5cf5f66fd0c9ad5fdd3110c0.ctex"]
+source_file="res://sprites/spell_circle.png"
+dest_files=["res://.godot/imported/spell_circle.png-50f7fe8699c1d22ed3bb4e4f492d3524.ctex"]
 
 [params]
 

@@ -8,8 +8,9 @@ static var title := "Sulfur"
 static var description := "Sends a number of projectile spreads"
 
 
-func _on_press(source: Node2D, direction: Vector2) -> void:
+func _on_press(source: Player, direction: Vector2) -> void:
 	if can_fire():
+		await source.cast_animation(name, 0.5)
 		for i in 4:
 			for deg in range(-15, 16, 7.5):
 				spawn(source, direction.rotated(deg_to_rad(deg)))
