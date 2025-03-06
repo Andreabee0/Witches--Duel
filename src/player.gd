@@ -8,11 +8,11 @@ var testing_spells := []
 var cast_count := 0
 var is_casting := false
 var is_moving := false
-var selections: Selections
+var info: PlayerInfo
 
 
 func update_color() -> void:
-	var color: PlayerColor = Players.get_color_for_joined(selections.device)
+	var color: PlayerColor = Players.get_color_for_joined(info.device)
 	$Robe.modulate = color.primary
 	$Belt.modulate = color.secondary
 	$Cursor.modulate = color.primary
@@ -28,13 +28,13 @@ func cast_animation(spell: String, length := 0.25) -> void:
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
-	if not selections:
+	if not info:
 		print("adding keyboard player with spells: ", testing_spells)
 		# create keyboard device with testing spells
-		selections = Selections.new(DeviceInput.new(-1))
+		info = PlayerInfo.new(DeviceInput.new(-1))
 		for i in testing_spells.size():
-			selections.set_spell(i, SpellRegistry.new_spell_instance(testing_spells[i]))
-		Players.selections[-1] = selections
+			info.set_spell(i, SpellRegistry.new_spell_instance(testing_spells[i]))
+		Players.info[-1] = info
 		Players.colors[-1] = PlayerColor.colors[0]
 	update_color()
 
@@ -42,14 +42,14 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
-	var pressed := selections.buttons_pressed(true)
+	var pressed := info.buttons_pressed(true)
 	is_casting = not pressed.is_empty()
 	for button in pressed:
-		var spell: BaseSpell = selections.spells[button]
+		var spell: BaseSpell = info.spells[button]
 		spell._on_press(self, Vector2.from_angle($Cursor.rotation))
-	var released := selections.buttons_has_pressed(true)
+	var released := info.buttons_has_pressed(true)
 	for button in released:
-		var spell: BaseSpell = selections.spells[button]
+		var spell: BaseSpell = info.spells[button]
 		spell._on_release(self, Vector2.from_angle($Cursor.rotation))
 
 
@@ -58,7 +58,7 @@ func _physics_process(_delta: float) -> void:
 		return
 	var direction := get_movement_vector()
 	if !direction.is_zero_approx():
-		velocity = direction * selections.get_stat(PlayerStats.MOVE_SPEED) * 800
+		velocity = direction * info.get_stat(PlayerStats.MOVE_SPEED) * 800
 		is_moving = true
 		if direction.x > 0:
 			flip_right()
@@ -67,12 +67,12 @@ func _physics_process(_delta: float) -> void:
 	else:
 		velocity = Vector2(0, 0)
 		is_moving = false
-	$Cursor.update_look(selections.device)
+	$Cursor.update_look(info.device)
 	move_and_slide()
 
 
 func get_movement_vector() -> Vector2:
-	return selections.device.get_vector("move_left", "move_right", "move_up", "move_down")
+	return info.device.get_vector("move_left", "move_right", "move_up", "move_down")
 
 
 func flip_left() -> void:
@@ -89,7 +89,7 @@ func flip_right() -> void:
 
 func _on_collider_area_entered(area: Area2D) -> void:
 	if area.is_in_group("bullet"):
-		if area.get_parent().source != selections.device.device:
+		if area.get_parent().source != info.device.device:
 			print("hit")
 
 

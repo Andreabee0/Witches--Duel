@@ -1,4 +1,4 @@
-class_name Selections
+class_name PlayerInfo
 extends RefCounted
 
 signal changed
@@ -54,7 +54,7 @@ func _init(device_value: DeviceInput) -> void:
 
 func create_player(parent: Node) -> void:
 	var instance = BASE_PLAYER.instantiate()
-	instance.selections = self
+	instance.info = self
 	parent.add_child(instance)
 
 

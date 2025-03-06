@@ -9,8 +9,8 @@ var leave_sound := preload("res://sounds/disconnect.wav")
 var devices: Array[DeviceInput]
 # device ids of joined players
 var joined_order: Array[int] = []
-# dictionary of devices to their selections
-var selections := {}
+# dictionary of devices to their player info
+var info := {}
 # dictionary of devices to their colors
 var colors := {}
 
@@ -60,12 +60,12 @@ func listen_for_joins() -> void:
 	for device in devices:
 		if device.is_keyboard() and not Settings.include_keyboard:
 			continue
-		if device.device in selections:
+		if device.device in info:
 			if device.is_action_just_released("multi_ui_cancel"):
 				print("device ", device.device, " left")
 				SoundPlayer.play_sound(leave_sound)
 				joined_order.erase(device.device)
-				selections.erase(device.device)
+				info.erase(device.device)
 				colors.erase(device.device)
 				changed = true
 		else:
@@ -73,7 +73,7 @@ func listen_for_joins() -> void:
 				print("device ", device.device, " joined")
 				SoundPlayer.play_sound(join_sound)
 				joined_order.append(device.device)
-				selections[device.device] = Selections.new(device)
+				info[device.device] = PlayerInfo.new(device)
 				colors[device.device] = next_color()
 				changed = true
 	if changed:
@@ -81,22 +81,22 @@ func listen_for_joins() -> void:
 
 
 func unjoin_all(emit := true) -> void:
-	selections = {}
+	info = {}
 	colors = {}
 	if emit:
 		joined_devices_changed.emit()
 
 
 func get_joined_count() -> int:
-	return selections.size()
+	return info.size()
 
 
 func is_device_joined(device: DeviceInput) -> bool:
-	return selections.has(device.device)
+	return info.has(device.device)
 
 
-func get_selections_for_joined(device: DeviceInput) -> Selections:
-	return selections[device.device]
+func get_player_info_for_joined(device: DeviceInput) -> PlayerInfo:
+	return info[device.device]
 
 
 func get_color_for_joined(device: DeviceInput) -> PlayerColor:
@@ -104,18 +104,18 @@ func get_color_for_joined(device: DeviceInput) -> PlayerColor:
 
 
 func all_joined_selected_perk() -> bool:
-	for key in selections:
-		if not selections[key].has_perk():
+	for key in info:
+		if not info[key].has_perk():
 			return false
 	return true
 
 
 func all_joined_selected_spells() -> bool:
-	for key in selections:
-		if not selections[key].has_spells():
+	for key in info:
+		if not info[key].has_spells():
 			return false
 	return true
 
 
 func get_stat(player: int, stat: int) -> float:
-	return selections[player].get_stat(stat)
+	return info[player].get_stat(stat)

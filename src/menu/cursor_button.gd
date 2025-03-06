@@ -21,13 +21,13 @@ func _process(_delta: float) -> void:
 		return
 	var cursor_inside := false
 	var cursor_pressing := false
-	for device_id in Players.selections:
-		var selections: Selections = Players.selections[device_id]
-		if not selections.cursor_in(get_global_rect()):
+	for device_id in Players.info:
+		var info: PlayerInfo = Players.info[device_id]
+		if not info.cursor_in(get_global_rect()):
 			continue
 		cursor_inside = true
-		cursor_pressing = selections.is_pressing()
-		if selections.has_pressed():
+		cursor_pressing = info.is_pressing()
+		if info.has_pressed():
 			pressed.emit()
 	if cursor_inside != focused:
 		queue_redraw()

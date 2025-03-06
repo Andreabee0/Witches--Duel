@@ -10,13 +10,13 @@ extends Control
 
 
 func set_button(value: int) -> void:
-	button = clamp(value, -1, Selections.button_textures.size())
+	button = clamp(value, -1, PlayerInfo.button_textures.size())
 	var enabled := button >= 0
 	$Filling.visible = enabled
 	$Button.visible = enabled
 	$Symbol.visible = false
 	if enabled:
-		$Button.texture = Selections.button_textures[button]
+		$Button.texture = PlayerInfo.button_textures[button]
 
 
 func set_symbol(spell: String):
