@@ -687,7 +687,7 @@ graph_offset = Vector2(0, 22.9591)
 [node name="Player" type="CharacterBody2D"]
 z_index = 2
 script = ExtResource("1_oyb43")
-testing_spells = ["glass", "iron", "sulfur", "lead"]
+testing_spells = ["earth"]
 
 [node name="Cursor" type="Sprite2D" parent="."]
 visible = false

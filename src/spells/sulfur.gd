@@ -5,22 +5,22 @@ extends BaseSpell
 static var name := "sulfur"
 
 static var title := "Sulfur"
-static var description := "Shoots a spread of medium projectiles"
+static var description := "Sends a number of projectile spreads"
 
 
 func _on_press(source: Node2D, direction: Vector2) -> void:
 	if can_fire():
-		spawn(source, direction)
+		for i in 4:
+			for deg in range(-15, 16, 7.5):
+				spawn(source, direction.rotated(deg_to_rad(deg)))
+			await source.get_tree().create_timer(0.2).timeout
 
 
-func spawn(source: Node2D, direction: Vector2) -> void:
-	var high := make_bullet(source)
-	var mid := make_bullet(source)
-	var low := make_bullet(source)
-	spawn_bullet(mid, direction, 1)
-	spawn_bullet(high, direction.rotated(PI / 14), 1)
-	spawn_bullet(low, direction.rotated(-PI / 14), 1)
+func _get_modifiers(constants: Dictionary) -> Dictionary:
+	constants[SIZE] = 1
+	constants[DRAG] = -0.5
+	return constants
 
 
 func _get_cooldown() -> float:
-	return 1
+	return 3

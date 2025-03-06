@@ -49,7 +49,7 @@ func randf_sym(min_max: float) -> float:
 
 
 func new_pos_offset() -> Vector2:
-	return Vector2.from_angle(randf_range(0, PI * 2)) * randf_range(0, pos_variance * spacing / 3)
+	return Util.rand_vec() * randf_range(0, pos_variance * spacing / 3)
 
 
 func new_line() -> Array:

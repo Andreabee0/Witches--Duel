@@ -1,16 +1,16 @@
 @tool
-class_name LeadSpell
+class_name GoldSpell
 extends BaseSpell
 
-static var name := "lead"
+static var name := "gold"
 
-static var title := "Lead"
-static var description := "Shoots a simple but high-damage projectile"
+static var title := "Gold"
+static var description := "Shoots a very bouncy projectile"
 
 
 func _get_modifiers(constants: Dictionary) -> Dictionary:
 	constants[SIZE] = 1
-	constants[DAMAGE] = 2
+	constants[BOUNCES] = 10
 	return constants
 
 

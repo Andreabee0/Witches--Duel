@@ -5,18 +5,14 @@ extends BaseSpell
 static var name := "glass"
 
 static var title := "Glass"
-static var description := "Quickly shoots small projectiles in a zig-zag pattern"
+static var description := "Shoots a projectile in a fast zig-zag pattern"
 
 
-func _on_press(source: Node2D, direction: Vector2) -> void:
-	if can_fire():
-		spawn(source, direction)
-
-
-func spawn(source: Node2D, direction: Vector2) -> void:
-	var instance := make_bullet(source)
-	spawn_bullet(instance, direction, 0)
-	instance.set_movement_modifier(zig_move)
+func _get_modifiers(constants: Dictionary) -> Dictionary:
+	constants[SPEED] = 1.5
+	constants[DRAG] = 0.5
+	constants[MOVEMENT] = zig_move
+	return constants
 
 
 func zig_move(time: float) -> Vector2:
