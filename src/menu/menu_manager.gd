@@ -4,7 +4,7 @@ const MAIN_MENU := preload("res://scenes/menu/main.tscn")
 const OPTIONS_MENU := preload("res://scenes/menu/options.tscn")
 const PERK_SELECT_MENU := preload("res://scenes/menu/perk_select.tscn")
 const SPELL_SELECT_MENU := preload("res://scenes/menu/spell_select.tscn")
-const GAME := preload("res://scenes/arena.tscn")
+const GAME := preload("res://scenes/dungeon.tscn")
 
 
 func _ready() -> void:
