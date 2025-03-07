@@ -173,8 +173,6 @@ func is_action_pressed(device: int, action: StringName, exact_match: bool = fals
 
 ## Returns the name of a gamepad-specific action
 func get_action_name(device: int, action: StringName) -> StringName:
-	if device > 8:
-		return "_internal_no_action"
 	if device >= 0:
 		assert(
 			device_actions.has(device),

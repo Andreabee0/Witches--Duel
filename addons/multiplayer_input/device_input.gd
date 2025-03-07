@@ -25,7 +25,10 @@ var is_connected: bool = true
 
 func _init(device_num: int):
 	device = device_num
-	Input.joy_connection_changed.connect(_on_joy_connection_changed)
+	if device > 8:
+		is_connected = false
+	else:
+		Input.joy_connection_changed.connect(_on_joy_connection_changed)
 
 
 ## Returns true if this device is the keyboard/mouse "device"
@@ -81,7 +84,7 @@ func is_known() -> bool:
 ## See Input.start_joy_vibration for what this does.
 ## This does nothing for the keyboard device.
 func start_vibration(weak_magnitude: float, strong_magnitude: float, duration: float = 0.0):
-	if is_keyboard():
+	if is_keyboard() or device > 8:
 		return
 	Input.start_joy_vibration(device, weak_magnitude, strong_magnitude, duration)
 
@@ -89,7 +92,7 @@ func start_vibration(weak_magnitude: float, strong_magnitude: float, duration: f
 ## See Input.stop_joy_vibration for what this does.
 ## This does nothing for the keyboard device.
 func stop_vibration():
-	if is_keyboard():
+	if is_keyboard() or device > 8:
 		return
 	Input.stop_joy_vibration(device)
 
