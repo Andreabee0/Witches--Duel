@@ -9,7 +9,7 @@ static var description := "Charges and expels a number of homing projectiles"
 
 
 func _on_charge_release(source: Player, _direction: Vector2) -> void:
-	for i in int(charge_time * 8):
+	for i in clampi(int(charge_time * 8), 5, 32):
 		spawn(source, Util.rand_vec())
 
 
