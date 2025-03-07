@@ -17,3 +17,7 @@ func set_size(value: int):
 	$Collider/Shape.shape.size.x = DEFENSE_SIZE_RADII[size]
 	$Collider/Shape.shape.size.y = DEFENSE_SIZE_RADII[size]
 	$Sprite.texture = DEFENSE_SIZE_TEXTURES[size]
+
+
+func is_defense() -> bool:
+	return true

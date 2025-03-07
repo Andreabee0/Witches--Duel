@@ -36,6 +36,8 @@ func _ready() -> void:
 			info.set_spell(i, SpellRegistry.new_spell_instance(testing_spells[i]))
 		Players.info[-1] = info
 		Players.colors[-1] = PlayerColor.colors[0]
+		if GlobalInfo.current_arena_bounds.get_area() == 0:
+			GlobalInfo.current_arena_bounds = get_viewport_rect()
 	update_color()
 
 
@@ -87,10 +89,13 @@ func flip_right() -> void:
 	$Belt.flip_h = true
 
 
-func _on_collider_area_entered(area: Area2D) -> void:
-	if area.is_in_group("bullet"):
-		if area.get_parent().source != info.device.device:
-			print("hit")
+func _on_hitbox_entered(body: Node2D) -> void:
+	if body.is_in_group("bullet") and body is Bullet:
+		var bullet: Bullet = body
+		# if not bullet.source != info.device.device:
+		# 	return
+		info.handle_hit(bullet.damage)
+		bullet.queue_free()
 
 
 func _get_property_list() -> Array[Dictionary]:

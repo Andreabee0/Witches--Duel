@@ -38,6 +38,11 @@ window/stretch/mode="viewport"
 
 enabled=PackedStringArray("res://addons/multiplayer_input/plugin.cfg")
 
+[global_group]
+
+bullet=""
+tiles=""
+
 [gui]
 
 theme/custom="res://theme/theme.tres"

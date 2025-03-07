@@ -123,3 +123,7 @@ func has_spell(spell: String) -> bool:
 		if instance.name == spell:
 			return true
 	return false
+
+
+func handle_hit(damage: int) -> void:
+	damage_taken += int(damage * get_stat(PlayerStats.DAMAGE_TAKEN))
