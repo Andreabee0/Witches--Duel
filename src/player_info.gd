@@ -150,7 +150,7 @@ func should_dash() -> bool:
 
 
 func handle_hit(damage: int) -> bool:
-	if not can_be_hit():
+	if not can_be_hit() or not GlobalInfo.in_battle:
 		return false
 	if randf_range(0, 1) < get_stat(PlayerStats.DODGE_CHANCE):
 		return false

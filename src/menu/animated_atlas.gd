@@ -6,6 +6,7 @@ extends TextureRect
 @export var vertical := false
 @export var frame_count := 1
 @export var frame_length := 1.0
+@export var disable_animation := false
 
 var frame_num := 0
 var frame_progress := 0.0
@@ -32,7 +33,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-    if frame_count == 1:
+    if disable_animation or frame_count == 1:
         return
     var prev_frame := frame_num
     frame_progress += delta

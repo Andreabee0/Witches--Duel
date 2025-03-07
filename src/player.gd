@@ -11,6 +11,8 @@ var testing_spells := []
 var cast_count := 0
 var is_casting := false
 var is_moving := false
+var is_dead := false
+
 var dash_progress := -1.0
 var dash_direction: Vector2
 var info: PlayerInfo
@@ -46,7 +48,11 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if Engine.is_editor_hint():
+	if Engine.is_editor_hint() or is_dead:
+		return
+	if info.get_remaining_health() <= 0:
+		$Hitbox.monitoring = false
+		is_dead = true
 		return
 	var pressed := info.buttons_pressed(true)
 	is_casting = not pressed.is_empty()
@@ -62,7 +68,7 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if Engine.is_editor_hint():
+	if Engine.is_editor_hint() or is_dead:
 		return
 	var direction := get_movement_vector()
 	if !direction.is_zero_approx():

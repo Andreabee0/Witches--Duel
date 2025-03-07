@@ -19,6 +19,8 @@ var spells: Array[SpellIcon] = []
 var perk: Array[PerkIcon] = []
 var showing_symbols := false
 
+@onready var player_sprite: UiPlayer = $Margin/MainContainer/Player
+
 
 func set_color(value: PlayerColor) -> void:
 	color = value
@@ -28,8 +30,7 @@ func set_color(value: PlayerColor) -> void:
 		slot.color = color.secondary
 	for p in perk:
 		p.color = color.secondary
-	$Margin/MainContainer/PlayerSprites/Belt.modulate = color.secondary
-	$Margin/MainContainer/PlayerSprites/Robe.modulate = color.primary
+	player_sprite.set_color(color)
 
 
 func set_spell_slots(value) -> void:
@@ -57,7 +58,7 @@ func make_perk_slot() -> Node:
 
 
 func set_cursor_to_start():
-	var starting_anchor: Control = $Margin/MainContainer/PlayerSprites
+	var starting_anchor: Control = $Margin/MainContainer/Player
 	var pos := starting_anchor.global_position + starting_anchor.size * Vector2(0.4, -0.1)
 	cursor.global_position = pos
 

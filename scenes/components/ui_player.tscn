@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://kho8utmqdt8f"]
+
+[ext_resource type="Script" path="res://src/menu/ui_player.gd" id="1_385dx"]
+[ext_resource type="Texture2D" uid="uid://bgd73as051bu8" path="res://sprites/spritesheet full.png" id="1_l5jvb"]
+[ext_resource type="Script" path="res://src/menu/animated_atlas.gd" id="2_ixrhu"]
+[ext_resource type="Texture2D" uid="uid://drroix02qo83w" path="res://sprites/robe_witch spritesheet.png" id="3_uidxm"]
+[ext_resource type="Texture2D" uid="uid://dkcffovetoym1" path="res://sprites/lace_witch spritesheet.png" id="4_r3gx4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfngf"]
+atlas = ExtResource("1_l5jvb")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpogx"]
+atlas = ExtResource("3_uidxm")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcvt8"]
+atlas = ExtResource("4_r3gx4")
+region = Rect2(0, 16, 16, 16)
+
+[node name="UiPlayer" type="Control"]
+texture_filter = 1
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_385dx")
+
+[node name="Eyes" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_cfngf")
+stretch_mode = 5
+script = ExtResource("2_ixrhu")
+start_offset = Vector2(0, 16)
+region_size = Vector2(16, 16)
+frame_count = 2
+disable_animation = null
+
+[node name="Robe" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_rpogx")
+stretch_mode = 5
+script = ExtResource("2_ixrhu")
+start_offset = Vector2(0, 16)
+region_size = Vector2(16, 16)
+frame_count = 2
+disable_animation = null
+
+[node name="Belt" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_tcvt8")
+stretch_mode = 5
+script = ExtResource("2_ixrhu")
+start_offset = Vector2(0, 16)
+region_size = Vector2(16, 16)
+frame_count = 2
+disable_animation = null

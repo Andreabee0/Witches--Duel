@@ -77,7 +77,7 @@ func is_defense() -> bool:
 
 func _physics_process(delta: float) -> void:
 	existence_time += delta
-	if existence_time > DESPAWN_TIME or constant_linear_velocity.length() < 0.1 and homing == 0:
+	if existence_time > DESPAWN_TIME or constant_linear_velocity.length() < 0.05:
 		queue_free()
 		return
 	position = base_position

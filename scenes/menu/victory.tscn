@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0qaa1xhssi1d"]
+
+[ext_resource type="PackedScene" uid="uid://74sp8fsbrxer" path="res://scenes/components/menu_bg.tscn" id="1_bq42i"]
+[ext_resource type="Script" path="res://src/menu/victory.gd" id="1_l4rff"]
+[ext_resource type="PackedScene" uid="uid://kho8utmqdt8f" path="res://scenes/components/ui_player.tscn" id="2_ct1pk"]
+
+[node name="Victory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l4rff")
+
+[node name="MenuBg" parent="." instance=ExtResource("1_bq42i")]
+layout_mode = 1
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 20.0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Container" type="HBoxContainer" parent="Margin"]
+layout_mode = 2
+
+[node name="Winner" parent="Margin/Container" instance=ExtResource("2_ct1pk")]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+
+[node name="SubContainer" type="HBoxContainer" parent="Margin/Container"]
+layout_mode = 2
+size_flags_vertical = 0

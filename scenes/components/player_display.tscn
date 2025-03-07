@@ -1,22 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dvx0u8sirsk0w"]
+[gd_scene load_steps=3 format=3 uid="uid://dvx0u8sirsk0w"]
 
 [ext_resource type="Script" path="res://src/menu/player_display.gd" id="1_q1o6m"]
-[ext_resource type="Texture2D" uid="uid://bgd73as051bu8" path="res://sprites/spritesheet full.png" id="2_agxld"]
-[ext_resource type="Texture2D" uid="uid://drroix02qo83w" path="res://sprites/robe_witch spritesheet.png" id="2_ts85l"]
-[ext_resource type="Script" path="res://src/menu/animated_atlas.gd" id="3_grsgi"]
-[ext_resource type="Texture2D" uid="uid://dkcffovetoym1" path="res://sprites/lace_witch spritesheet.png" id="4_5o2t6"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n4w2r"]
-atlas = ExtResource("2_agxld")
-region = Rect2(0, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2a5fj"]
-atlas = ExtResource("2_ts85l")
-region = Rect2(0, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u7twu"]
-atlas = ExtResource("4_5o2t6")
-region = Rect2(0, 16, 16, 16)
+[ext_resource type="PackedScene" uid="uid://kho8utmqdt8f" path="res://scenes/components/ui_player.tscn" id="2_qqj5l"]
 
 [node name="PlayerSelections" type="PanelContainer"]
 offset_right = 100.0
@@ -34,49 +19,8 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="PlayerSprites" type="Control" parent="Margin/MainContainer"]
-texture_filter = 1
-custom_minimum_size = Vector2(100, 100)
+[node name="Player" parent="Margin/MainContainer" instance=ExtResource("2_qqj5l")]
 layout_mode = 2
-
-[node name="Eyes" type="TextureRect" parent="Margin/MainContainer/PlayerSprites"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_n4w2r")
-script = ExtResource("3_grsgi")
-start_offset = Vector2(0, 16)
-region_size = Vector2(16, 16)
-frame_count = 2
-
-[node name="Robe" type="TextureRect" parent="Margin/MainContainer/PlayerSprites"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_2a5fj")
-script = ExtResource("3_grsgi")
-start_offset = Vector2(0, 16)
-region_size = Vector2(16, 16)
-frame_count = 2
-
-[node name="Belt" type="TextureRect" parent="Margin/MainContainer/PlayerSprites"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_u7twu")
-script = ExtResource("3_grsgi")
-start_offset = Vector2(0, 16)
-region_size = Vector2(16, 16)
-frame_count = 2
 
 [node name="PerkContainer" type="HBoxContainer" parent="Margin/MainContainer"]
 layout_mode = 2
