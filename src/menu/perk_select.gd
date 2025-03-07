@@ -45,13 +45,13 @@ func updated_joined_players() -> void:
 		if Players.is_device_joined(device):
 			display.set_color(Players.get_color_for_joined(device))
 			display.perk_slots = 1
-			display.set_selections(Players.get_selections_for_joined(device))
+			display.set_player_info(Players.get_player_info_for_joined(device))
 		else:
 			for perk: CursorSelectable in perks_container.get_children():
 				perk.set_player_selected(display.get_device(), false)
 			display.set_color(PlayerColor.make())
 			display.perk_slots = 0
-			display.set_selections(null)
+			display.set_player_info(null)
 	update_can_go_forward()
 
 
@@ -110,6 +110,6 @@ func _on_perk_selected(selectable: CursorSelectable, device: int) -> void:
 			continue
 		other.set_player_selected(device, false)
 	selectable.set_player_selected(device, true)
-	var selections: Selections = Players.selections[device]
-	selections.set_perk(PerkRegistry.new_perk_instance(perk_selectables[selectable]))
+	var info: PlayerInfo = Players.info[device]
+	info.set_perk(PerkRegistry.new_perk_instance(perk_selectables[selectable]))
 	update_can_go_forward()

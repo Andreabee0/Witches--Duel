@@ -10,11 +10,13 @@ static var title := "Earth"
 static var description := "Sends tremors across the map in the aimed direction"
 
 
-func _on_press(source: Node2D, direction: Vector2) -> void:
+func _on_press(source: Player, direction: Vector2) -> void:
 	if can_fire():
 		await source.get_tree().create_timer(1).timeout
 		var viewport := source.get_viewport_rect()
 		var angle = direction.angle()
+		if angle < 0:
+			angle += PI * 2
 		var start_corner := get_corner(viewport, angle)
 		var min_offset := calc_min_offset(viewport.size, angle)
 		var max_offset := calc_max_offset(viewport.size, angle)
@@ -39,12 +41,12 @@ func get_corner(rect: Rect2, angle: float) -> Vector2:
 
 func calc_min_offset(rect_size: Vector2, angle: float) -> float:
 	var flag := fmod(angle, PI) > PI / 2
-	return -cos(angle) * (rect_size.x if flag else rect_size.y)
+	return -cos(fmod(angle, PI / 2)) * (rect_size.x if flag else rect_size.y)
 
 
 func calc_max_offset(rect_size: Vector2, angle: float) -> float:
 	var flag := fmod(angle, PI) > PI / 2
-	return cos(PI / 2 - angle) * (rect_size.y if flag else rect_size.x)
+	return cos(PI / 2 - fmod(angle, PI / 2)) * (rect_size.y if flag else rect_size.x)
 
 
 func _get_modifiers(constants: Dictionary) -> Dictionary:

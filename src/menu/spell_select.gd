@@ -36,7 +36,7 @@ func make_player() -> Node:
 		var player := Players.joined_order[idx]
 		ret.spell_slots = Players.get_stat(player, PlayerStats.SPELL_SLOTS)
 		ret.set_color(Players.colors[player])
-		ret.set_selections(Players.selections[player])
+		ret.set_player_info(Players.info[player])
 	return ret
 
 
@@ -54,10 +54,10 @@ func update_can_play() -> void:
 	play_button.disabled = not Players.all_joined_selected_spells()
 
 
-func update_spell_selectables(selections: Selections) -> void:
+func update_spell_selectables(info: PlayerInfo) -> void:
 	for selectable: CursorSelectable in spell_selectables:
 		selectable.set_player_selected(
-			selections.device.device, selections.has_spell(spell_selectables[selectable])
+			info.device.device, info.has_spell(spell_selectables[selectable])
 		)
 
 
@@ -75,8 +75,8 @@ func _ready() -> void:
 
 
 func _on_back_pressed() -> void:
-	for selections: Selections in Players.selections.values():
-		selections.spells.clear()
+	for info: PlayerInfo in Players.info.values():
+		info.spells.clear()
 	back_pressed.emit()
 
 
@@ -85,7 +85,7 @@ func _on_play_pressed() -> void:
 
 
 func _on_spell_button_pressed(selectable: CursorSelectable, device: int, button: int) -> void:
-	var selections: Selections = Players.selections[device]
-	selections.set_spell(button, SpellRegistry.new_spell_instance(spell_selectables[selectable]))
-	update_spell_selectables(selections)
+	var info: PlayerInfo = Players.info[device]
+	info.set_spell(button, SpellRegistry.new_spell_instance(spell_selectables[selectable]))
+	update_spell_selectables(info)
 	update_can_play()

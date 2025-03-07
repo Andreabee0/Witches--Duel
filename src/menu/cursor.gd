@@ -8,7 +8,7 @@ extends Node2D
 @export var color := Color.WHITE:
 	set = set_color
 
-var selections: Selections
+var player_info: PlayerInfo
 
 
 func set_color(value: Color) -> void:
@@ -26,8 +26,8 @@ func _process(delta: float) -> void:
 		rotation = Vector2(0, -1).angle_to(direction)
 	position += direction * delta * speed
 	clamp_in_viewport()
-	if selections:
-		selections.cursor_position = global_position
+	if player_info:
+		player_info.cursor_position = global_position
 
 
 func clamp_in_viewport() -> void:
@@ -37,6 +37,6 @@ func clamp_in_viewport() -> void:
 
 
 func get_move_vector() -> Vector2:
-	if not selections:
+	if not player_info:
 		return Vector2.ZERO
-	return selections.device.get_vector("move_left", "move_right", "move_up", "move_down")
+	return player_info.device.get_vector("move_left", "move_right", "move_up", "move_down")

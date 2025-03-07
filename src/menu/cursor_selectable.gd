@@ -25,7 +25,7 @@ signal on_button(selectable: CursorSelectable, device: int, button: int)
 # device id to color index
 var players := {}
 
-@onready var info: InfoPanel = $Info
+@onready var info_panel: InfoPanel = $Info
 
 
 func set_texture(value: Texture2D) -> void:
@@ -47,14 +47,14 @@ func set_colors(value: Array[Color]) -> void:
 
 func set_title(value: String):
 	title = value
-	if info:
-		info.title = title
+	if info_panel:
+		info_panel.title = title
 
 
 func set_description(value: String):
 	description = value
-	if info:
-		info.description = description
+	if info_panel:
+		info_panel.description = description
 
 
 func set_player_selected(player: int, select: bool) -> void:
@@ -82,24 +82,24 @@ func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
 	var first_cursor_pos := Vector2.INF
-	for device_id in Players.selections:
-		var selections: Selections = Players.selections[device_id]
-		if selections.cursor_in(get_global_rect()):
+	for device_id in Players.info:
+		var player_info: PlayerInfo = Players.info[device_id]
+		if player_info.cursor_in(get_global_rect()):
 			if not first_cursor_pos.is_finite():
-				first_cursor_pos = selections.cursor_position
+				first_cursor_pos = player_info.cursor_position
 			var any_select := false
-			if selections.has_pressed():
+			if player_info.has_pressed():
 				if not device_id in players:
 					any_select = true
 				on_pressed.emit(self, device_id)
-			for button in selections.buttons_has_pressed():
+			for button in player_info.buttons_has_pressed():
 				if not device_id in players:
 					any_select = true
 				on_button.emit(self, device_id, button)
 			if any_select:
 				SoundPlayer.play_sound(select_sound)
 	if first_cursor_pos.is_finite():
-		info.visible = true
-		info.global_position = first_cursor_pos
+		info_panel.visible = true
+		info_panel.global_position = first_cursor_pos
 	else:
-		info.visible = false
+		info_panel.visible = false

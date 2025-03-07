@@ -8,9 +8,9 @@ static var title := "Bismuth"
 static var description := "Shoots a spread of large defense projectiles after a delay"
 
 
-func _on_press(source: Node2D, direction: Vector2) -> void:
+func _on_press(source: Player, direction: Vector2) -> void:
 	if can_fire():
-		await source.get_tree().create_timer(0.5).timeout
+		await source.cast_animation(name, 0.75)
 		for deg in range(-90, 91, 45):
 			spawn(source, direction.rotated(deg_to_rad(deg)))
 

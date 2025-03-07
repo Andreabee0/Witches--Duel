@@ -10,8 +10,9 @@ static var description := "Shoots a spiral of projectiles"
 var drift := 2
 
 
-func _on_press(source: Node2D, direction: Vector2) -> void:
+func _on_press(source: Player, direction: Vector2) -> void:
 	if can_fire():
+		await source.cast_animation(name, 0.5)
 		drift = -drift
 		for deg in range(0, 360, 36):
 			spawn(source, direction.rotated(deg_to_rad(deg))).drift = drift
@@ -24,4 +25,4 @@ func _get_modifiers(constants: Dictionary) -> Dictionary:
 
 
 func _get_cooldown() -> float:
-	return 1
+	return 1.5

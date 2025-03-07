@@ -10,8 +10,9 @@ static var title := "Silver"
 static var description := "Rains defensive projectiles from the top of the screen"
 
 
-func _on_press(source: Node2D, _direction: Vector2) -> void:
+func _on_press(source: Player, _direction: Vector2) -> void:
 	if can_fire():
+		await source.cast_animation(name, 1)
 		var viewport := source.get_viewport_rect()
 		var top_pos := SPACING * -0.5
 		while top_pos < viewport.size.x - 2:

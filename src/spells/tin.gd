@@ -8,7 +8,7 @@ static var title := "Tin"
 static var description := "Charges and shoots increasingly fast and bouncy defense projectiles"
 
 
-func _on_charge_release(source: Node2D, direction: Vector2) -> void:
+func _on_charge_release(source: Player, direction: Vector2) -> void:
 	for i in 3:
 		spawn(source, direction)
 		await source.get_tree().create_timer(0.1).timeout

@@ -13,7 +13,7 @@ const BASE_PERK_SLOT := preload("res://scenes/components/perk_icon.tscn")
 	set = set_perk_slots
 
 var color := PlayerColor.new()
-var selections: Selections
+var player_info: PlayerInfo
 var cursor: Node2D
 var spells: Array[SpellIcon] = []
 var perk: Array[PerkIcon] = []
@@ -62,12 +62,12 @@ func set_cursor_to_start():
 	cursor.global_position = pos
 
 
-func set_selections(value: Selections) -> void:
-	if selections:
-		Util.checked_disconnect(selections.changed, selections_changed)
-	selections = value
-	if selections:
-		Util.checked_connect(selections.changed, selections_changed)
+func set_player_info(value: PlayerInfo) -> void:
+	if player_info:
+		Util.checked_disconnect(player_info.changed, player_info_changed)
+	player_info = value
+	if player_info:
+		Util.checked_connect(player_info.changed, player_info_changed)
 		if not cursor:
 			cursor = BASE_CURSOR.instantiate()
 			get_tree().root.add_child(cursor)
@@ -75,8 +75,8 @@ func set_selections(value: Selections) -> void:
 			# when loading a menu with already joined players,
 			# the layout of the player sprite doesn't seem to be done immediately
 			call_deferred("set_cursor_to_start")
-		cursor.selections = selections
-		selections_changed()
+		cursor.player_info = player_info
+		player_info_changed()
 	elif cursor:
 		cursor.queue_free()
 		cursor = null
@@ -90,21 +90,21 @@ func get_spell_better_sorting(index: int) -> SpellIcon:
 	return spells[index - 1]
 
 
-func selections_changed() -> void:
+func player_info_changed() -> void:
 	set_spell_icons(showing_symbols)
 	if not perk.is_empty():
-		perk[0].selection = selections.perk.name if selections.perk else ""
+		perk[0].selection = player_info.perk.name if player_info.perk else ""
 
 
 func set_spell_icons(symbols: bool) -> void:
 	showing_symbols = symbols
-	if not spells.size() >= selections.spells.size():
+	if not spells.size() >= player_info.spells.size():
 		return
 	var i := 0
-	for button in selections.spells:
+	for button in player_info.spells:
 		var icon: SpellIcon = get_spell_better_sorting(i)
 		if symbols:
-			icon.set_symbol(selections.spells[button].name)
+			icon.set_symbol(player_info.spells[button].name)
 		else:
 			icon.set_button(button)
 		i += 1
@@ -113,7 +113,7 @@ func set_spell_icons(symbols: bool) -> void:
 
 
 func get_device() -> int:
-	return selections.device.device if selections else -2
+	return player_info.device.device if player_info else -2
 
 
 func _ready() -> void:
@@ -122,10 +122,10 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if selections:
-		if selections.device.is_action_just_pressed("multi_ui_shift"):
+	if player_info:
+		if player_info.device.is_action_just_pressed("multi_ui_shift"):
 			set_spell_icons(true)
-		elif selections.device.is_action_just_released("multi_ui_shift"):
+		elif player_info.device.is_action_just_released("multi_ui_shift"):
 			set_spell_icons(false)
 
 
