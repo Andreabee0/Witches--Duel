@@ -6,15 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://drroix02qo83w" path="res://sprites/robe_witch spritesheet.png" id="3_uidxm"]
 [ext_resource type="Texture2D" uid="uid://dkcffovetoym1" path="res://sprites/lace_witch spritesheet.png" id="4_r3gx4"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cfngf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4bnr"]
 atlas = ExtResource("1_l5jvb")
 region = Rect2(0, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rpogx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmd0h"]
 atlas = ExtResource("3_uidxm")
 region = Rect2(0, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tcvt8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bpdy6"]
 atlas = ExtResource("4_r3gx4")
 region = Rect2(0, 16, 16, 16)
 
@@ -32,13 +32,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("AtlasTexture_cfngf")
+texture = SubResource("AtlasTexture_w4bnr")
 stretch_mode = 5
 script = ExtResource("2_ixrhu")
 start_offset = Vector2(0, 16)
 region_size = Vector2(16, 16)
 frame_count = 2
-disable_animation = null
 
 [node name="Robe" type="TextureRect" parent="."]
 layout_mode = 1
@@ -47,13 +46,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("AtlasTexture_rpogx")
+texture = SubResource("AtlasTexture_lmd0h")
 stretch_mode = 5
 script = ExtResource("2_ixrhu")
 start_offset = Vector2(0, 16)
 region_size = Vector2(16, 16)
 frame_count = 2
-disable_animation = null
 
 [node name="Belt" type="TextureRect" parent="."]
 layout_mode = 1
@@ -62,10 +60,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("AtlasTexture_tcvt8")
+texture = SubResource("AtlasTexture_bpdy6")
 stretch_mode = 5
 script = ExtResource("2_ixrhu")
 start_offset = Vector2(0, 16)
 region_size = Vector2(16, 16)
 frame_count = 2
-disable_animation = null

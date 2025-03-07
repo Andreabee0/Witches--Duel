@@ -71,6 +71,8 @@ func _ready() -> void:
 		for spell in SpellRegistry.all_spells:
 			make_spell(spell)
 		set_player_count(Players.get_joined_count())
+		for info in Players.info.values():
+			update_spell_selectables(info)
 		update_can_play()
 
 

@@ -1,4 +1,9 @@
+class_name VictoryMenu
 extends Control
+
+signal home_pressed
+signal replay_pressed
+signal quit_pressed
 
 const BASE_PLAYER_SPRITE = preload("res://scenes/components/ui_player.tscn")
 
@@ -16,6 +21,7 @@ func _ready() -> void:
 			continue
 		lost_players.append(player)
 	Util.update_object_count(player_sprites, lost_players.size(), make_player_sprite)
+	$Buttons/Home.grab_focus()
 
 
 func make_player_sprite() -> UiPlayer:
@@ -25,4 +31,21 @@ func make_player_sprite() -> UiPlayer:
 	ret.set_color(Players.colors[player])
 	ret.set_animated(false)
 	return ret
+
+
+func _on_home_pressed() -> void:
+	Players.unjoin_all(false)
+	home_pressed.emit()
+
+
+func _on_replay_pressed() -> void:
+	replay_pressed.emit()
+
+
+func _on_quit_pressed() -> void:
+	quit_pressed.emit()
+
+
+func _exit_tree() -> void:
+	GlobalInfo.battle_ended = false
 

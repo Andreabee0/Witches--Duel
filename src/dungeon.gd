@@ -1,7 +1,6 @@
 extends Node
 
-const VICTORY := preload("res://scenes/menu/victory.tscn")
-const FADE_TIME = 5
+const FADE_TIME = 3
 
 var fade := -1.0
 
@@ -10,7 +9,6 @@ var fade := -1.0
 
 func _ready() -> void:
 	RenderingServer.set_default_clear_color(Color.BLACK)
-	GlobalInfo.in_battle = true
 	GlobalInfo.current_arena_bounds = $Bounds.get_global_rect()
 	for info: PlayerInfo in Players.info.values():
 		info.create_player(self)
@@ -22,8 +20,7 @@ func _process(delta: float) -> void:
 	if fade >= 0:
 		fade += delta
 		if fade > FADE_TIME:
-			fade = -1
-			get_tree().change_scene_to_packed(VICTORY)
+			get_tree().change_scene_to_file("res://scenes/menu.tscn")
 		else:
 			hud.set_fade(fade / FADE_TIME)
 	else:
@@ -32,5 +29,5 @@ func _process(delta: float) -> void:
 			if info.get_remaining_health() > 0:
 				alive += 1
 		if alive == 1:
-			GlobalInfo.in_battle = false
+			GlobalInfo.battle_ended = true
 			fade = 0.0

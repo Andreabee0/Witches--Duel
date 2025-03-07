@@ -34,4 +34,4 @@ func remove_hud(index: int) -> void:
 
 
 func set_fade(value: float) -> void:
-	cover.color.a = value
+	cover.color.a = clampf(value, 0, 1)

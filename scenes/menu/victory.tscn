@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0qaa1xhssi1d"]
+[gd_scene load_steps=9 format=3 uid="uid://c0qaa1xhssi1d"]
 
-[ext_resource type="PackedScene" uid="uid://74sp8fsbrxer" path="res://scenes/components/menu_bg.tscn" id="1_bq42i"]
 [ext_resource type="Script" path="res://src/menu/victory.gd" id="1_l4rff"]
 [ext_resource type="PackedScene" uid="uid://kho8utmqdt8f" path="res://scenes/components/ui_player.tscn" id="2_ct1pk"]
+[ext_resource type="Texture2D" uid="uid://cn2s8s3tvns0p" path="res://sprites/menu/home.png" id="3_ygbv1"]
+[ext_resource type="Script" path="res://src/menu/button_sound.gd" id="4_hoaux"]
+[ext_resource type="AudioStream" uid="uid://nomwn1gytfrq" path="res://sounds/select.wav" id="5_gwmkf"]
+[ext_resource type="Texture2D" uid="uid://cef78fxt1va8j" path="res://sprites/menu/replay.png" id="6_heopw"]
+[ext_resource type="Texture2D" uid="uid://dsm8iw4lr51s" path="res://sprites/menu/exit.png" id="6_lmll8"]
+[ext_resource type="AudioStream" uid="uid://duqdbbnutm320" path="res://sounds/exit.wav" id="7_l6h55"]
 
 [node name="Victory" type="Control"]
 layout_mode = 3
@@ -12,9 +17,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l4rff")
-
-[node name="MenuBg" parent="." instance=ExtResource("1_bq42i")]
-layout_mode = 1
 
 [node name="Margin" type="MarginContainer" parent="."]
 layout_mode = 0
@@ -35,3 +37,52 @@ layout_mode = 2
 [node name="SubContainer" type="HBoxContainer" parent="Margin/Container"]
 layout_mode = 2
 size_flags_vertical = 0
+
+[node name="Buttons" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 95.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Home" type="Button" parent="Buttons"]
+texture_filter = 1
+custom_minimum_size = Vector2(65, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+icon = ExtResource("3_ygbv1")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("4_hoaux")
+sound = ExtResource("5_gwmkf")
+
+[node name="Replay" type="Button" parent="Buttons"]
+texture_filter = 1
+custom_minimum_size = Vector2(65, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+icon = ExtResource("6_heopw")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("4_hoaux")
+sound = ExtResource("5_gwmkf")
+
+[node name="Quit" type="Button" parent="Buttons"]
+texture_filter = 1
+custom_minimum_size = Vector2(65, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+icon = ExtResource("6_lmll8")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("4_hoaux")
+sound = ExtResource("7_l6h55")
+
+[connection signal="pressed" from="Buttons/Home" to="." method="_on_home_pressed"]
+[connection signal="pressed" from="Buttons/Replay" to="." method="_on_replay_pressed"]
+[connection signal="pressed" from="Buttons/Quit" to="." method="_on_quit_pressed"]

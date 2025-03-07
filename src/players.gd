@@ -81,6 +81,7 @@ func listen_for_joins() -> void:
 
 
 func unjoin_all(emit := true) -> void:
+	joined_order = []
 	info = {}
 	colors = {}
 	if emit:

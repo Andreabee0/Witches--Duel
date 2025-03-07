@@ -3,6 +3,7 @@ extends Control
 
 signal play_pressed
 signal options_pressed
+signal quit_pressed
 
 
 func _ready() -> void:
@@ -20,8 +21,7 @@ func _on_devices_changed():
 
 
 func _on_quit_pressed() -> void:
-	await get_tree().create_timer(0.5).timeout
-	get_tree().quit()
+	quit_pressed.emit()
 
 
 func _on_play_pressed() -> void:
