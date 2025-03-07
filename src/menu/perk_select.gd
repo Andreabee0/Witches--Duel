@@ -57,7 +57,7 @@ func updated_joined_players() -> void:
 
 func update_can_go_forward() -> void:
 	forward_button.disabled = (
-		Players.get_joined_count() < 1 or not Players.all_joined_selected_perk()
+		Players.get_joined_count() < 2 or not Players.all_joined_selected_perk()
 	)
 
 

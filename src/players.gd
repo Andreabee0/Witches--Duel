@@ -88,6 +88,19 @@ func unjoin_all(emit := true) -> void:
 		joined_devices_changed.emit()
 
 
+func make_dummy_info() -> void:
+	unjoin_all()
+	devices = [DeviceInput.new(-1)]
+	for id in Input.get_connected_joypads():
+		devices.append(DeviceInput.new(id))
+	if devices.size() < 2:
+		devices.append(DeviceInput.new(9))
+	for device in devices:
+		joined_order.append(device.device)
+		info[device.device] = PlayerInfo.new(device)
+		colors[device.device] = next_color()
+
+
 func get_joined_count() -> int:
 	return info.size()
 

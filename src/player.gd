@@ -36,14 +36,16 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	if not info:
-		print("adding test player with spells: ", testing_spells)
+		print("adding test player")
 		info = PlayerInfo.new(DeviceInput.new(-1))
-		for i in testing_spells.size():
-			info.set_spell(i, SpellRegistry.new_spell_instance(testing_spells[i]))
 		Players.info[-1] = info
 		Players.colors[-1] = PlayerColor.colors[0]
 		if GlobalInfo.current_arena_bounds.get_area() == 0:
 			GlobalInfo.current_arena_bounds = get_viewport_rect()
+	if info.spells.is_empty():
+		print("adding test spells: ", testing_spells)
+		for i in testing_spells.size():
+			info.set_spell(i, SpellRegistry.new_spell_instance(testing_spells[i]))
 	update_color()
 
 
