@@ -14,8 +14,8 @@ const DEFENSE_SIZE_RADII = [49, 77, 105, 133]
 
 func set_size(value: int):
 	size = clamp(value, 0, DEFENSE_SIZE_TEXTURES.size() - 1)
-	$Collider/Shape.shape.size.x = DEFENSE_SIZE_RADII[size]
-	$Collider/Shape.shape.size.y = DEFENSE_SIZE_RADII[size]
+	$Shape.shape.size.x = DEFENSE_SIZE_RADII[size]
+	$Shape.shape.size.y = DEFENSE_SIZE_RADII[size]
 	$Sprite.texture = DEFENSE_SIZE_TEXTURES[size]
 
 
