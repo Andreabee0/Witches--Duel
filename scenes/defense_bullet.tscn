@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://deip4uvxlk38" path="res://sprites/defense_small.png" id="2_of55a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g25ej"]
+resource_local_to_scene = true
 size = Vector2(49, 49)
 
 [node name="DefenseBullet" type="StaticBody2D" groups=["defense_bullets"]]
 collision_layer = 8
-collision_mask = 0
 script = ExtResource("1_tpdkv")
 
 [node name="Sprite" type="Sprite2D" parent="."]

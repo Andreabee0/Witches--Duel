@@ -36,10 +36,6 @@ var existence_time := 0.0
 @onready var collider_shape = $Shape
 
 
-func _ready() -> void:
-	collider_shape.shape = collider_shape.shape.duplicate()
-
-
 func start(player: int, _direction: Vector2, _size: int) -> void:
 	source = player
 	constant_linear_velocity = (
@@ -76,6 +72,8 @@ func is_defense() -> bool:
 
 
 func _physics_process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
 	existence_time += delta
 	if existence_time > DESPAWN_TIME or constant_linear_velocity.length() < 0.05:
 		queue_free()
