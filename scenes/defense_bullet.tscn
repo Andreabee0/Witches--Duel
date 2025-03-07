@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g25ej"]
 size = Vector2(49, 49)
 
-[node name="DefenseBullet" type="StaticBody2D" groups=["bullet"]]
+[node name="DefenseBullet" type="StaticBody2D" groups=["defense_bullets"]]
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_tpdkv")

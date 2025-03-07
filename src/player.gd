@@ -100,7 +100,7 @@ func set_hitbox_size(mult: float):
 
 
 func _on_hitbox_entered(body: Node2D) -> void:
-	if body.is_in_group("bullet") and body is Bullet:
+	if body.is_in_group("bullets") and body is Bullet:
 		var bullet: Bullet = body
 		if not bullet.source != info.device.device:
 			return

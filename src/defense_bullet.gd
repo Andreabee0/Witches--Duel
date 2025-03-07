@@ -19,5 +19,18 @@ func set_size(value: int):
 	$Sprite.texture = DEFENSE_SIZE_TEXTURES[size]
 
 
+func handle_homing(delta: float) -> void:
+	var closest_pos := Vector2.INF
+	for node in get_tree().get_nodes_in_group("bullets"):
+		if not node is Bullet:
+			continue
+		var bullet: Bullet = node
+		var distance_vector := bullet.global_position - global_position
+		if not closest_pos.is_finite() or distance_vector.length() < closest_pos.length():
+			closest_pos = distance_vector
+	if closest_pos.is_finite():
+		home_towards(closest_pos, delta)
+
+
 func is_defense() -> bool:
 	return true

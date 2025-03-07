@@ -77,7 +77,7 @@ func is_defense() -> bool:
 
 func _physics_process(delta: float) -> void:
 	existence_time += delta
-	if existence_time > DESPAWN_TIME or constant_linear_velocity.length() < 0.1:
+	if existence_time > DESPAWN_TIME or constant_linear_velocity.length() < 0.1 and homing == 0:
 		queue_free()
 		return
 	position = base_position
@@ -92,6 +92,8 @@ func _physics_process(delta: float) -> void:
 		position += movement
 	base_position = position
 	handle_drag_drift(delta)
+	if homing != 0:
+		handle_homing(delta)
 	if movement_modifier:
 		handle_movement_modifier(delta)
 	if collision:
@@ -107,6 +109,27 @@ func handle_drag_drift(delta: float) -> void:
 	if drift != 0:
 		constant_linear_velocity = constant_linear_velocity.rotated(delta * drift * PI)
 		drift -= drift * delta * 2
+
+
+func handle_homing(delta: float) -> void:
+	var closest_pos := Vector2.INF
+	for node in get_tree().get_nodes_in_group("players"):
+		if not node is Player:
+			continue
+		var player: Player = node
+		if player.info.device.device == source:
+			continue
+		var distance_vector := player.global_position - global_position
+		if not closest_pos.is_finite() or distance_vector.length() < closest_pos.length():
+			closest_pos = distance_vector
+	if closest_pos.is_finite():
+		home_towards(closest_pos, delta)
+
+
+func home_towards(direction: Vector2, delta: float):
+	var angle := constant_linear_velocity.angle_to(direction)
+	angle *= (1 - 1 / (homing * delta / 2 + 1))
+	constant_linear_velocity = constant_linear_velocity.rotated(angle)
 
 
 func handle_movement_modifier(delta: float) -> void:
@@ -127,10 +150,9 @@ func handle_collision(collision: KinematicCollision2D) -> void:
 		else:
 			constant_linear_velocity = constant_linear_velocity.bounce(collision.get_normal())
 			bounces -= 1
-	elif collided.is_in_group("bullet") and collided is Bullet:
+	elif collided.is_in_group("defense_bullets") and collided is DefenseBullet:
 		var bullet: Bullet = collided
-		if bullet.is_defense():
-			queue_free()
-			bullet.damage -= 1
-			if bullet.damage == 0:
-				bullet.queue_free()
+		queue_free()
+		bullet.damage -= 1
+		if bullet.damage == 0:
+			bullet.queue_free()

@@ -11,7 +11,7 @@ static var description := "Shoots a fast defense projectile with strong homing"
 func _get_modifiers(constants: Dictionary) -> Dictionary:
 	constants[DEFENSE] = true
 	constants[SPEED] = 2
-	constants[HOMING] = 3
+	constants[HOMING] = 5
 	return constants
 
 
