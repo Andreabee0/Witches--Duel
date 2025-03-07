@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://5ln4nstuuews"]
+[gd_scene load_steps=62 format=3 uid="uid://5ln4nstuuews"]
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_oyb43"]
 [ext_resource type="Texture2D" uid="uid://bv0jat2tbyj4p" path="res://sprites/aim ui.png" id="3_bcp7y"]
@@ -684,8 +684,13 @@ states/walk/position = Vector2(409.472, 186.688)
 transitions = ["idle", "walk", SubResource("AnimationNodeStateMachineTransition_wsdvs"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_akmrd"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_trxc5"), "cast", "reverse_cast", SubResource("AnimationNodeStateMachineTransition_t18g2"), "reverse_cast", "idle", SubResource("AnimationNodeStateMachineTransition_g4s4a"), "idle", "cast", SubResource("AnimationNodeStateMachineTransition_84axb"), "reverse_cast", "cast", SubResource("AnimationNodeStateMachineTransition_xe7cv"), "walk", "cast", SubResource("AnimationNodeStateMachineTransition_c3mo0")]
 graph_offset = Vector2(0, 22.9591)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hfq64"]
+radius = 32.0
+height = 102.0
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 2
+collision_layer = 4
 script = ExtResource("1_oyb43")
 testing_spells = ["earth"]
 
@@ -724,3 +729,7 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_ixj7w")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 1)
+shape = SubResource("CapsuleShape2D_hfq64")
