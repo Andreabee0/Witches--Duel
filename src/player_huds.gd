@@ -4,7 +4,7 @@ const BASE_HUD := preload("res://scenes/player_hud.tscn")
 
 var huds: Array[PlayerHud] = []
 
-@onready var container = $Container
+@onready var container = $Margin/Container
 
 
 func _ready() -> void:
