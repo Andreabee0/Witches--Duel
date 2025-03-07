@@ -73,7 +73,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("3_2xslp")
 sound = ExtResource("4_gftah")
-volume = -1.0
+volume = -2.0
 
 [connection signal="pressed" from="Buttons/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Buttons/Options" to="." method="_on_options_pressed"]

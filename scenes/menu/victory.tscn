@@ -82,7 +82,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("4_hoaux")
 sound = ExtResource("7_l6h55")
-volume = -1.0
+volume = -2.0
 
 [connection signal="pressed" from="Buttons/Home" to="." method="_on_home_pressed"]
 [connection signal="pressed" from="Buttons/Replay" to="." method="_on_replay_pressed"]

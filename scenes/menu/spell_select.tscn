@@ -68,6 +68,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("3_76syn")
 sound = ExtResource("6_mc6h7")
+volume = -5.0
 
 [node name="SpellsContainer" type="FlowContainer" parent="VerticalContainer/MainContainer"]
 layout_mode = 2

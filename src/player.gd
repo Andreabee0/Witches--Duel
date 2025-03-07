@@ -38,7 +38,7 @@ func cast_animation(spell: String, length := 0.25) -> void:
 
 
 func play_cast() -> void:
-	SoundPlayer.play_sound(CAST_SOUND, -1)
+	SoundPlayer.play_sound(CAST_SOUND, -5)
 
 
 func _ready() -> void:
@@ -62,7 +62,7 @@ func _process(delta: float) -> void:
 	if Engine.is_editor_hint() or is_dead:
 		return
 	if info.get_remaining_health() <= 0:
-		SoundPlayer.play_sound(DIE_SOUND, 2)
+		SoundPlayer.play_sound(DIE_SOUND, 1)
 		$Hitbox.monitoring = false
 		is_dead = true
 		return
@@ -148,7 +148,7 @@ func _on_hitbox_entered(body: Node2D) -> void:
 		if not bullet.source != info.device.device or dash_progress >= 0:
 			return
 		if info.handle_hit(bullet.damage):
-			SoundPlayer.play_sound(HIT_SOUND, 2)
+			SoundPlayer.play_sound(HIT_SOUND, 1)
 			bullet.queue_free()
 
 
