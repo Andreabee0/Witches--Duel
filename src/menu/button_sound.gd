@@ -1,8 +1,8 @@
 class_name ButtonSound
 extends Button
 
-
 @export var sound: AudioStream
+@export var volume := 0.0
 
 
 func _ready() -> void:
@@ -10,4 +10,4 @@ func _ready() -> void:
 
 
 func _on_pressed():
-	SoundPlayer.play_sound(sound)
+	SoundPlayer.play_sound(sound, volume)

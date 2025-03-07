@@ -8,6 +8,7 @@ signal on_button(selectable: CursorSelectable, device: int, button: int)
 const RIGHT_PADDING := 50
 
 @export var select_sound: AudioStream = preload("res://sounds/select.wav")
+@export var select_volume := 0.0
 
 @export var texture: Texture2D:
 	set = set_texture
@@ -107,7 +108,7 @@ func _process(_delta: float) -> void:
 					any_select = true
 				on_button.emit(self, device_id, button)
 			if any_select:
-				SoundPlayer.play_sound(select_sound)
+				SoundPlayer.play_sound(select_sound, select_volume)
 	if first_cursor_pos.is_finite():
 		info_panel.visible = true
 		if first_cursor_pos.x + info_panel.size.x > get_viewport_rect().end.x - RIGHT_PADDING:

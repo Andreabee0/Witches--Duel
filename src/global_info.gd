@@ -1,6 +1,6 @@
 extends Node
 
-var volume := 0.0
+var volume := 1.0
 var include_keyboard := true
 
 var battle_ended := false

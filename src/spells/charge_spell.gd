@@ -18,6 +18,7 @@ func _on_release(source: Player, direction: Vector2) -> void:
 	if charging:
 		charging = false
 		source.cast_count -= 1
+		source.play_cast()
 		charge_time = (Time.get_ticks_msec() - charge_start) / 1000.0
 		_on_charge_release(source, direction)
 
