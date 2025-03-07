@@ -639,7 +639,7 @@ collision_layer = 0
 collision_mask = 3
 platform_floor_layers = 0
 script = ExtResource("1_oyb43")
-testing_spells = ["arsenic", "fire", "platinum", "water"]
+testing_spells = ["earth", "fire", "platinum", "water"]
 
 [node name="SpellCircle" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)

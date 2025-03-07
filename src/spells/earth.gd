@@ -12,7 +12,7 @@ static var description := "Sends tremors across the map in the aimed direction"
 
 func _on_press(source: Player, direction: Vector2) -> void:
 	if can_fire():
-		await source.get_tree().create_timer(1).timeout
+		await source.cast_animation(name, 1)
 		var bounds := GlobalInfo.current_arena_bounds
 		var angle = direction.angle()
 		if angle < 0:
