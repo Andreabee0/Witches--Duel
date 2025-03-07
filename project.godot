@@ -23,7 +23,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Settings="*res://src/settings.gd"
+GlobalInfo="*res://src/global_info.gd"
 Players="*res://src/players.gd"
 SoundPlayer="*res://src/sound_player.gd"
 MultiplayerInput="*res://addons/multiplayer_input/multiplayer_input.gd"

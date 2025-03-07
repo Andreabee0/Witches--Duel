@@ -9,10 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://cp8qa4i38xbh0" path="res://sprites/aim.png" id="5_trapb"]
 [ext_resource type="Texture2D" uid="uid://dkcffovetoym1" path="res://sprites/lace_witch spritesheet.png" id="6_gkjqk"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hfq64"]
-radius = 32.0
-height = 102.0
-
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j66p3"]
 blend_mode = 1
 
@@ -884,15 +880,15 @@ states/disappear/position = Vector2(353.92, 188.56)
 transitions = ["appear", "disappear", SubResource("AnimationNodeStateMachineTransition_o3twt"), "disappear", "appear", SubResource("AnimationNodeStateMachineTransition_qh3xp"), "Start", "appear", SubResource("AnimationNodeStateMachineTransition_smxxd")]
 graph_offset = Vector2(-594.591, -19.0055)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hfq64"]
+radius = 55.0
+height = 112.0
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 3
 collision_layer = 4
 script = ExtResource("1_oyb43")
 testing_spells = ["air", "water", "mercury"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5, 1)
-shape = SubResource("CapsuleShape2D_hfq64")
 
 [node name="SpellCircle" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -957,3 +953,7 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_msgjg")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../SpellAnimation")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -22)
+shape = SubResource("CapsuleShape2D_hfq64")

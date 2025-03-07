@@ -48,17 +48,17 @@ func next_color() -> PlayerColor:
 
 
 func get_device_count() -> int:
-	return devices.size() if Settings.include_keyboard else devices.size() - 1
+	return devices.size() if GlobalInfo.include_keyboard else devices.size() - 1
 
 
 func get_device_at(index: int) -> DeviceInput:
-	return devices[index] if Settings.include_keyboard else devices[index + 1]
+	return devices[index] if GlobalInfo.include_keyboard else devices[index + 1]
 
 
 func listen_for_joins() -> void:
 	var changed := false
 	for device in devices:
-		if device.is_keyboard() and not Settings.include_keyboard:
+		if device.is_keyboard() and not GlobalInfo.include_keyboard:
 			continue
 		if device.device in info:
 			if device.is_action_just_released("multi_ui_cancel"):

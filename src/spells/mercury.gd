@@ -23,16 +23,16 @@ func _on_press(source: Player, _direction: Vector2) -> void:
 		in_delay = true
 		await source.cast_animation(name, 2)
 		in_delay = false
-		var viewport := source.get_viewport_rect()
+		var bounds := GlobalInfo.current_arena_bounds
 		var sides_pos := SPACING * -0.25
-		while sides_pos < (viewport.size.x + viewport.size.y) * 2 - 2:
+		while sides_pos < (bounds.size.x + bounds.size.y) * 2 - 2:
 			if sides_pos > 0:
-				var side := get_rect_side(sides_pos + 1, viewport.size)
+				var side := get_rect_side(sides_pos + 1, bounds.size)
 				var side_idx: int = side[0]
 				var side_pos: float = side[1]
 				var angle := deg_to_rad(randf_range(135, 45) + float(side_idx * 90))
 				spawn(source, Vector2.from_angle(angle)).base_position = get_side_vec(
-					viewport, side_idx, side_pos
+					bounds, side_idx, side_pos
 				)
 			sides_pos += SPACING * randf_range(0.25, 2.5)
 

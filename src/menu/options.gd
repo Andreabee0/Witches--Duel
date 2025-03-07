@@ -10,8 +10,8 @@ var keyboard_toggle: CheckButton = $MainContainer/MarginContainer/VBoxContainer/
 
 
 func _ready() -> void:
-	volume_slider.set_value_no_signal(Settings.volume)
-	keyboard_toggle.set_pressed_no_signal(Settings.include_keyboard)
+	volume_slider.set_value_no_signal(GlobalInfo.volume)
+	keyboard_toggle.set_pressed_no_signal(GlobalInfo.include_keyboard)
 	$MainContainer/BackButton.call_deferred("grab_focus")
 
 
@@ -20,8 +20,8 @@ func _on_back_pressed() -> void:
 
 
 func _on_volume_changed(value: float) -> void:
-	Settings.volume = value
+	GlobalInfo.volume = value
 
 
 func _on_keyboard_toggled(value: bool) -> void:
-	Settings.include_keyboard = value
+	GlobalInfo.include_keyboard = value

@@ -13,13 +13,13 @@ static var description := "Sends tremors across the map in the aimed direction"
 func _on_press(source: Player, direction: Vector2) -> void:
 	if can_fire():
 		await source.get_tree().create_timer(1).timeout
-		var viewport := source.get_viewport_rect()
+		var bounds := GlobalInfo.current_arena_bounds
 		var angle = direction.angle()
 		if angle < 0:
 			angle += PI * 2
-		var start_corner := get_corner(viewport, angle)
-		var min_offset := calc_min_offset(viewport.size, angle)
-		var max_offset := calc_max_offset(viewport.size, angle)
+		var start_corner := get_corner(bounds, angle)
+		var min_offset := calc_min_offset(bounds.size, angle)
+		var max_offset := calc_max_offset(bounds.size, angle)
 		var offset := min_offset - SPACING * 0.5
 		var offset_vec := direction.orthogonal()
 		while offset < max_offset:
