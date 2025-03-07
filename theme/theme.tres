@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bgocnempcaxe2"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://bgocnempcaxe2"]
 
 [ext_resource type="FontFile" uid="uid://coaqp3d4v84qu" path="res://theme/PixelatedEleganceRegular.ttf" id="1_jvytf"]
 
@@ -56,6 +56,12 @@ corner_detail = 5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bg00k"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g88vd"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3324u"]
+bg_color = Color(1, 1, 1, 1)
+
 [resource]
 default_font = ExtResource("1_jvytf")
 BoxContainer/constants/separation = 20
@@ -75,3 +81,5 @@ MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10
 MarginContainer/constants/margin_top = 10
 PanelContainer/styles/panel = SubResource("StyleBoxEmpty_bg00k")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_g88vd")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_3324u")

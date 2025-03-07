@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5h8l5jjwddu3"]
+
+[ext_resource type="Script" path="res://src/icon_progress.gd" id="1_tgq4l"]
+
+[node name="IconProgress" type="HBoxContainer"]
+theme_override_constants/separation = 5
+script = ExtResource("1_tgq4l")
+const_bar_color = null
+bar_color = null
+
+[node name="Icon" type="TextureRect" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+stretch_mode = 5
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+modulate = Color(1, 0.270588, 0, 1)
+custom_minimum_size = Vector2(100, 5)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 10000.0
+step = 1.0
+show_percentage = false

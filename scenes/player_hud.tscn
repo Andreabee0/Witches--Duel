@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://dwi8yc0o6gfqm"]
+
+[ext_resource type="Script" path="res://src/player_hud.gd" id="1_essfo"]
+[ext_resource type="Shader" path="res://shaders/cursor_selectable.gdshader" id="1_q2sps"]
+[ext_resource type="PackedScene" uid="uid://c5h8l5jjwddu3" path="res://scenes/components/icon_progress.tscn" id="2_7p53q"]
+[ext_resource type="Script" path="res://src/menu/border_scale.gd" id="2_44o27"]
+[ext_resource type="Texture2D" uid="uid://b8ifg2cl0gvsk" path="res://sprites/health.png" id="3_r133q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c551u"]
+shader = ExtResource("1_q2sps")
+shader_parameter/border_size = 5.0
+shader_parameter/scale = Vector2(270, 45)
+shader_parameter/rot_speed = 1.0
+shader_parameter/color_count = 1
+shader_parameter/colors = [Color(0.662745, 0.662745, 0.662745, 1)]
+
+[node name="PlayerHud" type="PanelContainer"]
+offset_right = 270.0
+offset_bottom = 39.0
+script = ExtResource("1_essfo")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.24695, 0.24695, 0.24695, 0.588235)
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 10
+
+[node name="Container" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Health" parent="Margin/Container" instance=ExtResource("2_7p53q")]
+layout_mode = 2
+color = Color(1, 0, 0, 1)
+texture = ExtResource("3_r133q")
+const_bar_color = true
+bar_color = Color(1, 0, 0, 1)
+
+[node name="Border" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_c551u")
+layout_mode = 2
+script = ExtResource("2_44o27")
+scale_in_editor = true

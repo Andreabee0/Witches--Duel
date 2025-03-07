@@ -32,6 +32,8 @@ var cursor_position := Vector2.INF
 var spells := {}
 var perk: BasePerk
 
+var damage_taken := 0
+
 
 func set_spell(button: int, value: BaseSpell) -> void:
 	if button not in spells and spells.size() >= get_stat(PlayerStats.SPELL_SLOTS):

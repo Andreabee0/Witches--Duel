@@ -76,11 +76,20 @@ func spawn(source: Player, direction: Vector2) -> Bullet:
 
 
 func can_fire() -> bool:
-	var cooldown := _get_cooldown() * Players.get_stat(player, PlayerStats.SPELL_COOLDOWN)
-	if Time.get_ticks_msec() - last_fire > cooldown * 1000:
+	if get_remaining_cooldown() == 0:
 		last_fire = Time.get_ticks_msec()
 		return true
 	return false
+
+
+func get_remaining_cooldown() -> float:
+	var cooldown := get_modified_cooldown()
+	var time_passed := (Time.get_ticks_msec() - last_fire) / 1000
+	return clampf(cooldown - time_passed, 0, cooldown)
+
+
+func get_modified_cooldown() -> float:
+	return _get_cooldown() * Players.get_stat(player, PlayerStats.SPELL_COOLDOWN)
 
 
 func _get_cooldown() -> float:

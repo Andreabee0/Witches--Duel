@@ -1,11 +1,20 @@
-[gd_scene load_steps=62 format=3 uid="uid://5ln4nstuuews"]
+[gd_scene load_steps=76 format=3 uid="uid://5ln4nstuuews"]
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_oyb43"]
-[ext_resource type="Texture2D" uid="uid://bv0jat2tbyj4p" path="res://sprites/aim ui.png" id="3_bcp7y"]
+[ext_resource type="Texture2D" uid="uid://g2vtb536yh3d" path="res://sprites/spell_circle_small.png" id="2_l1knu"]
+[ext_resource type="Texture2D" uid="uid://dgbg8odi6e3q6" path="res://sprites/symbols/air.png" id="3_5g1l3"]
 [ext_resource type="Script" path="res://src/rotating_cursor.gd" id="4_1dh1y"]
 [ext_resource type="Texture2D" uid="uid://d028nsmhh4io4" path="res://sprites/witch spritesheet.png" id="5_2y5rg"]
 [ext_resource type="Texture2D" uid="uid://drroix02qo83w" path="res://sprites/robe_witch spritesheet.png" id="5_iqc1p"]
+[ext_resource type="Texture2D" uid="uid://cp8qa4i38xbh0" path="res://sprites/aim.png" id="5_trapb"]
 [ext_resource type="Texture2D" uid="uid://dkcffovetoym1" path="res://sprites/lace_witch spritesheet.png" id="6_gkjqk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hfq64"]
+radius = 32.0
+height = 102.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j66p3"]
+blend_mode = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cxdnd"]
 atlas = ExtResource("5_2y5rg")
@@ -310,6 +319,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ux1s0"]
+blend_mode = 1
+
 [sub_resource type="Animation" id="Animation_6pk53"]
 length = 0.001
 tracks/0/type = "value"
@@ -383,6 +395,30 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SpellCircle:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SpellCircle:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.392157)]
 }
 
 [sub_resource type="Animation" id="Animation_3ir2r"]
@@ -684,21 +720,195 @@ states/walk/position = Vector2(409.472, 186.688)
 transitions = ["idle", "walk", SubResource("AnimationNodeStateMachineTransition_wsdvs"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_akmrd"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_trxc5"), "cast", "reverse_cast", SubResource("AnimationNodeStateMachineTransition_t18g2"), "reverse_cast", "idle", SubResource("AnimationNodeStateMachineTransition_g4s4a"), "idle", "cast", SubResource("AnimationNodeStateMachineTransition_84axb"), "reverse_cast", "cast", SubResource("AnimationNodeStateMachineTransition_xe7cv"), "walk", "cast", SubResource("AnimationNodeStateMachineTransition_c3mo0")]
 graph_offset = Vector2(0, 22.9591)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hfq64"]
-radius = 32.0
-height = 102.0
+[sub_resource type="Animation" id="Animation_0qia8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpellCircle:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpellCircle:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Spell:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5r77o"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpellCircle:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [-2.0944, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpellCircle:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.392157)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Spell:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_o0flq"]
+resource_name = "disappear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpellCircle:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [0.0, 2.0944]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpellCircle:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.392157), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Spell:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7xqsa"]
+_data = {
+"RESET": SubResource("Animation_0qia8"),
+"appear": SubResource("Animation_5r77o"),
+"disappear": SubResource("Animation_o0flq")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_56nta"]
+animation = &"appear"
+use_custom_timeline = true
+timeline_length = 0.5
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e8phu"]
+animation = &"disappear"
+use_custom_timeline = true
+timeline_length = 0.2
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o3twt"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "cast_count == 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qh3xp"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "cast_count > 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_smxxd"]
+advance_mode = 2
+advance_expression = "cast_count > 0"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_msgjg"]
+states/End/position = Vector2(200.48, 188.608)
+states/Start/position = Vector2(200.544, 99.1219)
+states/appear/node = SubResource("AnimationNodeAnimation_56nta")
+states/appear/position = Vector2(353.6, 99.6)
+states/disappear/node = SubResource("AnimationNodeAnimation_e8phu")
+states/disappear/position = Vector2(353.92, 188.56)
+transitions = ["appear", "disappear", SubResource("AnimationNodeStateMachineTransition_o3twt"), "disappear", "appear", SubResource("AnimationNodeStateMachineTransition_qh3xp"), "Start", "appear", SubResource("AnimationNodeStateMachineTransition_smxxd")]
+graph_offset = Vector2(-594.591, -19.0055)
 
 [node name="Player" type="CharacterBody2D"]
-z_index = 2
+z_index = 3
 collision_layer = 4
 script = ExtResource("1_oyb43")
-testing_spells = ["earth"]
+testing_spells = ["air", "water", "mercury"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 1)
+shape = SubResource("CapsuleShape2D_hfq64")
+
+[node name="SpellCircle" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = -2
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_j66p3")
+position = Vector2(0, 25)
+scale = Vector2(7, 7)
+texture = ExtResource("2_l1knu")
 
 [node name="Cursor" type="Sprite2D" parent="."]
 visible = false
+texture_filter = 1
 rotation = -6.28319
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_bcp7y")
+scale = Vector2(7, 7)
+texture = ExtResource("5_trapb")
 script = ExtResource("4_1dh1y")
 
 [node name="Base" type="AnimatedSprite2D" parent="."]
@@ -720,16 +930,30 @@ scale = Vector2(7, 7)
 sprite_frames = SubResource("SpriteFrames_pwmgx")
 animation = &"walk"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Spell" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_ux1s0")
+position = Vector2(0, 25)
+scale = Vector2(7, 7)
+texture = ExtResource("3_5g1l3")
+
+[node name="PlayerAnimation" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_8focp")
 }
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
+[node name="PlayerAnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_ixj7w")
 advance_expression_base_node = NodePath("..")
-anim_player = NodePath("../AnimationPlayer")
+anim_player = NodePath("../PlayerAnimation")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5, 1)
-shape = SubResource("CapsuleShape2D_hfq64")
+[node name="SpellAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7xqsa")
+}
+
+[node name="SpellAnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_msgjg")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../SpellAnimation")

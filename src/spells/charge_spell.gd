@@ -8,7 +8,7 @@ var charge_time := 0.0
 
 
 func _on_press(source: Player, _direction: Vector2) -> void:
-	if can_fire() and not charging:
+	if not charging and can_fire():
 		charging = true
 		source.cast_count += 1
 		charge_start = Time.get_ticks_msec()

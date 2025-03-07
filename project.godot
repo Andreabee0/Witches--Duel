@@ -30,6 +30,10 @@ MultiplayerInput="*res://addons/multiplayer_input/multiplayer_input.gd"
 PerkRegistry="*res://src/perks/registry.gd"
 SpellRegistry="*res://src/spells/registry.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/multiplayer_input/plugin.cfg")

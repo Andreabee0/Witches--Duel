@@ -4,6 +4,7 @@ const MAIN_MENU := preload("res://scenes/menu/main.tscn")
 const OPTIONS_MENU := preload("res://scenes/menu/options.tscn")
 const PERK_SELECT_MENU := preload("res://scenes/menu/perk_select.tscn")
 const SPELL_SELECT_MENU := preload("res://scenes/menu/spell_select.tscn")
+const HUD := preload("res://scenes/global_hud.tscn")
 const GAME := preload("res://scenes/dungeon.tscn")
 
 

@@ -12,10 +12,10 @@ static var description := "Invades the screen with swirls of projectiles"
 var in_delay := false
 
 
-func _get_additive(stat: int) -> float:
+func _get_multiplicative(stat: int) -> float:
 	if in_delay and stat == PlayerStats.SPELL_COOLDOWN:
-		return 999
-	return 0
+		return INF
+	return 1
 
 
 func _on_press(source: Player, _direction: Vector2) -> void:
