@@ -142,7 +142,7 @@ func can_be_hit() -> bool:
 
 
 func should_dash() -> bool:
-	if device.is_action_just_released("move_extra"):
+	if device.is_action_pressed("move_extra"):
 		if Time.get_ticks_msec() - last_dash_time > get_stat(PlayerStats.DASH_COOLDOWN) * 1000:
 			last_dash_time = Time.get_ticks_msec()
 			return true
