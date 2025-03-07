@@ -3,13 +3,16 @@ class_name Player
 extends CharacterBody2D
 
 const BASE_HITBOX := [44.0, 112.0]
+const DASH_TIME := 0.1
+const DASH_DIST := 300
 
-# spells to use in testing
 var testing_spells := []
 
 var cast_count := 0
 var is_casting := false
 var is_moving := false
+var dash_progress := -1.0
+var dash_direction: Vector2
 var info: PlayerInfo
 
 
@@ -31,8 +34,7 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	if not info:
-		print("adding keyboard player with spells: ", testing_spells)
-		# create keyboard device with testing spells
+		print("adding test player with spells: ", testing_spells)
 		info = PlayerInfo.new(DeviceInput.new(-1))
 		for i in testing_spells.size():
 			info.set_spell(i, SpellRegistry.new_spell_instance(testing_spells[i]))
@@ -59,7 +61,7 @@ func _process(delta: float) -> void:
 	info.update_perk(delta)
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
 	var direction := get_movement_vector()
@@ -73,12 +75,35 @@ func _physics_process(_delta: float) -> void:
 	else:
 		velocity = Vector2(0, 0)
 		is_moving = false
+	if dash_progress >= 0:
+		dash_progress += delta
+		velocity += dash_direction * DASH_DIST / DASH_TIME
+	if dash_progress > DASH_TIME:
+		end_dash()
 	$Cursor.update_look(info.device)
 	move_and_slide()
+	if is_moving and info.should_dash():
+		start_dash(direction.normalized())
 
 
 func get_movement_vector() -> Vector2:
 	return info.device.get_vector("move_left", "move_right", "move_up", "move_down")
+
+
+func start_dash(direction: Vector2) -> void:
+	dash_progress = 0
+	dash_direction = direction
+	$Base.modulate.a = 0.1
+	$Robe.modulate.a = 0.1
+	$Belt.modulate.a = 0.1
+
+
+func end_dash() -> void:
+	dash_progress = -1
+	await get_tree().create_timer(0.1).timeout
+	$Base.modulate.a = 1
+	$Robe.modulate.a = 1
+	$Belt.modulate.a = 1
 
 
 func flip_left() -> void:
@@ -102,7 +127,7 @@ func set_hitbox_size(mult: float):
 func _on_hitbox_entered(body: Node2D) -> void:
 	if body.is_in_group("bullets") and body is Bullet:
 		var bullet: Bullet = body
-		if not bullet.source != info.device.device:
+		if not bullet.source != info.device.device or dash_progress >= 0:
 			return
 		if info.handle_hit(bullet.damage):
 			bullet.queue_free()

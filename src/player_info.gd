@@ -35,6 +35,7 @@ var perk: BasePerk
 
 var damage_taken := 0
 var last_hit_time := -INF
+var last_dash_time := -INF
 
 
 func set_spell(button: int, value: BaseSpell) -> void:
@@ -137,6 +138,14 @@ func can_be_hit() -> bool:
 	if Time.get_ticks_msec() - last_hit_time > get_stat(PlayerStats.IFRAME_DURATION) * 1000:
 		last_hit_time = Time.get_ticks_msec()
 		return true
+	return false
+
+
+func should_dash() -> bool:
+	if device.is_action_just_released("move_extra"):
+		if Time.get_ticks_msec() - last_dash_time > get_stat(PlayerStats.DASH_COOLDOWN) * 1000:
+			last_dash_time = Time.get_ticks_msec()
+			return true
 	return false
 
 
