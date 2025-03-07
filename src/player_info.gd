@@ -2,6 +2,7 @@ class_name PlayerInfo
 extends RefCounted
 
 signal changed
+signal damaged(amount: int)
 
 enum Buttons {
 	LEFT_TRIGGER,
@@ -33,6 +34,7 @@ var spells := {}
 var perk: BasePerk
 
 var damage_taken := 0
+var last_hit_time := -INF
 
 
 func set_spell(button: int, value: BaseSpell) -> void:
@@ -46,6 +48,7 @@ func set_spell(button: int, value: BaseSpell) -> void:
 
 
 func set_perk(value: BasePerk) -> void:
+	value.player = device.device
 	perk = value
 	changed.emit()
 
@@ -125,5 +128,35 @@ func has_spell(spell: String) -> bool:
 	return false
 
 
-func handle_hit(damage: int) -> void:
-	damage_taken += int(damage * get_stat(PlayerStats.DAMAGE_TAKEN))
+func update_perk(delta: float):
+	if perk:
+		perk.update(delta)
+
+
+func can_be_hit() -> bool:
+	if Time.get_ticks_msec() - last_hit_time > get_stat(PlayerStats.IFRAME_DURATION) * 1000:
+		last_hit_time = Time.get_ticks_msec()
+		return true
+	return false
+
+
+func handle_hit(damage: int) -> bool:
+	if not can_be_hit():
+		return false
+	if randf_range(0, 1) < get_stat(PlayerStats.DODGE_CHANCE):
+		return false
+	var modified_damage := int(damage * get_stat(PlayerStats.DAMAGE_TAKEN))
+	damage_taken += modified_damage
+	damaged.emit(modified_damage)
+	return true
+
+
+func heal(amount: int) -> void:
+	damage_taken -= amount
+	if damage_taken < 0:
+		damage_taken = 0
+	damaged.emit(-amount)
+
+
+func get_remaining_health() -> int:
+	return int(get_stat(PlayerStats.HEALTH)) - damage_taken

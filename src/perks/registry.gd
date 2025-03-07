@@ -5,13 +5,16 @@ static var perk_sheet := preload("res://sprites/perks.png")
 
 var all_perks := {
 	ChariotPerk.name: [ChariotPerk, get_sheet_perk(7)],
-	DevilPerk.name: [DevilPerk, get_sheet_perk(3)], # 15
+	DeathPerk.name: [DeathPerk, get_sheet_perk(13)],
+	DevilPerk.name: [DevilPerk, get_sheet_perk(15)],
 	FoolPerk.name: [FoolPerk, get_sheet_perk(0)],
+	HermitPerk.name: [HermitPerk, get_sheet_perk(9)],
 	LoversPerk.name: [LoversPerk, get_sheet_perk(6)],
 	MagicianPerk.name: [MagicianPerk, get_sheet_perk(1)],
-	MoonPerk.name: [MoonPerk, get_sheet_perk(4)], # 18
-	SunPerk.name: [SunPerk, get_sheet_perk(5)], # 19
-	TemperancePerk.name: [TemperancePerk, get_sheet_perk(8)], # 14
+	MoonPerk.name: [MoonPerk, get_sheet_perk(18)],
+	StarPerk.name: [StarPerk, get_sheet_perk(17)],
+	SunPerk.name: [SunPerk, get_sheet_perk(19)],
+	TemperancePerk.name: [TemperancePerk, get_sheet_perk(14)],
 	WheelOfFortunePerk.name: [WheelOfFortunePerk, get_sheet_perk(10)],
 }
 

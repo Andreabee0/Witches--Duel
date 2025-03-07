@@ -885,6 +885,7 @@ radius = 9.0
 height = 98.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a5v80"]
+resource_local_to_scene = true
 radius = 44.0
 height = 112.0
 

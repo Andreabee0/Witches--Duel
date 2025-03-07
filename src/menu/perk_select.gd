@@ -66,20 +66,20 @@ func make_perk(perk: String) -> void:
 	child.texture = PerkRegistry.get_perk_texture(perk)
 	child.title = PerkRegistry.get_perk_title(perk)
 	child.description = PerkRegistry.get_perk_description(perk)
+	child.custom_minimum_size = Vector2(90, 135)
 	Util.checked_connect(child.on_pressed, _on_perk_selected)
 	perks_container.add_child(child)
 	perk_selectables[child] = perk
 
 
 func _ready() -> void:
-	for child in perks_container.get_children():
-		child.queue_free()
-	for perk in PerkRegistry.all_perks:
-		make_perk(perk)
-
 	if Engine.is_editor_hint():
 		set_player_count(player_count)
 	else:
+		for child in perks_container.get_children():
+			child.queue_free()
+		for perk in PerkRegistry.all_perks:
+			make_perk(perk)
 		update_player_count()
 		Util.checked_connect(Players.devices_changed, update_player_count)
 		Util.checked_connect(Players.joined_devices_changed, updated_joined_players)
@@ -91,8 +91,9 @@ func _process(_delta: float) -> void:
 
 
 func _exit_tree() -> void:
-	Util.checked_disconnect(Players.devices_changed, update_player_count)
-	Util.checked_disconnect(Players.joined_devices_changed, updated_joined_players)
+	if not Engine.is_editor_hint():
+		Util.checked_disconnect(Players.devices_changed, update_player_count)
+		Util.checked_disconnect(Players.joined_devices_changed, updated_joined_players)
 
 
 func _on_back_pressed() -> void:

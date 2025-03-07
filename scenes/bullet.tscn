@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/bullet.gd" id="1_2dnf6"]
 [ext_resource type="Texture2D" uid="uid://c4oo81chlasi" path="res://sprites/projectile_small.png" id="2_iusrc"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ir1ku"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_s1cpm"]
 radius = 20.0
 
 [node name="Bullet" type="StaticBody2D" groups=["bullet"]]
@@ -17,4 +17,4 @@ scale = Vector2(7, 7)
 texture = ExtResource("2_iusrc")
 
 [node name="Shape" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_ir1ku")
+shape = SubResource("CircleShape2D_s1cpm")

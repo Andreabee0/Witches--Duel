@@ -63,14 +63,13 @@ func update_spell_selectables(info: PlayerInfo) -> void:
 
 
 func _ready() -> void:
-	for child in spells_container.get_children():
-		child.queue_free()
-	for spell in SpellRegistry.all_spells:
-		make_spell(spell)
-
 	if Engine.is_editor_hint():
 		set_player_count(player_count)
 	else:
+		for child in spells_container.get_children():
+			child.queue_free()
+		for spell in SpellRegistry.all_spells:
+			make_spell(spell)
 		set_player_count(Players.get_joined_count())
 		update_can_play()
 

@@ -2,6 +2,8 @@
 class_name Player
 extends CharacterBody2D
 
+const BASE_HITBOX := [44.0, 112.0]
+
 # spells to use in testing
 var testing_spells := []
 
@@ -41,7 +43,7 @@ func _ready() -> void:
 	update_color()
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
 	var pressed := info.buttons_pressed(true)
@@ -53,6 +55,8 @@ func _process(_delta: float) -> void:
 	for button in released:
 		var spell: BaseSpell = info.spells[button]
 		spell._on_release(self, Vector2.from_angle($Cursor.rotation))
+	set_hitbox_size(info.get_stat(PlayerStats.HITBOX))
+	info.update_perk(delta)
 
 
 func _physics_process(_delta: float) -> void:
@@ -89,13 +93,19 @@ func flip_right() -> void:
 	$Belt.flip_h = true
 
 
+func set_hitbox_size(mult: float):
+	var shape: CapsuleShape2D = $Hitbox/Collider.shape
+	shape.radius = BASE_HITBOX[0] * mult
+	shape.height = BASE_HITBOX[1] * mult
+
+
 func _on_hitbox_entered(body: Node2D) -> void:
 	if body.is_in_group("bullet") and body is Bullet:
 		var bullet: Bullet = body
-		# if not bullet.source != info.device.device:
-		# 	return
-		info.handle_hit(bullet.damage)
-		bullet.queue_free()
+		if not bullet.source != info.device.device:
+			return
+		if info.handle_hit(bullet.damage):
+			bullet.queue_free()
 
 
 func _get_property_list() -> Array[Dictionary]:
