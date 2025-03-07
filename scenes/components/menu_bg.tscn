@@ -40,6 +40,7 @@ rot_variance = 0.5
 rot_speed_variance = 0.5
 
 [node name="TemplateSprite" type="Sprite2D" parent="BackgroundAnimation"]
+modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 scale = Vector2(4, 4)
 

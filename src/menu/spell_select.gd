@@ -45,6 +45,7 @@ func make_spell(spell: String) -> void:
 	child.texture = SpellRegistry.get_spell_texture(spell)
 	child.title = SpellRegistry.get_spell_title(spell)
 	child.description = SpellRegistry.get_spell_description(spell)
+	child.texture_color = Color.BLACK
 	Util.checked_connect(child.on_button, _on_spell_button_pressed)
 	spells_container.add_child(child)
 	spell_selectables[child] = spell

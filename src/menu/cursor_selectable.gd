@@ -10,6 +10,9 @@ signal on_button(selectable: CursorSelectable, device: int, button: int)
 @export var texture: Texture2D:
 	set = set_texture
 
+@export var texture_color := Color.WHITE:
+	set = set_texture_color
+
 @export var color_count := 0:
 	set = set_color_count
 
@@ -31,6 +34,11 @@ var players := {}
 func set_texture(value: Texture2D) -> void:
 	texture = value
 	$MarginContainer/Texture.texture = texture
+
+
+func set_texture_color(value: Color) -> void:
+	texture_color = value
+	$MarginContainer/Texture.modulate = texture_color
 
 
 func set_color_count(value: int) -> void:
