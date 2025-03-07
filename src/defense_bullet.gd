@@ -19,12 +19,18 @@ func set_size(value: int):
 	$Sprite.texture = DEFENSE_SIZE_TEXTURES[size]
 
 
+func set_source_layer(layer_for_source: int) -> void:
+	set_collision_layer_value(layer_for_source, true)
+
+
 func handle_homing(delta: float) -> void:
 	var closest_pos := Vector2.INF
 	for node in get_tree().get_nodes_in_group("bullets"):
 		if not node is Bullet:
 			continue
 		var bullet: Bullet = node
+		if bullet.source == source:
+			continue
 		var distance_vector := bullet.global_position - global_position
 		if not closest_pos.is_finite() or distance_vector.length() < closest_pos.length():
 			closest_pos = distance_vector

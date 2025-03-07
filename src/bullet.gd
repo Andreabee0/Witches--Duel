@@ -36,14 +36,16 @@ var existence_time := 0.0
 @onready var collider_shape = $Shape
 
 
-func start(player: int, _direction: Vector2, _size: int) -> void:
+func start(player: int, direction: Vector2, start_size: int) -> void:
 	source = player
 	constant_linear_velocity = (
-		_direction.normalized() * Players.get_stat(player, PlayerStats.SPELL_SPEED) * BASE_SPEED
+		direction.normalized() * Players.get_stat(player, PlayerStats.SPELL_SPEED) * BASE_SPEED
 	)
 	base_position = position
-	set_size(_size + int(Players.get_stat(player, PlayerStats.SPELL_SIZE)))
+	set_size(start_size + int(Players.get_stat(player, PlayerStats.SPELL_SIZE)))
 	set_color(Players.colors[player].secondary)
+	var layer_id := Players.joined_order.find(player) + 4
+	set_source_layer(layer_id)
 
 
 func set_size(value: int) -> void:
@@ -65,6 +67,10 @@ func set_speed(multiplier: float) -> void:
 func set_movement_modifier(graph: Callable) -> void:
 	time = 0
 	movement_modifier = graph
+
+
+func set_source_layer(layer_for_source: int) -> void:
+	set_collision_mask_value(layer_for_source, false)
 
 
 func is_defense() -> bool:
