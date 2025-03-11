@@ -5,7 +5,7 @@ extends ChargeSpell
 static var name := "arsenic"
 
 static var title := "Arsenic"
-static var description := "Charges and shoots a high-damange homing projectile"
+static var description := "Charges and shoots a high-damage homing projectile"
 
 
 func _get_modifiers(constants: Dictionary) -> Dictionary:
