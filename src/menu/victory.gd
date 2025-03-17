@@ -40,6 +40,8 @@ func _on_home_pressed() -> void:
 
 func _on_replay_pressed() -> void:
 	replay_pressed.emit()
+	for info: PlayerInfo in Players.info.values():
+		info.heal(info.damage_taken)
 
 
 func _on_quit_pressed() -> void:
